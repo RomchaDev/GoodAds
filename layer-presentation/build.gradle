@@ -1,18 +1,12 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
 }
 
 dependencies {
 
-    //Project
-    implementation project(Modules.layerPresentation)
+//Project
     implementation project(Modules.layerDomain)
-    implementation project(Modules.layerData)
-
-    //Navigation
-    implementation Navigation.navigationFragment
-    implementation Navigation.navigationUiKtx
 
     //Koin
     implementation Koin.koinCore
@@ -26,12 +20,6 @@ dependencies {
     //Design
     implementation Design.material
     implementation Design.constraintLayout
-
-    //Retrofit 2
-    implementation Retrofit.retrofit
-    implementation Retrofit.converterGson
-    implementation Retrofit.adapterCoroutines
-    implementation Retrofit.loggingInterceptor
 
     //Kotlin
     implementation Kotlin.core

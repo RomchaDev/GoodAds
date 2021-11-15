@@ -1,0 +1,24 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+dependencies {
+
+    //Project
+    implementation project(Modules.layerData)
+
+    //Koin
+    implementation Koin.koinCore
+    implementation Koin.koinAndroid
+    implementation Koin.koinViewModel
+
+    //Kotlin
+    implementation Kotlin.core
+    implementation Kotlin.stdlib
+    implementation Kotlin.coroutinesCore
+    implementation Kotlin.coroutinesAndroid
+
+    //Test
+    testImplementation TestImpl.junit
+}

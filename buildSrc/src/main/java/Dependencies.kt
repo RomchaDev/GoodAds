@@ -18,6 +18,7 @@ object Releases {
 object Versions {
     //Tools
     const val multidex = "2.0.1"
+    const val gradle = "7.0.3"
 
     //Design
     const val appcompat = "1.3.1"
@@ -27,7 +28,7 @@ object Versions {
 
     //Kotlin
     const val core = "1.6.0"
-    const val stdlib = "1.5.30"
+    const val stdlib = "1.5.31"
     const val coroutinesCore = "1.5.1"
     const val coroutinesAndroid = "1.5.1"
 
@@ -124,16 +125,9 @@ object AwesomeValidation {
 
 object Modules {
     const val app = ":app"
-    const val core = ":core"
-    const val model = ":model"
-    const val repository = ":repository"
-    const val featProfile = ":feature-profile"
-    const val featMyAds = ":feature-my-ads"
-    const val featOtherAds = ":feature-other-ads"
-    const val featWishlist = ":feature-wishlist"
-    const val featAd = ":feature-ad"
-    const val featCreateEditAd = ":feature-create-edit-ad"
-    const val featLogin = ":feature-login"
+    const val layerPresentation = ":layer-presentation"
+    const val layerDomain = ":layer-domain"
+    const val layerData = ":layer-data"
 }
 
 object Navigation {

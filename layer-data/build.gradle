@@ -1,0 +1,15 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+dependencies {
+
+    //Koin
+    implementation Koin.koinCore
+    implementation Koin.koinAndroid
+    implementation Koin.koinViewModel
+
+    //Test
+    testImplementation TestImpl.junit
+}
