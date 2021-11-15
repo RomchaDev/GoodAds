@@ -59,7 +59,7 @@ object Versions {
     const val circleIndicator = "2.1.6"
 
     //Navigation
-    const val navigation = "2.4.0-alpha09"
+    const val navigation = "2.4.0-beta02"
 
     //DataBinding
     const val dataBindingCompiler = "3.2.0-alpha10"

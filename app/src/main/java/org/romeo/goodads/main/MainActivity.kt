@@ -1,7 +1,8 @@
-package org.romeo.goodads
+package org.romeo.goodads.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import org.romeo.goodads.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

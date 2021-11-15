@@ -5,10 +5,22 @@ plugins {
 
 dependencies {
 
-    //Koin
-    implementation Koin.koinCore
-    implementation Koin.koinAndroid
-    implementation Koin.koinViewModel
+    //Project
+    implementation project(Modules.layerDomain)
+
+    //Kotlin
+    implementation Kotlin.core
+    implementation Kotlin.stdlib
+    implementation Kotlin.coroutinesCore
+    implementation Kotlin.coroutinesAndroid
+
+    //Retrofit
+    implementation Retrofit.retrofit
+    implementation Retrofit.converterGson
+
+    //Image
+    implementation Glide.glide
+    implementation Glide.glideCompiler
 
     //Test
     testImplementation TestImpl.junit
