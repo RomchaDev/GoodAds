@@ -2,8 +2,8 @@ package org.romeo.layer_data.api
 
 import kotlinx.coroutines.Deferred
 import org.romeo.layer_domain.entity.ad.Ads
-import org.romeo.layer_domain.entity.user.LoginRequest
-import org.romeo.layer_domain.entity.user.LoginResponse
+import org.romeo.layer_data.dto.LoginRequest
+import org.romeo.layer_data.dto.LoginResponse
 import org.romeo.layer_domain.entity.user.User
 import retrofit2.http.*
 

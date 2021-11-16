@@ -3,7 +3,7 @@ package org.romeo.layer_data.data_sources
 import kotlinx.coroutines.Deferred
 import org.romeo.layer_data.api.ApiService
 import org.romeo.layer_domain.entity.ad.Ads
-import org.romeo.layer_domain.entity.user.LoginRequest
+import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_domain.entity.user.User
 
 class ApiDataSourceImpl(

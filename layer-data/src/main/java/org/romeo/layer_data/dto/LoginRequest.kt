@@ -1,4 +1,4 @@
-package org.romeo.layer_domain.entity.user
+package org.romeo.layer_data.dto
 
 data class LoginRequest(
     val login: String,

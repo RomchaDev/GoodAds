@@ -1,4 +1,4 @@
-package org.romeo.layer_domain.exceptions
+package org.romeo.layer_data.exceptions
 
 import java.io.IOException
 

@@ -2,7 +2,7 @@ package org.romeo.layer_data.api
 
 import okhttp3.Interceptor
 import okhttp3.Response
-import org.romeo.layer_domain.exceptions.NoAuthException
+import org.romeo.layer_data.exceptions.NoAuthException
 import org.romeo.model.exceptions.UserAlreadyExistsException
 import org.romeo.layer_data.data_sources.preferences.LoginResponseDataSourceLocal
 

@@ -2,7 +2,7 @@ package org.romeo.layer_data.data_sources.preferences
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import org.romeo.layer_domain.entity.user.LoginResponse
+import org.romeo.layer_data.dto.LoginResponse
 
 class LoginResponseDataSourceLocalImpl(
     private val preferences: SharedPreferences

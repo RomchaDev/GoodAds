@@ -6,8 +6,8 @@ import kotlinx.coroutines.runBlocking
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
-import org.romeo.layer_domain.entity.user.LoginRequest
-import org.romeo.layer_domain.entity.user.LoginResponse
+import org.romeo.layer_data.dto.LoginRequest
+import org.romeo.layer_data.dto.LoginResponse
 import org.romeo.layer_domain.entity.user.User
 
 class FakeApiDataSource : ApiDataSource {
