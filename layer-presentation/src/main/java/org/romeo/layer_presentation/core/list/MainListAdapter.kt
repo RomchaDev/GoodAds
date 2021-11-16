@@ -40,7 +40,7 @@ open class MainListAdapter<I : ListItem<I>>(
             val subClasses = data::class.sealedSubclasses
             val subClassFound = subClasses.find { it.isInstance(data) }
 
-            try {
+/*            try {
                 val dataCasted = subClassFound!!.cast(data)
                 binding.setVariable(BR.data, dataCasted)
             } catch (e: Exception) {
@@ -49,7 +49,7 @@ open class MainListAdapter<I : ListItem<I>>(
                 } catch (e: Exception) {
                     Log.d(TAG, "bind: cannot inject a variable to xml")
                 }
-            }
+            }*/
 
             bind?.invoke(binding, data)
         }
