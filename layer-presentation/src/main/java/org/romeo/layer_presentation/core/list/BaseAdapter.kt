@@ -8,31 +8,35 @@ import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import org.romeo.layer_presentation.core.list.listeners.BaseClickListener
 import org.romeo.layer_domain.entity.list.ListItem
 import kotlin.reflect.cast
 
 
 /**
  * The adapter that has to be used for the each recycler view in app
+ *
  * @param itemLayoutId - the map in which should be presented item layouts and
  * their keys
- *
- * @param listener - the item click listener
  *
  * @param bind - the code, that should be executed when the view is bound to
  * the viewHolder
  * */
-class BaseAdapter<I : ListItem<I>, L : BaseClickListener>(
+class BaseAdapter<I : ListItem<I>>(
     private val itemLayoutId: Map<Int, Int>,
-    private val listener: L? = null,
-    private val bind: ((ViewDataBinding, data: I, listener: L?) -> Unit)? = null
-) : ListAdapter<I, BaseAdapter<I, L>.BaseViewHolder>(BaseDiffUtilCallback<I>()) {
+    private val bind: ((ViewDataBinding, data: I) -> Unit)? = null
+) : ListAdapter<I, BaseAdapter<I>.BaseViewHolder>(BaseDiffUtilCallback<I>()) {
 
     inner class BaseViewHolder(
         private val binding: ViewDataBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: I, listener: L?) {
+
+        /**
+         * The method that injects data into xml and calls
+         * bind method from adapter.
+         *
+         * @param data - data that will be injected into xml
+         * */
+        fun bind(data: I) {
             val subClasses = data::class.sealedSubclasses
             val subClassFound = subClasses.find { it.isInstance(data) }
 
@@ -47,7 +51,7 @@ class BaseAdapter<I : ListItem<I>, L : BaseClickListener>(
                 }
             }
 
-            bind?.invoke(binding, data, listener)
+            bind?.invoke(binding, data)
         }
     }
 
@@ -55,8 +59,6 @@ class BaseAdapter<I : ListItem<I>, L : BaseClickListener>(
         currentList[position].getViewType()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-/*        val view = LayoutInflater.from(parent.context)
-            .inflate(itemLayoutId[viewType]!!, parent, false)*/
 
         val binding: ViewDataBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
@@ -69,7 +71,7 @@ class BaseAdapter<I : ListItem<I>, L : BaseClickListener>(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.bind(getItem(position), listener)
+        holder.bind(getItem(position))
     }
 
     companion object {
