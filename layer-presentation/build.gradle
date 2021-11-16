@@ -9,7 +9,6 @@ dependencies {
     //Project
     implementation project(Modules.layerDomain)
     implementation project(Modules.layerData)
-    implementation project(Modules.app)
 
     //Koin
     implementation Koin.koinCore
@@ -32,7 +31,10 @@ dependencies {
     implementation Kotlin.stdlib
     implementation Kotlin.coroutinesCore
     implementation Kotlin.coroutinesAndroid
-    implementation 'androidx.navigation:navigation-runtime-ktx:2.3.5'
+
+    //Navigation
+    implementation Navigation.navigationFragment
+    implementation Navigation.navigationUiKtx
 
     //Test
     testImplementation TestImpl.junit

@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.core.main.login
+package org.romeo.layer_presentation.main.login
 
 import android.os.Bundle
 import android.view.View
@@ -22,11 +22,10 @@ class LoginFragment :
         navController = Navigation.findNavController(view)
 
         binding.btnLogin.setOnClickListener {
-            viewModel.login(
+            viewModel.onLoginPressed(
                 binding.etLogin.text.toString(),
                 binding.etPassword.text.toString()
             )
-            navController.navigate(org.romeo.goodads.R.id.action_loginFragment_to_homeFragment)
         }
     }
 

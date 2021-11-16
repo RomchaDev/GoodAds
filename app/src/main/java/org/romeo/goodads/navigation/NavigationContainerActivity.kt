@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.core.navigation
+package org.romeo.goodads.navigation
 
 import android.os.Bundle
 import androidx.annotation.CallSuper

@@ -4,5 +4,5 @@ import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_presentation.core.main.BaseViewModel
 import org.romeo.layer_presentation.core.navigation.AppNavigator
 
-class HomeViewModel(navigator: AppNavigator) : BaseViewModel<User>(navigator) {
+class HomeViewModel(override val navigator: AppNavigator) : BaseViewModel<User>() {
 }
