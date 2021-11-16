@@ -21,10 +21,10 @@ import kotlin.reflect.cast
  * @param bind - the code, that should be executed when the view is bound to
  * the viewHolder
  * */
-class BaseAdapter<I : ListItem<I>>(
+class MainListAdapter<I : ListItem<I>>(
     private val itemLayoutId: Map<Int, Int>,
     private val bind: ((ViewDataBinding, data: I) -> Unit)? = null
-) : ListAdapter<I, BaseAdapter<I>.BaseViewHolder>(BaseDiffUtilCallback<I>()) {
+) : ListAdapter<I, MainListAdapter<I>.BaseViewHolder>(BaseDiffUtilCallback<I>()) {
 
     inner class BaseViewHolder(
         private val binding: ViewDataBinding
