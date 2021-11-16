@@ -1,6 +1,6 @@
 package org.romeo.layer_presentation.core.app_state
 
-import org.romeo.model.view_state.AppStateEntity
+import org.romeo.layer_domain.app_state.AppStateEntity
 
 
 sealed class AppState<out T : AppStateEntity> {

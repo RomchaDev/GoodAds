@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_hint">Phone number, email or username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button_text">Log In</string>
+    <string name="forgot_login"><font color='#c4c4c4'>Forgot your login details? </font><b>Get help logging in.</b></string>
+    <string name="sign_up"><font color='#c4c4c4'>Don\'t have an account? </font><b>Sign up.</b></string>
+    <string name="or">OR</string>
+    <string name="login_language_english">English</string>
+
+</resources>

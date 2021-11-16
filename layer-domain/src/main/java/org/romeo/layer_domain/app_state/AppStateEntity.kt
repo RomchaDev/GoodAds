@@ -1,3 +1,3 @@
-package org.romeo.model.view_state
+package org.romeo.layer_domain.app_state
 
 interface AppStateEntity
