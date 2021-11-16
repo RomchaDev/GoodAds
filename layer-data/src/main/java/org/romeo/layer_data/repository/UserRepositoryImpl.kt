@@ -19,10 +19,6 @@ class UserRepositoryImpl(
         return response.user
     }
 
-    override suspend fun saveLoginResponse(response: LoginResponse) {
-        loginResponseDataSource.save(response)
-    }
-
     override suspend fun myUser() =
         loginResponseDataSource.get()?.user
             ?: apiDataSource.myUser().await()
