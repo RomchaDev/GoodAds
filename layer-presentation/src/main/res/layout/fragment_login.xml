@@ -81,8 +81,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/et_post_price"
@@ -100,8 +100,8 @@
                         style="@style/EditTextPrimary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:background="@drawable/bg_edit_text" />
+                        android:background="@drawable/bg_edit_text"
+                        android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,9 +120,9 @@
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/EditTextPrimary"
                         android:layout_width="match_parent"
-                        android:inputType="number"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_edit_text" />
+                        android:background="@drawable/bg_edit_text"
+                        android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

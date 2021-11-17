@@ -22,9 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:text="@{data.user.nickName}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{data.user.nickName}"
             tools:text="Some_name" />
 
 
@@ -42,11 +42,12 @@
 
             <ImageView
                 android:id="@+id/avatar_image"
-                app:load_image="@{data.user.avatarUrl}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                tools:src="@drawable/ex_profile_avatar" />
+                app:load_image="@{data.user.avatarUrl}"
+                tools:src="@drawable/ex_profile_avatar"
+                tools:ignore="ContentDescription" />
 
         </androidx.cardview.widget.CardView>
 
@@ -56,11 +57,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:text="@{data.user.posts}"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/image_circle_card"
             app:layout_constraintStart_toEndOf="@id/image_circle_card"
             app:layout_constraintTop_toTopOf="@id/image_circle_card"
-            android:text="@{data.user.posts}"
             tools:text="0" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -79,8 +80,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:textStyle="bold"
             android:text="@{data.user.followers}"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/post_num_text"
             app:layout_constraintTop_toTopOf="@+id/post_num_text"
             tools:text="0" />
@@ -100,9 +101,9 @@
             style="@style/SubHeaderTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{data.user.following}"
-            android:layout_marginEnd="48dp"
             android:layout_marginStart="50dp"
+            android:layout_marginEnd="48dp"
+            android:text="@{data.user.following}"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/followers_num_text"
             app:layout_constraintTop_toTopOf="@+id/followers_num_text"

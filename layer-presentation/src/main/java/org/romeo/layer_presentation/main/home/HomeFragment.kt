@@ -10,7 +10,8 @@ import org.romeo.layer_presentation.core.list.MainListAdapter
 import org.romeo.layer_presentation.core.main.BaseFragment
 import org.romeo.layer_presentation.databinding.FragmentHomeBinding
 
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewState, HomeViewModel>(R.layout.fragment_home) {
+class HomeFragment :
+    BaseFragment<FragmentHomeBinding, HomeViewState, HomeViewModel>(R.layout.fragment_home) {
 
     override val viewModel: HomeViewModel by viewModel()
     private lateinit var listAdapter: MainListAdapter<UserAdsListItem>
