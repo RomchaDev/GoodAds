@@ -8,9 +8,8 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.ext.android.inject
 
-class NavigationContainerActivity(
+abstract class NavigationContainerActivity(
     private val hostFragmentId: Int,
-    private val bottomNavigationId: Int
 ) : AppCompatActivity() {
     private val navigator : AndroidNavigator by inject()
 
@@ -18,20 +17,8 @@ class NavigationContainerActivity(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initBottomNavigation()
-
         navigator.navHostActivity = this
         navigator.hostFragmentId = hostFragmentId
-    }
-
-    private fun initBottomNavigation() {
-        val navController =
-            Navigation.findNavController(this, hostFragmentId)
-
-        val bottomNavigationView =
-            findViewById<BottomNavigationView>(bottomNavigationId)
-
-        NavigationUI.setupWithNavController(bottomNavigationView, navController)
     }
 
     @CallSuper
