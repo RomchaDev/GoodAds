@@ -18,5 +18,9 @@
         android:id="@+id/homeFragment"
         android:name="org.romeo.layer_presentation.main.home.HomeFragment"
         android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/chooseAdFragment"
+        android:name="org.romeo.layer_presentation.main.choose_ad_screen.ChooseAdFragment"
+        android:label="ChooseAdFragment" /><action android:id="@+id/action_global_chooseAdFragment" app:destination="@id/chooseAdFragment"/>
 
 </navigation>
