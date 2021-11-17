@@ -2,6 +2,7 @@ package org.romeo.layer_domain.entity.user
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import org.romeo.layer_domain.app_state.AppStateEntity
 import org.romeo.layer_domain.entity.list.ListItem
 
 @Parcelize
@@ -14,4 +15,4 @@ data class User(
     val posts: String,
     val followers: String,
     val following: String
-): Parcelable, ListItem<User>
+): Parcelable, ListItem<User>, AppStateEntity

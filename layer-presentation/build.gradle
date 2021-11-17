@@ -20,6 +20,7 @@ dependencies {
     implementation Design.appcompat
 
     //Navigation
+    implementation Navigation.navigationFragment
     implementation Navigation.navigationUiKtx
 
     //Design
@@ -31,6 +32,10 @@ dependencies {
     implementation Kotlin.stdlib
     implementation Kotlin.coroutinesCore
     implementation Kotlin.coroutinesAndroid
+
+    //Navigation
+    implementation Navigation.navigationFragment
+    implementation Navigation.navigationUiKtx
 
     //Test
     testImplementation TestImpl.junit

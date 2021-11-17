@@ -6,11 +6,13 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 import org.romeo.layer_presentation.core.app_state.AppState
 import org.romeo.layer_presentation.core.navigation.AppNavigator
-import org.romeo.model.view_state.AppStateEntity
+import org.romeo.layer_domain.app_state.AppStateEntity
 
 abstract class BaseViewModel<D : AppStateEntity>(
-    protected val navigator : AppNavigator
+
 ) : ViewModel() {
+
+    protected abstract val navigator : AppNavigator
 
     protected val mStateLiveData = MutableLiveData<AppState<D>>()
     val stateLiveData get() = mStateLiveData as LiveData<AppState<D>>

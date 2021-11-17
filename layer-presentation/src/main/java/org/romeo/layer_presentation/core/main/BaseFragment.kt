@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import org.romeo.layer_presentation.core.app_state.AppState
-import org.romeo.model.view_state.AppStateEntity
+import org.romeo.layer_domain.app_state.AppStateEntity
 
 abstract class BaseFragment<VB : ViewDataBinding, D : AppStateEntity, VM : BaseViewModel<D>>(
     private val layoutID: Int
