@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.core.main.home
+package org.romeo.layer_presentation.main.home
 
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.romeo.layer_domain.entity.user.User
