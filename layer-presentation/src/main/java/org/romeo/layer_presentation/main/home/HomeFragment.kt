@@ -9,6 +9,7 @@ import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.list.MainListAdapter
 import org.romeo.layer_presentation.core.main.BaseFragment
 import org.romeo.layer_presentation.databinding.FragmentHomeBinding
+import org.romeo.layer_presentation.databinding.ItemAdBinding
 
 class HomeFragment :
     BaseFragment<FragmentHomeBinding, HomeViewState, HomeViewModel>(R.layout.fragment_home) {
@@ -23,8 +24,11 @@ class HomeFragment :
             mapOf(
                 UserAdsListItem.AD_VIEW_TYPE to R.layout.item_ad,
                 UserAdsListItem.USER_VIEW_TYPE to R.layout.layout_user
-            ), null
-        )
+            )
+        ) { binding, item ->
+            if (item is UserAdsListItem.AdListItem && binding is ItemAdBinding)
+                binding.data = item.ad
+        }
 
         binding.myAdsRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.myAdsRecycler.adapter = listAdapter
