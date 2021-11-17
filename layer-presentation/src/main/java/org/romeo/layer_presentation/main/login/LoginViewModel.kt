@@ -1,10 +1,9 @@
-package org.romeo.layer_presentation.core.main.login
+package org.romeo.layer_presentation.main.login
 
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_presentation.core.main.BaseViewModel
 import org.romeo.layer_presentation.core.navigation.AppNavigator
-import org.romeo.layer_presentation.core.navigation.commands.impl.LoginToHomeCommandImpl
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.LoginToHomeCommand
 
 class LoginViewModel(

@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.core.main.home
+package org.romeo.layer_presentation.main.home
 
 import org.romeo.layer_domain.use_cases.GetUserAdsUseCase
 import org.romeo.layer_presentation.core.main.BaseViewModel

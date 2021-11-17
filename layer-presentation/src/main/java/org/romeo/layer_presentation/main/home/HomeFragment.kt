@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.core.main.home
+package org.romeo.layer_presentation.main.home
 
 import android.os.Bundle
 import android.view.View
