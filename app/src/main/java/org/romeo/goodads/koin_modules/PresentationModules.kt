@@ -11,7 +11,7 @@ import org.romeo.layer_presentation.core.main.login.LoginViewModel
 
 val viewModelModule = module {
     viewModel { LoginViewModel(get(), get(), get()) }
-    viewModel { HomeViewModel(get()) }
+    viewModel { HomeViewModel(get(), get()) }
 }
 
 val navigationModule = module {

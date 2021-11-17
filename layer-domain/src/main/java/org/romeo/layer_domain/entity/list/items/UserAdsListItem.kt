@@ -4,13 +4,13 @@ import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.list.ListItem
 import org.romeo.layer_domain.entity.user.User
 
-sealed class HomeListItem : ListItem<HomeListItem> {
+sealed class UserAdsListItem : ListItem<UserAdsListItem> {
 
-    data class AdListItem(val ad: Ad): HomeListItem() {
+    data class AdListItem(val ad: Ad): UserAdsListItem() {
         override fun getViewType() = AD_VIEW_TYPE
     }
 
-    data class UserListItem(val user: User): HomeListItem() {
+    data class UserListItem(val user: User): UserAdsListItem() {
         override fun getViewType() = USER_VIEW_TYPE
     }
 
