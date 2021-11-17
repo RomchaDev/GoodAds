@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="org.romeo.layer_domain.entity.ad.Ad" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView_tour"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/main_image"
+                app:load_image="@{data.imageUrls[0]}"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/smallImageView"
+                tools:srcCompat="@drawable/ex_ad_img" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_text"
+                style="@style/HeaderTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@{data.title}"
+                app:layout_constraintStart_toEndOf="@+id/main_image"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Nice Title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/description_text"
+                style="@style/DescriptionTextView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="44dp"
+                android:layout_marginBottom="10dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{data.description}"
+                app:layout_constraintBottom_toTopOf="@+id/type_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/title_text"
+                app:layout_constraintTop_toBottomOf="@+id/title_text"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat, dui ac maximus egestas, odio magna aliquet odio, ut tincidunt odio tortor quis magna. Nulla lorem felis, interdum accumsan ultrices gravida, pellentesque lacinia nibh. Integer vulputate arcu dolor, vitae fermentum diam consectetur vel. Donec eu turpis ut diam tristique ullamcorper ac sed dolor. Nunc eu maximus dolor. Praesent laoreet placerat sodales. Cras quis enim non justo porta lacinia vitae non lectus. Proin facilisis lacinia massa ac malesuada. Sed hendrerit, velit blandit viverra congue, enim velit tincidunt metus, nec eleifend dolor sapien ac sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed efficitur dapibus mattis." />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_end="4dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/type_image"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+                app:layout_constraintStart_toStartOf="@id/description_text"
+                app:srcCompat="@drawable/ic_grid" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/type_text"
+                style="@style/ItemSupportTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@{data.type.toString()}"
+                app:layout_constraintBottom_toBottomOf="@+id/type_image"
+                app:layout_constraintStart_toEndOf="@+id/type_image"
+                app:layout_constraintTop_toTopOf="@+id/type_image"
+                tools:text="Post" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/price_text"
+                style="@style/SubHeaderTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{data.price}"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="300$" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
