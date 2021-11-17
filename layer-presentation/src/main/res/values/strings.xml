@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="login_hint">Phone number, email or username</string>
+    <string name="username_hint">Instagram username</string>
     <string name="password_hint">Password</string>
     <string name="login_button_text">Log In</string>
     <string name="forgot_login"><font color='#c4c4c4'>Forgot your login details? </font><b>Get help logging in.</b></string>
@@ -8,5 +8,11 @@
     <string name="login_language_english">English</string>
     <string name="post_price_hint">Post price</string>
     <string name="story_price_hint">Story price</string>
+    <string name="ads">ads</string>
+    <string name="home">home</string>
+    <string name="wishlist">wishlist</string>
+    <string name="following">following</string>
+    <string name="posts">posts</string>
+    <string name="followers">followers</string>
 
 </resources>
