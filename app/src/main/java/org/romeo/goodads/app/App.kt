@@ -4,7 +4,7 @@ import androidx.multidex.MultiDexApplication
 import org.koin.core.context.startKoin
 import org.romeo.goodads.koin_modules.*
 
-open class App : MultiDexApplication() {
+class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
