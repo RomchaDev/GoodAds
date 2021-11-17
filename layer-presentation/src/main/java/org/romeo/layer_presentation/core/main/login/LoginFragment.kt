@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.main.login
+package org.romeo.layer_presentation.core.main.login
 
 import android.os.Bundle
 import android.view.View

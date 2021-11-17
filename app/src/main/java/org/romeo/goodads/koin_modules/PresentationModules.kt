@@ -6,7 +6,7 @@ import org.romeo.goodads.navigation.AndroidNavigator
 import org.romeo.layer_presentation.core.navigation.AppNavigator
 import org.romeo.layer_presentation.core.navigation.commands.impl.LoginToHomeCommandImpl
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.LoginToHomeCommand
-import org.romeo.layer_presentation.main.login.LoginViewModel
+import org.romeo.layer_presentation.core.main.login.LoginViewModel
 
 val viewModelModule = module {
     viewModel { LoginViewModel(get(), get(), get()) }

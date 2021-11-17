@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.main.login
+package org.romeo.layer_presentation.core.main.login
 
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.repository_bounderies.UserRepository

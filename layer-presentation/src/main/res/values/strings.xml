@@ -6,5 +6,7 @@
     <string name="forgot_login"><font color='#c4c4c4'>Forgot your login details? </font><b>Get help logging in.</b></string>
     <string name="or">OR</string>
     <string name="login_language_english">English</string>
+    <string name="post_price_hint">Post price</string>
+    <string name="story_price_hint">Story price</string>
 
 </resources>
