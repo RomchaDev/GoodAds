@@ -23,8 +23,8 @@ class LoginFragment :
 
         binding.btnLogin.setOnClickListener {
             viewModel.onLoginPressed(
-                binding.etLogin.text.toString(),
-                binding.etPassword.text.toString()
+                binding.etLogin.editText!!.text.toString(),
+                binding.etPassword.editText!!.text.toString()
             )
         }
     }
