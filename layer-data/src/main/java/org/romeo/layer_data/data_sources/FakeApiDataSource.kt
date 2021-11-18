@@ -42,7 +42,9 @@ class FakeApiDataSource : ApiDataSource {
         "https://interesnyefakty.org/wp-content/uploads/till-lindemann.jpg",
         "1000",
         "300",
-        "29"
+        "29",
+        300,
+        420
     )
 
     private val user2 = User(
@@ -53,7 +55,9 @@ class FakeApiDataSource : ApiDataSource {
         "https://interesnyefakty.org/wp-content/uploads/till-lindemann.jpg",
         "228",
         "300",
-        "420"
+        "420",
+        420,
+        69
     )
 
     private val token = "SOME_REALLY_LONG_TOKEN"
