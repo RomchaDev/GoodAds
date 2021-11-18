@@ -1,6 +1,7 @@
 package org.romeo.layer_data.api
 
 import kotlinx.coroutines.Deferred
+import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
@@ -22,5 +23,8 @@ interface ApiService {
 
     @GET("api/users")
     fun getUsers(): Deferred<List<User>>
+
+    @POST("api/users/me/prices")
+    fun changePrices(@Body prices: ChangePricesRequest): Deferred<Unit>
 
 }

@@ -3,6 +3,7 @@ package org.romeo.layer_data.data_sources
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
@@ -81,6 +82,10 @@ class FakeApiDataSource : ApiDataSource {
 
     override fun getUsers(): Deferred<List<User>> = runBlocking {
         async { listOf(user, user2) }
+    }
+
+    override fun changePrices(prices: ChangePricesRequest): Deferred<Unit> = runBlocking {
+        async { Unit }
     }
 
 }

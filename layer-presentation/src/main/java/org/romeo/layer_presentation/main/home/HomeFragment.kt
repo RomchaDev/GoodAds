@@ -10,6 +10,7 @@ import org.romeo.layer_presentation.core.list.MainListAdapter
 import org.romeo.layer_presentation.core.main.BaseFragment
 import org.romeo.layer_presentation.databinding.FragmentHomeBinding
 import org.romeo.layer_presentation.databinding.ItemAdBinding
+import org.romeo.layer_presentation.databinding.LayoutUserBinding
 
 class HomeFragment :
     BaseFragment<FragmentHomeBinding, HomeViewState, HomeViewModel>(R.layout.fragment_home) {
@@ -28,6 +29,17 @@ class HomeFragment :
         ) { binding, item ->
             if (item is UserAdsListItem.AdListItem && binding is ItemAdBinding)
                 binding.data = item.ad
+
+            if (item is UserAdsListItem.UserListItem && binding is LayoutUserBinding) {
+                binding.etPostPrice.setOnFocusChangeListener { _, hasFocus ->
+                    onFocusChange(binding, hasFocus)
+                }
+
+                binding.etStoryPrice.setOnFocusChangeListener { _, hasFocus ->
+                    onFocusChange(binding, hasFocus)
+                }
+            }
+
         }
 
         binding.myAdsRecycler.layoutManager = LinearLayoutManager(requireContext())
@@ -39,5 +51,13 @@ class HomeFragment :
         listAdapter.submitList(data.stateList)
         super.renderSuccess(data)
     }
+
+    fun onFocusChange(binding: LayoutUserBinding, hasFocus: Boolean) {
+        if (!hasFocus) viewModel.onPriceChanged(
+            binding.etPostPrice.text.toString().toInt(),
+            binding.etStoryPrice.text.toString().toInt()
+        )
+    }
+
 
 }
