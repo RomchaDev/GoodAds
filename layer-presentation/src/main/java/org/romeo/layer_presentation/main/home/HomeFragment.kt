@@ -27,8 +27,13 @@ class HomeFragment :
                 UserAdsListItem.USER_VIEW_TYPE to R.layout.layout_user
             )
         ) { binding, item ->
-            if (item is UserAdsListItem.AdListItem && binding is ItemAdBinding)
+            if (item is UserAdsListItem.AdListItem && binding is ItemAdBinding) {
                 binding.data = item.ad
+
+                binding.root.setOnClickListener {
+                    viewModel.onAdClicked(binding.data.id)
+                }
+            }
 
             if (item is UserAdsListItem.UserListItem && binding is LayoutUserBinding) {
                 binding.etPostPrice.setOnFocusChangeListener { _, hasFocus ->
