@@ -2,6 +2,7 @@ package org.romeo.layer_presentation.main.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.romeo.layer_domain.entity.list.items.UserAdsListItem
@@ -31,7 +32,31 @@ class HomeFragment :
                 binding.data = item.ad
 
                 binding.root.setOnClickListener {
-                    viewModel.onAdClicked(binding.data.id)
+                    viewModel.onAdClicked(item.ad.id)
+                }
+
+                binding.root.setOnLongClickListener { view ->
+                    val menu = PopupMenu(requireContext(), view)
+                    menu.inflate(R.menu.delete_edit_menu)
+
+                    menu.setOnMenuItemClickListener {
+                        when (it.itemId) {
+                            R.id.delete -> {
+                                viewModel.onDeleteAdClicked(item.ad.id)
+                                true
+                            }
+
+                            R.id.edit -> {
+                                viewModel.onEditAdClicked(item.ad.id)
+                                true
+                            }
+
+                            else -> false
+                        }
+                    }
+
+                    menu.show()
+                    return@setOnLongClickListener true
                 }
             }
 
@@ -57,12 +82,11 @@ class HomeFragment :
         super.renderSuccess(data)
     }
 
-    fun onFocusChange(binding: LayoutUserBinding, hasFocus: Boolean) {
+    private fun onFocusChange(binding: LayoutUserBinding, hasFocus: Boolean) {
         if (!hasFocus) viewModel.onPriceChanged(
             binding.etPostPrice.text.toString().toInt(),
             binding.etStoryPrice.text.toString().toInt()
         )
     }
-
 
 }

@@ -8,4 +8,5 @@ class AdsRepositoryImpl(
 ) : AdsRepository {
     override suspend fun getMyAds() = apiDataSource.getMyAds().await()
     override suspend fun getOtherAds() = apiDataSource.getOtherAds().await()
+    override suspend fun deleteAd(id: String) = apiDataSource.deleteAd(id).await()
 }

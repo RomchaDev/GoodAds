@@ -27,4 +27,7 @@ interface ApiService {
     @POST("api/users/me/prices")
     fun changePrices(@Body prices: ChangePricesRequest): Deferred<Unit>
 
+    @DELETE("api/my-ads/{id}")
+    fun deleteAd(@Query("id") id: String): Deferred<Unit>
+
 }

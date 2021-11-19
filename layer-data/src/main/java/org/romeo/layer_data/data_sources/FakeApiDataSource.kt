@@ -10,6 +10,7 @@ import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
 import org.romeo.layer_domain.entity.user.User
+import java.util.function.Predicate
 
 class FakeApiDataSource : ApiDataSource {
     private val ads = mutableListOf<Ad>().apply {
@@ -90,6 +91,13 @@ class FakeApiDataSource : ApiDataSource {
 
     override fun changePrices(prices: ChangePricesRequest): Deferred<Unit> = runBlocking {
         async { Unit }
+    }
+
+    override fun deleteAd(id: String): Deferred<Unit> = runBlocking {
+        async {
+            ads.removeIf { ad -> ad.id == id }
+            return@async Unit
+        }
     }
 
 }
