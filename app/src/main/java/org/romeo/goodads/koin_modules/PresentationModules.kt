@@ -14,7 +14,7 @@ import org.romeo.layer_presentation.main.login.LoginViewModel
 
 val viewModelModule = module {
     viewModel { LoginViewModel(get(), get(), get()) }
-    viewModel { HomeViewModel(get(), get()) }
+    viewModel { HomeViewModel(get(), get(), get(), get()) }
     viewModel { ChooseAdViewModel(get(), get()) }
 }
 

@@ -22,9 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:text="@{data.user.nickName}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{data.user.nickName}"
             tools:text="Some_name" />
 
 
@@ -42,10 +42,11 @@
 
             <ImageView
                 android:id="@+id/avatar_image"
-                app:load_image="@{data.user.avatarUrl}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
+                app:load_image="@{data.user.avatarUrl}"
+                tools:ignore="ContentDescription"
                 tools:src="@drawable/ex_profile_avatar" />
 
         </androidx.cardview.widget.CardView>
@@ -56,11 +57,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:text="@{data.user.posts}"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/image_circle_card"
             app:layout_constraintStart_toEndOf="@id/image_circle_card"
             app:layout_constraintTop_toTopOf="@id/image_circle_card"
-            android:text="@{data.user.posts}"
             tools:text="0" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -79,8 +80,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:textStyle="bold"
             android:text="@{data.user.followers}"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/post_num_text"
             app:layout_constraintTop_toTopOf="@+id/post_num_text"
             tools:text="0" />
@@ -100,9 +101,9 @@
             style="@style/SubHeaderTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{data.user.following}"
-            android:layout_marginEnd="48dp"
             android:layout_marginStart="50dp"
+            android:layout_marginEnd="48dp"
+            android:text="@{data.user.following}"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/followers_num_text"
             app:layout_constraintTop_toTopOf="@+id/followers_num_text"
@@ -142,6 +143,61 @@
             app:layout_constraintStart_toStartOf="@id/image_circle_card"
             app:layout_constraintTop_toBottomOf="@+id/username_text"
             tools:text="ljkdflkjdsfoisj dfgjds goighosghoshgohgosdg\nho iudsoio oig a;g" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_text">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:hint="@string/post_price_hint"
+                app:layout_constraintEnd_toEndOf="@+id/logo_text"
+                app:layout_constraintStart_toStartOf="@+id/logo_text"
+                app:layout_constraintTop_toBottomOf="@+id/username_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_post_price"
+                    style="@style/EditTextPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edit_text"
+                    android:inputType="number"
+                    android:text="@{data.user.postPrice}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:hint="@string/story_price_hint"
+                app:layout_constraintEnd_toEndOf="@+id/logo_text"
+                app:layout_constraintStart_toStartOf="@+id/logo_text"
+                app:layout_constraintTop_toBottomOf="@+id/username_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_story_price"
+                    style="@style/EditTextPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edit_text"
+                    android:inputType="number"
+                    android:text="@{data.user.storyPrice}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

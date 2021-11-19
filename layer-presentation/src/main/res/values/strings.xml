@@ -14,6 +14,9 @@
     <string name="following">following</string>
     <string name="posts">posts</string>
     <string name="followers">followers</string>
+    <string name="create_ad">Create ad</string>
+    <string name="edit_ad">Edit</string>
+    <string name="delete_ad">Delete</string>
     <string name="choose_the_ad">Choose the ad</string>
 
 </resources>

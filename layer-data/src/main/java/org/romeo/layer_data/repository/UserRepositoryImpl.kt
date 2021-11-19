@@ -1,7 +1,9 @@
 package org.romeo.layer_data.repository
 
+import kotlinx.coroutines.Deferred
 import org.romeo.layer_data.data_sources.ApiDataSource
 import org.romeo.layer_data.data_sources.preferences.LoginResponseDataSourceLocal
+import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
@@ -19,6 +21,9 @@ class UserRepositoryImpl(
         return response.user
     }
 
+    override suspend fun changePrices(postPrice: Int, storyPrice: Int) =
+        apiDataSource.changePrices(ChangePricesRequest(postPrice, storyPrice)).await()
+
     override suspend fun myUser() =
         loginResponseDataSource.get()?.user
             ?: apiDataSource.myUser().await()
@@ -27,4 +32,5 @@ class UserRepositoryImpl(
 
     override suspend fun getToken() =
         loginResponseDataSource.get()?.token
+
 }
