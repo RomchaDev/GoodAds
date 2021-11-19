@@ -45,8 +45,6 @@ abstract class BaseFragment<VB : ViewDataBinding, D : AppStateEntity, VM : BaseV
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         viewModel.stateLiveData.observe(viewLifecycleOwner) { state ->
             renderData(state)
         }

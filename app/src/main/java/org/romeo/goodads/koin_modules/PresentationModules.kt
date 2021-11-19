@@ -5,13 +5,17 @@ import org.koin.dsl.module
 import org.romeo.goodads.navigation.AndroidNavigator
 import org.romeo.layer_presentation.main.home.HomeViewModel
 import org.romeo.layer_presentation.core.navigation.AppNavigator
+import org.romeo.layer_presentation.core.navigation.commands.impl.AnyToChoseAdCommandImpl
 import org.romeo.layer_presentation.core.navigation.commands.impl.LoginToHomeCommandImpl
+import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToChoseAdCommand
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.LoginToHomeCommand
+import org.romeo.layer_presentation.main.choose_ad_screen.ChooseAdViewModel
 import org.romeo.layer_presentation.main.login.LoginViewModel
 
 val viewModelModule = module {
     viewModel { LoginViewModel(get(), get(), get()) }
-    viewModel { HomeViewModel(get()) }
+    viewModel { HomeViewModel(get(), get()) }
+    viewModel { ChooseAdViewModel(get(), get()) }
 }
 
 val navigationModule = module {
@@ -19,6 +23,7 @@ val navigationModule = module {
     single<AppNavigator> { get<AndroidNavigator>() }
 
     factory<LoginToHomeCommand> { LoginToHomeCommandImpl() }
+    factory<AnyToChoseAdCommand> { AnyToChoseAdCommandImpl() }
 }
 
 val mapperModule = module {

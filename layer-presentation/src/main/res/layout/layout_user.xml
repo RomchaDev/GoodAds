@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="org.romeo.layer_domain.entity.list.items.UserAdsListItem.UserListItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/nickname_text"
+            style="@style/SubHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{data.user.nickName}"
+            tools:text="Some_name" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/image_circle_card"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="45dp"
+            android:elevation="12dp"
+            app:cardCornerRadius="40dp"
+            app:layout_constraintStart_toStartOf="@id/nickname_text"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/avatar_image"
+                app:load_image="@{data.user.avatarUrl}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                tools:src="@drawable/ex_profile_avatar" />
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/post_num_text"
+            style="@style/SubHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/image_circle_card"
+            app:layout_constraintStart_toEndOf="@id/image_circle_card"
+            app:layout_constraintTop_toTopOf="@id/image_circle_card"
+            android:text="@{data.user.posts}"
+            tools:text="0" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/post_num_desc_text"
+            style="@style/DescriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/posts"
+            app:layout_constraintEnd_toEndOf="@id/post_num_text"
+            app:layout_constraintStart_toStartOf="@id/post_num_text"
+            app:layout_constraintTop_toBottomOf="@id/post_num_text" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/followers_num_text"
+            style="@style/SubHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:textStyle="bold"
+            android:text="@{data.user.followers}"
+            app:layout_constraintStart_toEndOf="@+id/post_num_text"
+            app:layout_constraintTop_toTopOf="@+id/post_num_text"
+            tools:text="0" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/followers_num_desc_text"
+            style="@style/DescriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/followers"
+            app:layout_constraintEnd_toEndOf="@id/followers_num_text"
+            app:layout_constraintStart_toStartOf="@id/followers_num_text"
+            app:layout_constraintTop_toBottomOf="@id/followers_num_text" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/following_num_text"
+            style="@style/SubHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.user.following}"
+            android:layout_marginEnd="48dp"
+            android:layout_marginStart="50dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/followers_num_text"
+            app:layout_constraintTop_toTopOf="@+id/followers_num_text"
+            tools:text="0" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/following_num_desc_text"
+            style="@style/DescriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/following"
+            app:layout_constraintEnd_toEndOf="@id/following_num_text"
+            app:layout_constraintStart_toStartOf="@id/following_num_text"
+            app:layout_constraintTop_toBottomOf="@id/following_num_text" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/username_text"
+            style="@style/SubHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{data.user.name}"
+            app:layout_constraintStart_toStartOf="@id/image_circle_card"
+            app:layout_constraintTop_toBottomOf="@id/image_circle_card"
+            tools:text="Some name" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description_text"
+            style="@style/DescriptionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="32dp"
+            android:lineSpacingExtra="4dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/image_circle_card"
+            app:layout_constraintTop_toBottomOf="@+id/username_text"
+            tools:text="ljkdflkjdsfoisj dfgjds goighosghoshgohgosdg\nho iudsoio oig a;g" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
