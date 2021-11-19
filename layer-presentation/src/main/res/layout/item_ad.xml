@@ -88,20 +88,6 @@
                 app:layout_constraintTop_toTopOf="@+id/type_image"
                 tools:text="Post" />
 
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/price_text"
-                style="@style/SubHeaderTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="8dp"
-                android:text="@{data.price}"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="300$" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

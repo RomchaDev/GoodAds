@@ -18,18 +18,15 @@ class FakeApiDataSource : ApiDataSource {
             add(
                 Ad(
                     "AD_ID_$i",
-                    "UID_$i",
-                    "hello_$i",
-                    "world_$i",
+                    "Title_$i",
+                    "hello world_$i",
                     if (i % 2 == 0) AdType.POST else AdType.STORY,
-                    if (i % 2 == 0) "300$" else "500$",
-                    11,
                     listOf(
                         if (i % 2 == 0)
                             "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
                         else
                             "https://orthostudio.ca/wp-content/uploads/2016/11/image-3.jpg"
-                    )
+                    ), "UID_$i"
                 )
             )
         }
@@ -44,8 +41,8 @@ class FakeApiDataSource : ApiDataSource {
         "1000",
         "300",
         "29",
-        300,
-        420
+        "300",
+        "420"
     )
 
     private val user2 = User(
@@ -57,8 +54,8 @@ class FakeApiDataSource : ApiDataSource {
         "228",
         "300",
         "420",
-        420,
-        69
+        "420",
+        "69"
     )
 
     private val token = "SOME_REALLY_LONG_TOKEN"

@@ -170,7 +170,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_edit_text"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:text="@{data.user.postPrice}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -191,7 +192,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_edit_text"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:text="@{data.user.storyPrice}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,6 +1,5 @@
 package org.romeo.layer_presentation.main.home
 
-import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_domain.entity.list.items.UserAdsListItem
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
 import org.romeo.layer_domain.repository_bounderies.UserRepository
@@ -8,7 +7,6 @@ import org.romeo.layer_domain.use_cases.GetUserAdsUseCase
 import org.romeo.layer_presentation.core.app_state.AppState
 import org.romeo.layer_presentation.core.main.BaseViewModel
 import org.romeo.layer_presentation.core.navigation.AppNavigator
-import org.romeo.layer_presentation.core.navigation.NavigationCommand
 
 class HomeViewModel(
     override val navigator: AppNavigator,
@@ -17,7 +15,7 @@ class HomeViewModel(
     private val adsRepository: AdsRepository
 ) : BaseViewModel<HomeViewState>() {
 
-    private lateinit var ads: MutableList<UserAdsListItem>
+    private var ads = mutableListOf<UserAdsListItem>()
 
     override fun onViewInit() {
         runAsync {
@@ -37,14 +35,15 @@ class HomeViewModel(
     }
 
     fun onDeleteAdClicked(id: String) {
-        ads.removeIf { ad ->
-            if (ad is UserAdsListItem.AdListItem) ad.ad.id == id
-            else false
-        }
-
-        mStateLiveData.postValue(AppState.Success(HomeViewState(ads)))
-
         runAsync {
+            val adsNew = ads.toMutableList()
+            adsNew.removeIf { ad ->
+                if (ad is UserAdsListItem.AdListItem) ad.ad.id == id
+                else false
+            }
+
+            mStateLiveData.postValue(AppState.Success(HomeViewState(adsNew)))
+            ads = adsNew
             adsRepository.deleteAd(id)
         }
     }

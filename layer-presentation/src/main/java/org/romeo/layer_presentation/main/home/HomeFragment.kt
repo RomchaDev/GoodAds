@@ -58,9 +58,7 @@ class HomeFragment :
                     menu.show()
                     return@setOnLongClickListener true
                 }
-            }
-
-            if (item is UserAdsListItem.UserListItem && binding is LayoutUserBinding) {
+            } else if (item is UserAdsListItem.UserListItem && binding is LayoutUserBinding) {
                 binding.etPostPrice.setOnFocusChangeListener { _, hasFocus ->
                     onFocusChange(binding, hasFocus)
                 }
