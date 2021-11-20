@@ -26,6 +26,8 @@ dependencies {
     //Design
     implementation Design.material
     implementation Design.constraintLayout
+    implementation Design.circleIndicator
+    implementation Design.viewPager2
 
     //Kotlin
     implementation Kotlin.core

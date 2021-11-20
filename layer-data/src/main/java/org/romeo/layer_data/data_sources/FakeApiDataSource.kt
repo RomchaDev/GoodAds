@@ -33,7 +33,7 @@ class FakeApiDataSource : ApiDataSource {
     }
 
     private val user = User(
-        "SOME_LONG_UNREADABLE_ID",
+        "UID_1",
         "Romeo2005",
         "Oleg",
         "I like to bake cookies",
@@ -46,7 +46,7 @@ class FakeApiDataSource : ApiDataSource {
     )
 
     private val user2 = User(
-        "SOME_OTHER_LONG_UNREADABLE_ID",
+        "UID_2",
         "Archi_228",
         "Vasya",
         "I like to swallow an ice cream",
@@ -97,4 +97,16 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
+    override fun getAd(id: String) = runBlocking {
+        async {
+            ads.find { ad -> ad.id == id }!!
+        }
+    }
+
+    override fun getUser(uid: String) = runBlocking {
+        async {
+            if (uid.last().code % 2 == 0) user
+            else user2
+        }
+    }
 }

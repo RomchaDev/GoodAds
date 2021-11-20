@@ -18,5 +18,8 @@
     <string name="edit_ad">Edit</string>
     <string name="delete_ad">Delete</string>
     <string name="choose_the_ad">Choose the ad</string>
+    <string name="app_name">Good Ads</string>
+    <string name="accept">Accept</string>
+    <string name="ad_image">Ad Image</string>
 
 </resources>

@@ -4,7 +4,10 @@ import org.romeo.layer_domain.entity.list.items.UserAdsListItem
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 
-class GetUserAdsUseCase(private val adsRepository: AdsRepository, private val userRepository: UserRepository) {
+class GetUserAdsUseCase(
+    private val adsRepository: AdsRepository,
+    private val userRepository: UserRepository
+) {
 
     suspend fun execute(): List<UserAdsListItem> {
         val ads = adsRepository.getMyAds()
