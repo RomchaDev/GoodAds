@@ -8,4 +8,5 @@ interface UserRepository {
     suspend fun myUser(): User
     suspend fun getUsers(): List<User>
     suspend fun getToken(): String?
+    suspend fun sendMyAd(userId: String, adId: String)
 }

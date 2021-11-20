@@ -5,6 +5,7 @@ import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
+import org.romeo.layer_data.dto.SendMyAdRequest
 import org.romeo.layer_domain.entity.user.User
 import retrofit2.http.*
 
@@ -29,5 +30,8 @@ interface ApiService {
 
     @DELETE("api/my-ads/{id}")
     fun deleteAd(@Query("id") id: String): Deferred<Unit>
+
+    @POST("api/users/send-my-ad")
+    fun sendMyAd(@Body request: SendMyAdRequest): Deferred<Unit>
 
 }
