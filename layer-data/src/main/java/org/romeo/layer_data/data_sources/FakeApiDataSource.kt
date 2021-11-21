@@ -25,7 +25,13 @@ class FakeApiDataSource : ApiDataSource {
                         if (i % 2 == 0)
                             "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
                         else
+                            "https://orthostudio.ca/wp-content/uploads/2016/11/image-3.jpg",
+                        if (i % 2 == 0)
                             "https://orthostudio.ca/wp-content/uploads/2016/11/image-3.jpg"
+                        else
+                            "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
+
+
                     ), "UID_$i"
                 )
             )

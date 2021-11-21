@@ -6,8 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import org.romeo.layer_presentation.databinding.ItemViewPagerAdBinding
 
 class AdViewPagerAdapter(
-    private val images: List<String>
+    images: List<String> = listOf()
 ) : RecyclerView.Adapter<AdViewPagerAdapter.AdViewPagerViewHolder>() {
+
+    var images = images
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdViewPagerViewHolder {
         val binding = ItemViewPagerAdBinding.inflate(
