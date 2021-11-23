@@ -20,6 +20,17 @@ class AdFullFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
+        initButtons()
+    }
+
+    private fun initButtons() {
+        binding.btnAccept.setOnClickListener {
+            viewModel.onAcceptPressed()
+        }
+
+        binding.btnDistribution.setOnClickListener {
+            viewModel.onDistributionPressed()
+        }
     }
 
     private fun initAdapter() {
