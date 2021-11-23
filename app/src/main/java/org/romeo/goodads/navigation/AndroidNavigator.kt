@@ -1,5 +1,6 @@
 package org.romeo.goodads.navigation
 
+import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
@@ -16,11 +17,13 @@ class AndroidNavigator : AppNavigator {
 
     var navHostActivity: FragmentActivity? = null
     var hostFragmentId: Int? = null
+
     private val navController: NavController
         get() = Navigation.findNavController(navHostActivity!!, hostFragmentId!!)
 
-    override fun navigate(command: NavigationCommand) {
+    override fun navigate(command: NavigationCommand, args: Bundle?) {
         try {
+            command.args = args
             command.execute(navController)
         } catch (e: NullPointerException) {
             Log.d(TAG, "navHostActivity and/or  hostFragmentId is not assigned")

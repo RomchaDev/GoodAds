@@ -1,5 +1,6 @@
 package org.romeo.layer_data.repository
 
+import kotlinx.coroutines.Deferred
 import org.romeo.layer_data.data_sources.ApiDataSource
 import org.romeo.layer_data.data_sources.preferences.LoginResponseDataSourceLocal
 import org.romeo.layer_data.dto.ChangePricesRequest
@@ -26,6 +27,9 @@ class UserRepositoryImpl(
     override suspend fun myUser() =
         loginResponseDataSource.get()?.user
             ?: apiDataSource.myUser().await()
+
+    override suspend fun getUser(uid: String) =
+        apiDataSource.getUser(uid).await()
 
     override suspend fun getUsers(): List<User> = apiDataSource.getUsers().await()
 

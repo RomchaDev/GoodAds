@@ -6,6 +6,7 @@ import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
 import org.romeo.layer_data.dto.SendMyAdRequest
+import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.user.User
 import retrofit2.http.*
 
@@ -22,6 +23,9 @@ interface ApiService {
     @GET("api/users/me")
     fun myUser(): Deferred<User>
 
+    @GET("api/users/{id}")
+    fun getUser(@Query("id") uid: String): Deferred<User>
+
     @GET("api/users")
     fun getUsers(): Deferred<List<User>>
 
@@ -34,4 +38,7 @@ interface ApiService {
     @POST("api/users/send-my-ad")
     fun sendMyAd(@Body request: SendMyAdRequest): Deferred<Unit>
 
+
+    @GET("api/ads/{id}")
+    fun getAd(@Query("id") id: String): Deferred<Ad>
 }
