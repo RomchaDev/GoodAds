@@ -9,8 +9,8 @@ import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
+import org.romeo.layer_data.dto.SendMyAdRequest
 import org.romeo.layer_domain.entity.user.User
-import java.util.function.Predicate
 
 class FakeApiDataSource : ApiDataSource {
     private val ads = mutableListOf<Ad>().apply {
