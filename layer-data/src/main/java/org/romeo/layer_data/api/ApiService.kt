@@ -2,8 +2,10 @@ package org.romeo.layer_data.api
 
 import kotlinx.coroutines.Deferred
 import org.romeo.layer_data.dto.ChangePricesRequest
+import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
+import org.romeo.layer_data.dto.SendMyAdRequest
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_domain.entity.user.User
@@ -34,6 +36,7 @@ interface ApiService {
     @DELETE("api/my-ads/{id}")
     fun deleteAd(@Query("id") id: String): Deferred<Unit>
 
-    @GET("api/ads/{id}")
-    fun getAd(@Query("id") id: String): Deferred<Ad>
+    @POST("api/users/send-my-ad")
+    fun sendMyAd(@Body request: SendMyAdRequest): Deferred<Unit>
+
 }

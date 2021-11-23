@@ -103,6 +103,10 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
+    override fun sendMyAd(request: SendMyAdRequest): Deferred<Unit> = runBlocking{
+        async { Unit }
+    }
+
     override fun getAd(id: String) = runBlocking {
         async {
             ads.find { ad -> ad.id == id }!!

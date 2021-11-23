@@ -33,7 +33,7 @@ class MainActivity : NavigationContainerActivity(
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.id == R.id.loginFragment) {
+            if (destination.id == R.id.loginFragment) {
                 binding?.bottomNavigation?.visibility = View.GONE
                 bottomNavigationView.visibility = View.GONE
             } else {

@@ -1,15 +1,17 @@
 package org.romeo.layer_data.repository
 
+import kotlinx.coroutines.Deferred
 import org.romeo.layer_data.data_sources.ApiDataSource
 import org.romeo.layer_data.data_sources.preferences.LoginResponseDataSourceLocal
 import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_data.dto.LoginRequest
+import org.romeo.layer_data.dto.SendMyAdRequest
 import org.romeo.layer_domain.entity.user.User
 
 class UserRepositoryImpl(
     private val apiDataSource: ApiDataSource,
-    private val loginResponseDataSource: LoginResponseDataSourceLocal,
+    private val loginResponseDataSource: LoginResponseDataSourceLocal
 ) : UserRepository {
 
     override suspend fun login(username: String, password: String): User {
@@ -33,5 +35,8 @@ class UserRepositoryImpl(
 
     override suspend fun getToken() =
         loginResponseDataSource.get()?.token
+
+    override suspend fun sendMyAd(userId: String, adId: String) =
+        apiDataSource.sendMyAd(SendMyAdRequest(userId, adId)).await()
 
 }
