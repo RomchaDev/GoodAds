@@ -12,7 +12,6 @@ import org.romeo.layer_domain.entity.list.items.UserAdsListItem
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_presentation.core.list.MainListAdapter
 import org.romeo.layer_presentation.databinding.LayoutUserBinding
-import org.romeo.layer_presentation.main.home.HomeViewState
 
 class UsersFragment :
     BaseFragment<FragmentUsersBinding, UsersViewState, UsersViewModel>(R.layout.fragment_users) {

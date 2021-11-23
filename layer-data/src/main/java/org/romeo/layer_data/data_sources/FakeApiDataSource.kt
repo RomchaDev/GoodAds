@@ -98,8 +98,14 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun sendMyAd(request: SendMyAdRequest): Deferred<Unit> = runBlocking{
+    override fun sendMyAd(request: SendMyAdRequest): Deferred<Unit> = runBlocking {
         async { Unit }
+    }
+
+    override fun getMyAdRequests(): Deferred<Ads> = runBlocking {
+        async {
+            Ads(ads)
+        }
     }
 
 }

@@ -11,7 +11,7 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/fragment_requests"
+        android:id="@+id/fragment_ad_requests"
         android:icon="@drawable/ic_bell"
         android:title="@string/wishlist" />
 
