@@ -31,5 +31,9 @@
         android:name="org.romeo.layer_presentation.main.ad_screen.AdFullFragment"
         android:label="AdFullFragment" />
     <action android:id="@+id/action_global_adFullFragment" app:destination="@id/adFullFragment" />
+    <fragment
+        android:id="@+id/fragment_users"
+        android:name="org.romeo.layer_presentation.main.users.UsersFragment"
+        android:label="UsersFragment" />
 
 </navigation>
