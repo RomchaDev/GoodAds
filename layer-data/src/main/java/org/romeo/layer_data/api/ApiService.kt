@@ -37,4 +37,7 @@ interface ApiService {
     @POST("api/my-ad-requests")
     fun getMyAdRequests(): Deferred<Ads>
 
+    @POST("api/my-user-requests")
+    fun getMyUserRequests(): Deferred<List<User>>
+
 }

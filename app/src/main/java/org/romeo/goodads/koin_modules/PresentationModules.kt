@@ -9,7 +9,7 @@ import org.romeo.layer_presentation.core.navigation.commands.impl.AnyToChoseAdCo
 import org.romeo.layer_presentation.core.navigation.commands.impl.LoginToHomeCommandImpl
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToChoseAdCommand
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.LoginToHomeCommand
-import org.romeo.layer_presentation.main.ad_requests.AdRequestsViewModel
+import org.romeo.layer_presentation.main.ad_requests.RequestsViewModel
 import org.romeo.layer_presentation.main.choose_ad_screen.ChooseAdViewModel
 import org.romeo.layer_presentation.main.login.LoginViewModel
 import org.romeo.layer_presentation.main.users.UsersViewModel
@@ -19,7 +19,7 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get(), get(), get(), get()) }
     viewModel { UsersViewModel(get(), get(), get()) }
     viewModel { ChooseAdViewModel(get(), get()) }
-    viewModel { AdRequestsViewModel(get(), get()) }
+    viewModel { RequestsViewModel(get(), get(), get()) }
 }
 
 val navigationModule = module {

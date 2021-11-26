@@ -28,4 +28,6 @@ class ApiDataSourceImpl(
     override fun getOtherAds(): Deferred<Ads> = service.getOtherAds()
 
     override fun getMyAdRequests(): Deferred<Ads> = service.getMyAdRequests()
+
+    override fun getMyUserRequests(): Deferred<List<User>> = service.getMyUserRequests()
 }

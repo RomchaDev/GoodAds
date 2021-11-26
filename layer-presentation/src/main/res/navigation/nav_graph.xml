@@ -22,8 +22,8 @@
             android:id="@+id/action_homeFragment_to_usersFragment"
             app:destination="@id/fragment_users" />
         <action
-            android:id="@+id/action_fragment_home_to_adRequestsFragment"
-            app:destination="@id/fragment_ad_requests" />
+            android:id="@+id/action_fragment_home_to_requestsFragment2"
+            app:destination="@id/fragment_requests" />
     </fragment>
     <fragment
         android:id="@+id/chooseAdFragment"
@@ -37,8 +37,8 @@
         android:name="org.romeo.layer_presentation.main.users.UsersFragment"
         android:label="UsersFragment" />
     <fragment
-        android:id="@+id/fragment_ad_requests"
-        android:name="org.romeo.layer_presentation.main.ad_requests.AdRequestsFragment"
-        android:label="AdRequestsFragment" />
+        android:id="@+id/fragment_requests"
+        android:name="org.romeo.layer_presentation.main.ad_requests.RequestsFragment"
+        android:label="RequestsFragment" />
 
 </navigation>

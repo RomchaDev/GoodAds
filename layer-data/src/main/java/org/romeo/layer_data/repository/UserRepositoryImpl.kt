@@ -35,4 +35,6 @@ class UserRepositoryImpl(
     override suspend fun sendMyAd(userId: String, adId: String) =
         apiDataSource.sendMyAd(SendMyAdRequest(userId, adId)).await()
 
+    override suspend fun getMyUserRequests() = apiDataSource.getMyUserRequests().await()
+
 }

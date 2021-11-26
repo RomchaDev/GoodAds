@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ActiveInactiveView">
+        <attr name="container_color" format="color" />
+        <attr name="buttonView_color" format="color" />
+        <attr name="active_text" format="string" />
+        <attr name="active_text_color" format="color" />
+        <attr name="active_text_size" format="dimension" />
+        <attr name="active_paddingTop" format="dimension" />
+        <attr name="active_paddingBot" format="dimension" />
+        <attr name="active_paddingEnd" format="dimension" />
+        <attr name="inactive_text" format="string" />
+        <attr name="inactive_text_color" format="color" />
+        <attr name="inactive_text_size" format="dimension" />
+        <attr name="inactive_paddingTop" format="dimension" />
+        <attr name="inactive_paddingBot" format="dimension" />
+        <attr name="inactive_paddingEnd" format="dimension" />
+        <attr name="animated" format="boolean" />
+        <attr name="duration" format="integer" />
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+</resources>

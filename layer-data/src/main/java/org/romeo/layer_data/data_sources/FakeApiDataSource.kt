@@ -108,4 +108,8 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
+    override fun getMyUserRequests(): Deferred<List<User>> = runBlocking {
+        async { listOf(user, user2) }
+    }
+
 }
