@@ -36,7 +36,7 @@ class UserRepositoryImpl(
     override suspend fun getToken() =
         loginResponseDataSource.get()?.token
 
-    override suspend fun sendMyAd(userId: String, adId: String) =
+    override suspend fun applyMyAd(userId: String, adId: String) =
         apiDataSource.sendMyAd(SendMyAdRequest(userId, adId)).await()
 
 }

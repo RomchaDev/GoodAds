@@ -17,8 +17,12 @@
         <entry key="..\:/Users/38063/AndroidStudioProjects/GoodAds/layer-presentation/src/main/res/layout/layout_user.xml" value="0.6" />
         <entry key="..\:/Users/38063/AndroidStudioProjects/GoodAds/layer-presentation/src/main/res/menu/create_edit_menu.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/menu/menu_navigation.xml" value="0.2657894736842105" />
+        <entry key="layer-presentation/src/main/res/layout/ad_type_list_item.xml" value="0.2995614035087719" />
+        <entry key="layer-presentation/src/main/res/layout/fragment_ad.xml" value="0.2657894736842105" />
         <entry key="layer-presentation/src/main/res/layout/fragment_create_edit_ad.xml" value="0.2995614035087719" />
+        <entry key="layer-presentation/src/main/res/layout/fragment_login.xml" value="0.2418478260869565" />
         <entry key="layer-presentation/src/main/res/layout/fragment_users.xml" value="0.1621376811594203" />
+        <entry key="layer-presentation/src/main/res/layout/item_view_pager_ad.xml" value="0.26721014492753625" />
         <entry key="layer-presentation/src/main/res/layout/layout_user.xml" value="0.1482456140350877" />
       </map>
     </option>

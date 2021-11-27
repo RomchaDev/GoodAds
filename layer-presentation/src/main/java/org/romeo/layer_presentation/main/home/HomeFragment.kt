@@ -32,7 +32,9 @@ class HomeFragment :
                 binding.data = item.ad
 
                 binding.root.setOnClickListener {
-                    viewModel.onAdClicked(item.ad.id)
+                    item.ad.id?.let { id ->
+                        viewModel.onAdClicked(id)
+                    }
                 }
 
                 binding.root.setOnLongClickListener { view ->
@@ -42,13 +44,17 @@ class HomeFragment :
                     menu.setOnMenuItemClickListener {
                         when (it.itemId) {
                             R.id.delete -> {
-                                viewModel.onDeleteAdClicked(item.ad.id)
-                                true
+                                item.ad.id?.let { id ->
+                                    viewModel.onDeleteAdClicked(id)
+                                    true
+                                } ?: false
                             }
 
                             R.id.edit -> {
-                                viewModel.onEditAdClicked(item.ad.id)
-                                true
+                                item.ad.id?.let { id ->
+                                    viewModel.onEditAdClicked(id)
+                                    true
+                                } ?: false
                             }
 
                             else -> false

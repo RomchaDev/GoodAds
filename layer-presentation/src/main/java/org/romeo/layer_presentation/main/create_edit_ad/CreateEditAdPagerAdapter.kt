@@ -1,16 +1,16 @@
-package org.romeo.layer_presentation.main.ad_screen
+package org.romeo.layer_presentation.main.create_edit_ad
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.romeo.layer_presentation.core.view.loadImage
 import org.romeo.layer_presentation.databinding.ItemViewPagerAdBinding
 
-class AdViewPagerAdapter(
-    images: List<String> = listOf()
-) : RecyclerView.Adapter<AdViewPagerAdapter.AdViewPagerViewHolder>() {
+class CreateEditAdPagerAdapter(
+    uris: List<Uri> = listOf()
+) : RecyclerView.Adapter<CreateEditAdPagerAdapter.AdViewPagerViewHolder>() {
 
-    var images = images
+    var uris = uris
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -27,10 +27,10 @@ class AdViewPagerAdapter(
     }
 
     override fun onBindViewHolder(holder: AdViewPagerViewHolder, position: Int) {
-        loadImage(holder.binding.ivAd, this.images[position])
+            holder.binding.ivAd.setImageURI(uris[position])
     }
 
-    override fun getItemCount(): Int = images.size
+    override fun getItemCount(): Int = this.uris.size
 
     inner class AdViewPagerViewHolder(val binding: ItemViewPagerAdBinding) :
         RecyclerView.ViewHolder(binding.root)
