@@ -1,6 +1,5 @@
-package org.romeo.layer_presentation.main.ad_requests
+package org.romeo.layer_presentation.main.requests
 
-import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_domain.entity.list.items.UserAdsListItem
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
 import org.romeo.layer_domain.repository_bounderies.UserRepository

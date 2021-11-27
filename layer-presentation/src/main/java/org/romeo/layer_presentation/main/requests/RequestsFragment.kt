@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.main.ad_requests
+package org.romeo.layer_presentation.main.requests
 
 import android.os.Bundle
 import android.view.View

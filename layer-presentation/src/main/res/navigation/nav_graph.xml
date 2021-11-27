@@ -41,7 +41,7 @@
         android:label="UsersFragment" />
     <fragment
         android:id="@+id/fragment_requests"
-        android:name="org.romeo.layer_presentation.main.ad_requests.RequestsFragment"
+        android:name="org.romeo.layer_presentation.main.requests.RequestsFragment"
         android:label="RequestsFragment" />
 
 </navigation>
