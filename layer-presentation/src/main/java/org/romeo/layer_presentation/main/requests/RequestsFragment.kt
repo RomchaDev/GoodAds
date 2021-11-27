@@ -31,6 +31,11 @@ class RequestsFragment :
         ) { binding, item ->
             if (item is UserAdsListItem.AdListItem && binding is ItemAdBinding) {
                 binding.data = item.ad
+
+                binding.root.setOnClickListener {
+                    viewModel.onAdClicked(item.ad.id)
+                }
+
             } else if (item is UserAdsListItem.UserListItem && binding is LayoutUserBinding) {
                 binding.data = UserAdsListItem.UserListItem(item.user)
             }
