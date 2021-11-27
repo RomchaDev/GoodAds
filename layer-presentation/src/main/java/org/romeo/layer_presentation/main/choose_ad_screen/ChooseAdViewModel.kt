@@ -5,7 +5,7 @@ import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
 import org.romeo.layer_presentation.core.app_state.AppState
 import org.romeo.layer_presentation.core.main.BaseViewModel
-import org.romeo.layer_presentation.core.navigation.AD_KEY
+import org.romeo.layer_presentation.core.navigation.CHOOSE_AD_KEY
 import org.romeo.layer_presentation.core.navigation.AppNavigator
 
 class ChooseAdViewModel(
@@ -21,7 +21,7 @@ class ChooseAdViewModel(
     }
 
     fun onAdChosen(ad: Ad) {
-        navigator.setResult(AD_KEY, ad)
+        navigator.setResult(CHOOSE_AD_KEY, ad)
         navigator.back()
     }
 }

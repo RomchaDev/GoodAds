@@ -28,13 +28,16 @@
     <fragment
         android:id="@+id/chooseAdFragment"
         android:name="org.romeo.layer_presentation.main.choose_ad_screen.ChooseAdFragment"
-        android:label="ChooseAdFragment" />
-    <action
-        android:id="@+id/action_global_chooseAdFragment"
-        app:destination="@id/chooseAdFragment" />
+        android:label="ChooseAdFragment" /><action android:id="@+id/action_global_chooseAdFragment" app:destination="@id/chooseAdFragment"/>
+    <fragment
+        android:id="@+id/adFullFragment"
+        android:name="org.romeo.layer_presentation.main.ad_screen.AdFullFragment"
+        android:label="AdFullFragment" />
+    <action android:id="@+id/action_global_adFullFragment" app:destination="@id/adFullFragment" />
     <fragment
         android:id="@+id/fragment_users"
         android:name="org.romeo.layer_presentation.main.users.UsersFragment"
+        android:label="UsersFragment" />
         android:label="UsersFragment" />
     <fragment
         android:id="@+id/fragment_requests"

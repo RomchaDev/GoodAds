@@ -1,18 +1,23 @@
 package org.romeo.layer_presentation.main.home
 
+import android.os.Bundle
 import org.romeo.layer_domain.entity.list.items.UserAdsListItem
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_domain.use_cases.GetUserAdsUseCase
+import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.app_state.AppState
 import org.romeo.layer_presentation.core.main.BaseViewModel
+import org.romeo.layer_presentation.core.navigation.AD_FULL_KEY
 import org.romeo.layer_presentation.core.navigation.AppNavigator
+import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToAdFullCommand
 
 class HomeViewModel(
     override val navigator: AppNavigator,
     private val getUserAdsUseCase: GetUserAdsUseCase,
     private val userRepository: UserRepository,
-    private val adsRepository: AdsRepository
+    private val adsRepository: AdsRepository,
+    private val adFullCommand: AnyToAdFullCommand
 ) : BaseViewModel<HomeViewState>() {
 
     private var ads = mutableListOf<UserAdsListItem>()
@@ -31,7 +36,10 @@ class HomeViewModel(
     }
 
     fun onAdClicked(id: String) {
-        //navigator.navigate(homeToAdFullCommand)
+        navigator.navigate(
+            adFullCommand,
+            Bundle().apply { putString(AD_FULL_KEY, id) }
+        )
     }
 
     fun onDeleteAdClicked(id: String) {
@@ -51,5 +59,4 @@ class HomeViewModel(
     fun onEditAdClicked(id: String) {
         //navigator.navigate(homeToEditAdCommand)
     }
-
 }
