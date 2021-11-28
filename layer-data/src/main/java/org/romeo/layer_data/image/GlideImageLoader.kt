@@ -36,4 +36,17 @@ class GlideImageLoader : ImageLoader<ImageView> {
             })
             .into(target)
     }
+
+    override fun loadImage(
+        target: ImageView,
+        url: String,
+    ) {
+        val drawable = Glide.with(target.context)
+            .load(url)
+            .submit(500, 500).get()
+
+        target.handler.post {
+            target.setImageDrawable(drawable)
+        }
+    }
 }

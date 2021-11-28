@@ -5,7 +5,7 @@ import org.romeo.layer_data.api.ApiService
 import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_domain.entity.ad.Ads
-import org.romeo.layer_data.dto.SendMyAdRequest
+import org.romeo.layer_data.dto.ApplyMyAdRequest
 import org.romeo.layer_domain.entity.user.User
 
 class ApiDataSourceImpl(
@@ -28,7 +28,7 @@ class ApiDataSourceImpl(
 
     override fun getAd(id: String) = service.getAd(id)
 
-    override fun sendMyAd(request: SendMyAdRequest): Deferred<Unit> = service.sendMyAd(request)
+    override fun applyMyAd(request: ApplyMyAdRequest): Deferred<Unit> = service.applyMyAd(request)
 
     override fun getOtherAds(): Deferred<Ads> = service.getOtherAds()
 

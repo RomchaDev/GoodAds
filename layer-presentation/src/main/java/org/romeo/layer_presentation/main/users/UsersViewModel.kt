@@ -33,7 +33,7 @@ class UsersViewModel(
         }, CHOOSE_AD_KEY)
 
         runAsync {
-            chosenAd?.let { userRepository.sendMyAd(userId, it.id) }
+            chosenAd?.let { userRepository.applyMyAd(userId, it.id) }
         }
 
     }

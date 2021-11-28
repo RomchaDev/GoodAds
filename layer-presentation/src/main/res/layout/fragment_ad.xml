@@ -71,7 +71,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
-                            app:load_image='@{ad_user.user.avatarUrl ?? "http://scma.com.ua/wp-content/uploads/2015/02/user.png" }'
+                            app:load_image='@{ad_user.user.avatarUrl ?? "https://www.iconsdb.com/icons/preview/black/user-xxl.png" }'
                             tools:src="@drawable/ex_profile_avatar" />
 
                     </androidx.cardview.widget.CardView>

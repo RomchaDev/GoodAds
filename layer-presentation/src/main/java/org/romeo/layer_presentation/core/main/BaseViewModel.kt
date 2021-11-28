@@ -17,12 +17,20 @@ abstract class BaseViewModel<D : AppStateEntity>(
     protected val mStateLiveData = MutableLiveData<AppState<D>>()
     val stateLiveData get() = mStateLiveData as LiveData<AppState<D>>
 
-    private val viewModelCoroutineScope = CoroutineScope(
-        Dispatchers.Main
+    private val ioCoroutineScope = CoroutineScope(
+        Dispatchers.IO
                 + SupervisorJob()
                 + CoroutineExceptionHandler { _, throwable ->
             handleError(throwable)
         })
+
+    private val mainCoroutineScope = CoroutineScope(
+        Dispatchers.Main
+                + SupervisorJob()
+                + CoroutineExceptionHandler { _, throwable ->
+            handleError(throwable)
+        }
+    )
 
     override fun onCleared() {
         super.onCleared()
@@ -30,7 +38,7 @@ abstract class BaseViewModel<D : AppStateEntity>(
     }
 
     protected open fun cancelJob() {
-        viewModelCoroutineScope.coroutineContext.cancelChildren()
+        ioCoroutineScope.coroutineContext.cancelChildren()
     }
 
     open fun handleError(error: Throwable) {
@@ -46,13 +54,18 @@ abstract class BaseViewModel<D : AppStateEntity>(
     }
 
     protected fun runAsync(block: suspend () -> Unit) =
-        viewModelCoroutineScope.launch {
+        ioCoroutineScope.launch {
             block()
         }
 
 
     protected fun <T> runAsyncWithResult(block: suspend () -> T) =
-        viewModelCoroutineScope.async {
+        ioCoroutineScope.async {
+            block()
+        }
+
+    protected fun runOnMainThread(block: suspend () -> Unit) =
+        mainCoroutineScope.launch {
             block()
         }
 }
