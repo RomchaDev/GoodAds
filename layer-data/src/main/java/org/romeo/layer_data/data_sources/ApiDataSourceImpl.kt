@@ -6,6 +6,7 @@ import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.ApplyMyAdRequest
+import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.user.User
 
 class ApiDataSourceImpl(
