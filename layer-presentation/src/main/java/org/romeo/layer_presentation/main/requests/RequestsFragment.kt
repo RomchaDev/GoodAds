@@ -40,6 +40,8 @@ class RequestsFragment :
 
             } else if (item is UserAdsListItem.UserListItem && binding is LayoutUserBinding) {
                 binding.data = UserAdsListItem.UserListItem(item.user)
+                binding.etPostPrice.isFocusable = false
+                binding.etStoryPrice.isFocusable = false
             }
         }
 
