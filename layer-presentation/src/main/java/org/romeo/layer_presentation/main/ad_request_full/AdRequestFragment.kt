@@ -8,11 +8,11 @@ import org.romeo.layer_domain.entity.AdUser
 import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.main.BaseFragment
 import org.romeo.layer_presentation.core.navigation.AD_FULL_KEY
-import org.romeo.layer_presentation.databinding.FragmentRequestAdBinding
+import org.romeo.layer_presentation.databinding.FragmentAdBinding
 import org.romeo.layer_presentation.main.ad_screen.AdViewPagerAdapter
 
 class AdRequestFragment :
-    BaseFragment<FragmentRequestAdBinding, AdUser, AdRequestViewModel>(R.layout.fragment_request_ad) {
+    BaseFragment<FragmentAdBinding, AdUser, AdRequestViewModel>(R.layout.fragment_ad) {
 
     override val viewModel: AdRequestViewModel by viewModel {
         parametersOf(arguments?.getString(AD_FULL_KEY))
@@ -22,7 +22,9 @@ class AdRequestFragment :
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
 
-        binding.btnAccept.setOnClickListener {
+        binding.bottomBtn.text = getString(R.string.accept)
+
+        binding.bottomBtn.setOnClickListener {
             viewModel.onAcceptPressed()
         }
 

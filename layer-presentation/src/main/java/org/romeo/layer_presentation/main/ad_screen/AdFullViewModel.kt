@@ -19,10 +19,6 @@ class AdFullViewModel(
         }
     }
 
-    fun onAcceptPressed() {
-
-    }
-
     fun onDistributionPressed() {
 
     }

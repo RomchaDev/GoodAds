@@ -24,11 +24,7 @@ class AdFullFragment :
     }
 
     private fun initButtons() {
-        binding.btnAccept.setOnClickListener {
-            viewModel.onAcceptPressed()
-        }
-
-        binding.btnDistribution.setOnClickListener {
+        binding.bottomBtn.setOnClickListener {
             viewModel.onDistributionPressed()
         }
     }
