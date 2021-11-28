@@ -22,6 +22,14 @@ class HomeFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initRecycler()
+
+        binding.fabCreateAd.setOnClickListener {
+            viewModel.onCreateAdPressed()
+        }
+    }
+
+    private fun initRecycler() {
         listAdapter = MainListAdapter(
             mapOf(
                 UserAdsListItem.AD_VIEW_TYPE to R.layout.item_ad,

@@ -4,6 +4,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import org.romeo.layer_presentation.core.view.loadImage
 import org.romeo.layer_presentation.databinding.ItemViewPagerAdBinding
 
 class CreateEditAdPagerAdapter(
@@ -27,6 +28,9 @@ class CreateEditAdPagerAdapter(
     }
 
     override fun onBindViewHolder(holder: AdViewPagerViewHolder, position: Int) {
+        if (uris[position].toString().startsWith("http"))
+            loadImage(holder.binding.ivAd, uris[position].toString())
+        else
             holder.binding.ivAd.setImageURI(uris[position])
     }
 

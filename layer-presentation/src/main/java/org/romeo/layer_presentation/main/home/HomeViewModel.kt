@@ -78,4 +78,8 @@ class HomeViewModel(
             )
         }
     }
+
+    fun onCreateAdPressed() {
+        navigator.navigate(createEditCommand)
+    }
 }

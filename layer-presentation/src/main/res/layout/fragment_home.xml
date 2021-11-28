@@ -13,9 +13,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_ad" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_create_ad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"

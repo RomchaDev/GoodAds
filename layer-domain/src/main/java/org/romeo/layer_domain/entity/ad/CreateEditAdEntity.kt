@@ -6,5 +6,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class CreateEditAdEntity(
     val ad: Ad,
-    private val images: List<ByteArray>
+    private val images: List<ByteArray>?
 ) : Parcelable
