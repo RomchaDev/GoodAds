@@ -8,7 +8,7 @@ import org.romeo.layer_presentation.core.navigation.AppNavigator
 abstract class BaseAdFullViewModel (
     override val navigator: AppNavigator,
     private val useCase: GetAdUserUseCase,
-    private val adId: String
+    protected val adId: String
 ) : BaseViewModel<AdUser>() {
 
     override fun onViewInit() {

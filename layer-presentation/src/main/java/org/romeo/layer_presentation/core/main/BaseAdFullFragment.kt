@@ -24,7 +24,6 @@ abstract class BaseAdFullFragment :
         binding.bottomBtn.setOnClickListener {
             viewModel.onBottomBtnPressed()
         }
-
     }
 
     private fun initAdapter() {

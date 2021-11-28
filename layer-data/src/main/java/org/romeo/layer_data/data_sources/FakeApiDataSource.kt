@@ -9,7 +9,7 @@ import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
-import org.romeo.layer_data.dto.ApplyMyAdRequest
+import org.romeo.layer_data.dto.ApplyAdRequest
 import org.romeo.layer_domain.entity.user.User
 
 class FakeApiDataSource : ApiDataSource {
@@ -105,7 +105,11 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun applyMyAd(request: ApplyMyAdRequest): Deferred<Unit> = runBlocking {
+    override fun advertiseMyAd(request: ApplyAdRequest): Deferred<Unit> = runBlocking {
+        async { Unit }
+    }
+
+    override fun advertiseOtherAd(adId: String): Deferred<Unit> = runBlocking {
         async { Unit }
     }
 

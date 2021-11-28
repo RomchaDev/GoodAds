@@ -21,13 +21,13 @@ import org.romeo.layer_presentation.main.users.UsersViewModel
 val viewModelModule = module {
     viewModel { LoginViewModel(get(), get(), get()) }
     viewModel { HomeViewModel(get(), get(), get(), get(), get()) }
-    viewModel { UsersViewModel(get(), get(), get()) }
+    viewModel { UsersViewModel(get(), get(), get(), get()) }
     viewModel { ChooseAdViewModel(get(), get()) }
     viewModel { (adId: String) -> MyAdFullViewModel(get(), get(), adId) }
     viewModel { RequestsViewModel(get(), get(), get(), get()) }
     viewModel { (adId: String) -> AdRequestViewModel(get(), get(), adId) }
     viewModel { AdsViewModel(get(), get(), get()) }
-    viewModel { (adId: String) -> AdListItemFullViewModel(get(), get(), adId) }
+    viewModel { (adId: String) -> AdListItemFullViewModel(get(), get(), get(), adId) }
 }
 
 val navigationModule = module {
