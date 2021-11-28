@@ -34,7 +34,7 @@ class AdsFragment :
             }
 
             binding.root.setOnClickListener {
-                viewModel.onAdClicked(ad.id)
+                ad.id?.let { id -> viewModel.onAdClicked(id) }
             }
         }
 

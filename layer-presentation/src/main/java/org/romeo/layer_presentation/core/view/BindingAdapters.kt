@@ -16,11 +16,17 @@ fun loadImage(img: ImageView, url: String) {
         loader.loadImage(
             target = img,
             url = url,
+            imageInsertCoroutineScope
         )
     }
 }
 
 private val imageLoadingCoroutineScope = CoroutineScope(
     Dispatchers.IO
+            + SupervisorJob()
+)
+
+private val imageInsertCoroutineScope = CoroutineScope(
+    Dispatchers.Main
             + SupervisorJob()
 )

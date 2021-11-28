@@ -47,6 +47,7 @@ abstract class BaseViewModel<D : AppStateEntity>(
             //Token will be removed in LoginViewModel
         }*/
 
+        error.printStackTrace()
         mStateLiveData.postValue(AppState.Error(error))
     }
 

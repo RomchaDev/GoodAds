@@ -75,7 +75,7 @@ abstract class BaseFragment<VB : ViewDataBinding, D : AppStateEntity, VM : BaseV
     protected open fun setLoading(isLoading: Boolean) {
     }
 
-    private fun showMessage(message: String) {
+    protected open fun showMessage(message: String) {
         Toast.makeText(
             requireContext(),
             message,

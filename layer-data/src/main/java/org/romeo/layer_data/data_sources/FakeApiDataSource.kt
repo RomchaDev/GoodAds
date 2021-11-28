@@ -1,9 +1,13 @@
 package org.romeo.layer_data.data_sources
 
+import android.util.Log
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import org.romeo.layer_data.dto.ApplyMyAdRequest
 import org.romeo.layer_data.dto.ChangePricesRequest
+import org.romeo.layer_data.dto.LoginRequest
+import org.romeo.layer_data.dto.LoginResponse
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
@@ -11,6 +15,7 @@ import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
 import org.romeo.layer_data.dto.ApplyAdRequest
 import org.romeo.layer_domain.entity.user.User
+import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 
 class FakeApiDataSource : ApiDataSource {
     private val ads = mutableListOf<Ad>().apply {
@@ -119,6 +124,13 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
+    override fun createEditAd(createEditAd: CreateEditAdEntity): Deferred<Unit> = runBlocking {
+        async {
+            Log.d(TAG, "createEditAd: ad id:${createEditAd.ad.id}")
+            Unit
+        }
+    }
+
     override fun getUser(uid: String) = runBlocking {
         async {
             if (uid.last().code % 2 == 0) user
@@ -136,4 +148,8 @@ class FakeApiDataSource : ApiDataSource {
         async { listOf(user, user2) }
     }
 
+
+    companion object {
+        private const val TAG = "FAKE_API_DATA_SOURCE_TAG"
+    }
 }
