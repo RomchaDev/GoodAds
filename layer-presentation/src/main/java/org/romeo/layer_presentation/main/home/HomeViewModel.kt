@@ -1,23 +1,24 @@
 package org.romeo.layer_presentation.main.home
 
 import android.os.Bundle
+import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.list.items.UserAdsListItem
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_domain.use_cases.GetUserAdsUseCase
-import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.app_state.AppState
 import org.romeo.layer_presentation.core.main.BaseViewModel
-import org.romeo.layer_presentation.core.navigation.AD_FULL_KEY
-import org.romeo.layer_presentation.core.navigation.AppNavigator
+import org.romeo.layer_presentation.core.navigation.*
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToAdFullCommand
+import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToCreateEditAdCommand
 
 class HomeViewModel(
     override val navigator: AppNavigator,
     private val getUserAdsUseCase: GetUserAdsUseCase,
     private val userRepository: UserRepository,
     private val adsRepository: AdsRepository,
-    private val adFullCommand: AnyToAdFullCommand
+    private val adFullCommand: AnyToAdFullCommand,
+    private val createEditCommand: AnyToCreateEditAdCommand
 ) : BaseViewModel<HomeViewState>() {
 
     private var ads = mutableListOf<UserAdsListItem>()
@@ -27,6 +28,17 @@ class HomeViewModel(
             ads = getUserAdsUseCase.execute() as MutableList<UserAdsListItem>
             mStateLiveData.postValue(AppState.Success(HomeViewState(ads)))
         }
+
+        navigator.subscribeToResult(object : NavigationResultListener<CreateEditAdEntity> {
+            override fun onNavigationResult(result: CreateEditAdEntity?) {
+                result?.let {
+                    runAsync {
+                        adsRepository.createEditAd(result)
+                    }
+                }
+            }
+
+        }, CREATE_AD_OUT)
     }
 
     fun onPriceChanged(postPrice: Int, storyPrice: Int) {
@@ -57,6 +69,21 @@ class HomeViewModel(
     }
 
     fun onEditAdClicked(id: String) {
-        //navigator.navigate(homeToEditAdCommand)
+        runAsync {
+            val ad = adsRepository.getAd(id)
+            navigator.navigate(
+                createEditCommand,
+                Bundle().apply { putParcelable(CREATE_EDIT_AD_IN, ad) }
+            )
+        }
+    }
+
+    override fun handleError(error: Throwable) {
+        if (error !is IllegalStateException)
+            super.handleError(error)
+    }
+
+    fun onCreateAdPressed() {
+        navigator.navigate(createEditCommand)
     }
 }

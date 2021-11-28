@@ -20,22 +20,26 @@ class UsersViewModel(
         runAsync {
             mStateLiveData.postValue(AppState.Success(UsersViewState(userRepository.getUsers())))
         }
+
+        navigator.subscribeToResult(object : NavigationResultListener<Ad> {
+            override fun onNavigationResult(result: Ad?) {
+                runAsync {
+                    result?.id?.let { adId ->
+                        userIdChosen?.let { uid ->
+                            userRepository.applyMyAd(uid, adId)
+                        }
+                    }
+                }
+            }
+        }, CHOOSE_AD_KEY)
     }
 
     fun onUserClicked(userId: String) {
-        var chosenAd: Ad? = null
-
         navigator.navigate(usersToChoseAdCommand)
-        navigator.subscribeToResult(object : NavigationResultListener<Ad> {
-            override fun onNavigationResult(result: Ad?) {
-                chosenAd = result
-            }
-        }, CHOOSE_AD_KEY)
-
-        runAsync {
-            chosenAd?.let { userRepository.applyMyAd(userId, it.id) }
-        }
-
+        userIdChosen = userId
     }
 
+    companion object {
+        private var userIdChosen: String? = null
+    }
 }

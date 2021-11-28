@@ -47,6 +47,10 @@
         android:name="org.romeo.layer_presentation.main.users.UsersFragment"
         android:label="UsersFragment" />
     <fragment
+        android:id="@+id/createEditAdFragment"
+        android:name="org.romeo.layer_presentation.main.create_edit_ad.CreateEditAdFragment"
+        android:label="CreateEditAdFragment" /><action android:id="@+id/action_global_createEditAdFragment" app:destination="@id/createEditAdFragment"/>
+    <fragment
         android:id="@+id/fragment_requests"
         android:name="org.romeo.layer_presentation.main.requests.RequestsFragment"
         android:label="RequestsFragment">
