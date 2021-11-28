@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_fragment_home_to_requestsFragment"
             app:destination="@id/fragment_requests" />
+        <action
+            android:id="@+id/action_fragment_home_to_adsFragment"
+            app:destination="@id/fragment_ads" />
     </fragment>
     <fragment
         android:id="@+id/chooseAdFragment"
@@ -34,7 +37,7 @@
         app:destination="@id/chooseAdFragment" />
     <fragment
         android:id="@+id/adFullFragment"
-        android:name="org.romeo.layer_presentation.main.ad_screen.AdFullFragment"
+        android:name="org.romeo.layer_presentation.main.ad_screen.MyAdFullFragment"
         android:label="AdFullFragment" />
     <action
         android:id="@+id/action_global_adFullFragment"
@@ -55,5 +58,17 @@
         android:id="@+id/adRequestFragment"
         android:name="org.romeo.layer_presentation.main.ad_request_full.AdRequestFragment"
         android:label="AdRequestFragment" />
+    <fragment
+        android:id="@+id/fragment_ads"
+        android:name="org.romeo.layer_presentation.main.ads.AdsFragment"
+        android:label="AdsFragment" >
+        <action
+            android:id="@+id/action_fragment_ads_to_adListItemFullFragment"
+            app:destination="@id/adListItemFullFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adListItemFullFragment"
+        android:name="org.romeo.layer_presentation.main.ad_list_item_full.AdListItemFullFragment"
+        android:label="AdListItemFullFragment" />
 
 </navigation>

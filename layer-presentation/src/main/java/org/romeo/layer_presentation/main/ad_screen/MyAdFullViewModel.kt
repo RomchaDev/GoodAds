@@ -1,10 +1,10 @@
-package org.romeo.layer_presentation.main.ad_request_full
+package org.romeo.layer_presentation.main.ad_screen
 
 import org.romeo.layer_domain.use_cases.GetAdUserUseCase
 import org.romeo.layer_presentation.core.main.BaseAdFullViewModel
 import org.romeo.layer_presentation.core.navigation.AppNavigator
 
-class AdRequestViewModel(
+class MyAdFullViewModel(
     override val navigator: AppNavigator,
     useCase: GetAdUserUseCase,
     adId: String

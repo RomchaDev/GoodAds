@@ -15,4 +15,6 @@ data class Ad(
     @Content val type: AdType,
     @Content val imageUrls: List<String>,
     val userId: String,
+    val price: String,
+    val freePlaces: Int
 ): ListItem<Ad>, AppStateEntity, Parcelable

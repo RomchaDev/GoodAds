@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.main.ad_screen
+package org.romeo.layer_presentation.core.main
 
 import android.os.Bundle
 import android.view.View
@@ -6,27 +6,25 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import org.romeo.layer_domain.entity.AdUser
 import org.romeo.layer_presentation.R
-import org.romeo.layer_presentation.core.main.BaseFragment
 import org.romeo.layer_presentation.core.navigation.AD_FULL_KEY
 import org.romeo.layer_presentation.databinding.FragmentAdBinding
+import org.romeo.layer_presentation.main.ad_screen.AdViewPagerAdapter
 
-class AdFullFragment :
-    BaseFragment<FragmentAdBinding, AdUser, AdFullViewModel>(R.layout.fragment_ad) {
+abstract class BaseAdFullFragment :
+    BaseFragment<FragmentAdBinding, AdUser, BaseAdFullViewModel>(R.layout.fragment_ad) {
 
-    override val viewModel: AdFullViewModel by viewModel {
-        parametersOf(arguments?.getString(AD_FULL_KEY))
-    }
+    abstract val bottomButtonText: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
-        initButtons()
-    }
 
-    private fun initButtons() {
+        binding.bottomBtn.text = bottomButtonText
+
         binding.bottomBtn.setOnClickListener {
-            viewModel.onDistributionPressed()
+            viewModel.onBottomBtnPressed()
         }
+
     }
 
     private fun initAdapter() {

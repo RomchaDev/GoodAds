@@ -32,7 +32,9 @@ class FakeApiDataSource : ApiDataSource {
                             "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
 
 
-                    ), "UID_$i"
+                    ), "UID_$i",
+                    "300$",
+                    11
                 )
             )
         }
