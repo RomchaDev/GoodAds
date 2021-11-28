@@ -1,7 +1,6 @@
 package org.romeo.layer_presentation.main.home
 
 import android.os.Bundle
-import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.list.items.UserAdsListItem
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
@@ -77,6 +76,11 @@ class HomeViewModel(
                 Bundle().apply { putParcelable(CREATE_EDIT_AD_IN, ad) }
             )
         }
+    }
+
+    override fun handleError(error: Throwable) {
+        if (error !is IllegalStateException)
+            super.handleError(error)
     }
 
     fun onCreateAdPressed() {
