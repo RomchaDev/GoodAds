@@ -17,20 +17,28 @@
     <fragment
         android:id="@+id/fragment_home"
         android:name="org.romeo.layer_presentation.main.home.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_usersFragment"
             app:destination="@id/fragment_users" />
+        <action
+            android:id="@+id/action_fragment_home_to_requestsFragment"
+            app:destination="@id/fragment_requests" />
     </fragment>
     <fragment
         android:id="@+id/chooseAdFragment"
         android:name="org.romeo.layer_presentation.main.choose_ad_screen.ChooseAdFragment"
-        android:label="ChooseAdFragment" /><action android:id="@+id/action_global_chooseAdFragment" app:destination="@id/chooseAdFragment"/>
+        android:label="ChooseAdFragment" />
+    <action
+        android:id="@+id/action_global_chooseAdFragment"
+        app:destination="@id/chooseAdFragment" />
     <fragment
         android:id="@+id/adFullFragment"
         android:name="org.romeo.layer_presentation.main.ad_screen.AdFullFragment"
         android:label="AdFullFragment" />
-    <action android:id="@+id/action_global_adFullFragment" app:destination="@id/adFullFragment" />
+    <action
+        android:id="@+id/action_global_adFullFragment"
+        app:destination="@id/adFullFragment" />
     <fragment
         android:id="@+id/fragment_users"
         android:name="org.romeo.layer_presentation.main.users.UsersFragment"
@@ -39,5 +47,17 @@
         android:id="@+id/createEditAdFragment"
         android:name="org.romeo.layer_presentation.main.create_edit_ad.CreateEditAdFragment"
         android:label="CreateEditAdFragment" /><action android:id="@+id/action_global_createEditAdFragment" app:destination="@id/createEditAdFragment"/>
+    <fragment
+        android:id="@+id/fragment_requests"
+        android:name="org.romeo.layer_presentation.main.requests.RequestsFragment"
+        android:label="RequestsFragment">
+        <action
+            android:id="@+id/action_fragment_requests_to_adRequestFragment"
+            app:destination="@id/adRequestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adRequestFragment"
+        android:name="org.romeo.layer_presentation.main.ad_request_full.AdRequestFragment"
+        android:label="AdRequestFragment" />
 
 </navigation>

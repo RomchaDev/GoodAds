@@ -105,7 +105,7 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun sendMyAd(request: SendMyAdRequest): Deferred<Unit> = runBlocking {
+    override fun sendMyAd(request: SendMyAdRequest): Deferred<Unit> = runBlocking{
         async { Unit }
     }
 
@@ -128,6 +128,17 @@ class FakeApiDataSource : ApiDataSource {
             else user2
         }
     }
+
+    override fun getMyAdRequests(): Deferred<Ads> = runBlocking {
+        async {
+            Ads(ads)
+        }
+    }
+
+    override fun getMyUserRequests(): Deferred<List<User>> = runBlocking {
+        async { listOf(user, user2) }
+    }
+
 
     companion object {
         private const val TAG = "FAKE_API_DATA_SOURCE_TAG"

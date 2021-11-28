@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="layout_width_active_inactive_button">335dp</dimen>
+    <dimen name="layout_height_active_inactive_button">40dp</dimen>
+    <dimen name="layout_marginTop_active_inactive_button">21dp</dimen>
+    <dimen name="active_text_size_active_inactive_button">16sp</dimen>
+    <dimen name="inactive_text_size_active_inactive_button">16sp</dimen>
+    <dimen name="active_paddingBot_active_inactive_button">15dp</dimen>
+    <dimen name="radius_active_inactive_button">10dp</dimen>
+    <dimen name="active_paddingEnd_active_inactive_button">48dp</dimen>
+    <dimen name="inactive_paddingBot_active_inactive_button">15dp</dimen>
+    <dimen name="inactive_paddingEnd_active_inactive_button">43dp</dimen>
+    <dimen name="elevation_active_inactive_button">3dp</dimen>
+
+</resources>

@@ -39,6 +39,12 @@ interface ApiService {
     @POST("api/users/send-my-ad")
     fun sendMyAd(@Body request: SendMyAdRequest): Deferred<Unit>
 
+    @POST("api/my-ad-requests")
+    fun getMyAdRequests(): Deferred<Ads>
+
+    @POST("api/my-user-requests")
+    fun getMyUserRequests(): Deferred<List<User>>
+
     @GET("api/ads/{id}")
     fun getAd(@Query("id") id: String): Deferred<Ad>
 
