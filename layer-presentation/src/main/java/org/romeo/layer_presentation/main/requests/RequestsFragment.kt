@@ -43,8 +43,8 @@ class RequestsFragment :
             }
         }
 
-        binding.myUsersRecycler.layoutManager = LinearLayoutManager(requireContext())
-        binding.myUsersRecycler.adapter = listAdapter
+        binding.adsRecycler.layoutManager = LinearLayoutManager(requireContext())
+        binding.adsRecycler.adapter = listAdapter
 
         binding.activeInactiveButton.listenerState = this
     }

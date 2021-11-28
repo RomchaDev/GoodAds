@@ -11,7 +11,6 @@ class AdListItemFullViewModel(
 ) : BaseAdFullViewModel(navigator, useCase, adId) {
 
     override fun onBottomBtnPressed() {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
-
 }

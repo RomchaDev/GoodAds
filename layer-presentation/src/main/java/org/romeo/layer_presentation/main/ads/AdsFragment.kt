@@ -38,8 +38,8 @@ class AdsFragment :
             }
         }
 
-        binding.myUsersRecycler.layoutManager = LinearLayoutManager(requireContext())
-        binding.myUsersRecycler.adapter = listAdapter
+        binding.adsRecycler.layoutManager = LinearLayoutManager(requireContext())
+        binding.adsRecycler.adapter = listAdapter
     }
 
     override fun renderSuccess(data: Ads) {

@@ -10,6 +10,7 @@
     <string name="story_price_hint">Story price</string>
     <string name="ads">ads</string>
     <string name="home">home</string>
+    <string name="requests">requests</string>
     <string name="users">users</string>
     <string name="wishlist">wishlist</string>
     <string name="following">following</string>
@@ -23,5 +24,6 @@
     <string name="accept">Accept</string>
     <string name="ad_image">Ad Image</string>
     <string name="distribution">Distribution</string>
+    <string name="chose_ad_to_advertise_and_get_money">Chose ad to advertise and get money</string>
 
 </resources>
