@@ -1,6 +1,5 @@
 package org.romeo.layer_data.data_sources
 
-import android.util.Log
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -11,8 +10,8 @@ import org.romeo.layer_data.dto.SendMyAdRequest
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
-import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.user.User
+import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 
 class FakeApiDataSource : ApiDataSource {
     private val ads = mutableListOf<Ad>().apply {
@@ -105,7 +104,7 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun sendMyAd(request: SendMyAdRequest): Deferred<Unit> = runBlocking{
+    override fun applyMyAd(request: ApplyMyAdRequest): Deferred<Unit> = runBlocking {
         async { Unit }
     }
 

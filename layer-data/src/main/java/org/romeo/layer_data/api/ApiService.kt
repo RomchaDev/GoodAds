@@ -5,7 +5,7 @@ import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
-import org.romeo.layer_data.dto.SendMyAdRequest
+import org.romeo.layer_data.dto.ApplyMyAdRequest
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.user.User
@@ -37,7 +37,7 @@ interface ApiService {
     fun deleteAd(@Query("id") id: String): Deferred<Unit>
 
     @POST("api/users/send-my-ad")
-    fun sendMyAd(@Body request: SendMyAdRequest): Deferred<Unit>
+    fun applyMyAd(@Body request: ApplyMyAdRequest): Deferred<Unit>
 
     @POST("api/my-ad-requests")
     fun getMyAdRequests(): Deferred<Ads>
