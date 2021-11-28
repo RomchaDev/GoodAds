@@ -26,21 +26,16 @@ class UsersViewModel(
         navigator.subscribeToResult(object : NavigationResultListener<Ad> {
             override fun onNavigationResult(result: Ad?) {
                 chosenAd = result
-            }
-        }, CHOOSE_AD_KEY)
-
-        runAsync {
-            chosenAd?.let { adsRepository.advertiseMyAd(userId, it.id) }
-        }
-                runAsync {
-                    result?.id?.let { adId ->
-                        userIdChosen?.let { uid ->
-                            userRepository.applyMyAd(uid, adId)
+                result?.id?.let { adId ->
+                    userIdChosen?.let { uid ->
+                        runAsync {
+                            adsRepository.advertiseMyAd(uid, adId)
                         }
                     }
                 }
             }
         }, CHOOSE_AD_KEY)
+
     }
 
     fun onUserClicked(userId: String) {
@@ -50,5 +45,6 @@ class UsersViewModel(
 
     companion object {
         private var userIdChosen: String? = null
+        private var chosenAd: Ad? = null
     }
 }
