@@ -6,8 +6,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
-import org.romeo.repository.image.ImageLoadingListener
 import com.bumptech.glide.request.target.Target
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import java.net.URL
+
 
 class GlideImageLoader : ImageLoader<ImageView> {
     override fun loadImage(
@@ -35,5 +38,33 @@ class GlideImageLoader : ImageLoader<ImageView> {
                 ) = listener?.onLoadingSuccess(loadingCode) ?: false
             })
             .into(target)
+    }
+
+    override fun loadImage(
+        target: ImageView,
+        url: String,
+        imageInsertScope: CoroutineScope
+
+    ) {
+        val drawable = Glide.with(target.context)
+            .load(url)
+            .submit(500, 500).get()
+
+        imageInsertScope.launch {
+            target.setImageDrawable(drawable)
+        }
+    }
+
+    override fun getImageBytes(
+        url: String,
+    ): ByteArray {
+
+        val connection = URL(url).openConnection()
+        connection.connect()
+        val stream = connection.getInputStream()
+        val bytes = stream.readBytes()
+        stream.close()
+
+        return bytes
     }
 }

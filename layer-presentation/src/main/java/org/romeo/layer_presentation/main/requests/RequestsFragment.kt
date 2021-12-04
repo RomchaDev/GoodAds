@@ -31,13 +31,22 @@ class RequestsFragment :
         ) { binding, item ->
             if (item is UserAdsListItem.AdListItem && binding is ItemAdBinding) {
                 binding.data = item.ad
+
+                binding.root.setOnClickListener {
+                    item.ad.id?.let { id ->
+                        viewModel.onAdClicked(id)
+                    }
+                }
+
             } else if (item is UserAdsListItem.UserListItem && binding is LayoutUserBinding) {
                 binding.data = UserAdsListItem.UserListItem(item.user)
+                binding.etPostPrice.isFocusable = false
+                binding.etStoryPrice.isFocusable = false
             }
         }
 
-        binding.myUsersRecycler.layoutManager = LinearLayoutManager(requireContext())
-        binding.myUsersRecycler.adapter = listAdapter
+        binding.adsRecycler.layoutManager = LinearLayoutManager(requireContext())
+        binding.adsRecycler.adapter = listAdapter
 
         binding.activeInactiveButton.listenerState = this
     }

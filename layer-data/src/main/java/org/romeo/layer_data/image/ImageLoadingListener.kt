@@ -1,4 +1,4 @@
-package org.romeo.repository.image
+package org.romeo.layer_data.image
 
 interface ImageLoadingListener {
     fun onLoadingSuccess(loadingCode: Int?): Boolean

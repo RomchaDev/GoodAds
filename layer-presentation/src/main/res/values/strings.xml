@@ -10,18 +10,26 @@
     <string name="story_price_hint">Story price</string>
     <string name="ads">ads</string>
     <string name="home">home</string>
+    <string name="requests">requests</string>
+    <string name="users">users</string>
     <string name="wishlist">wishlist</string>
     <string name="following">following</string>
     <string name="posts">posts</string>
     <string name="followers">followers</string>
     <string name="create_ad">Create ad</string>
-    <string name="edit_ad">Edit</string>
+    <string name="edit_ad">Edit Ad</string>
     <string name="delete_ad">Delete</string>
     <string name="choose_the_ad">Choose the ad</string>
     <string name="app_name">Good Ads</string>
     <string name="accept">Accept</string>
     <string name="ad_image">Ad Image</string>
     <string name="distribution">Distribution</string>
-    <string name="user_wants_to_advertise">Wants to push your advertisement:</string>
+    <string name="chose_ad_to_advertise_and_get_money">Chose ad to advertise and get money</string>
+    <string name="ad_title">Ad Title</string>
+    <string name="ad_type">Ad Type</string>
+    <string name="description">Description</string>
+    <string name="create">Create</string>
+    <string name="select_image">Select Image</string>
+    <string name="apply">Apply</string>
 
 </resources>

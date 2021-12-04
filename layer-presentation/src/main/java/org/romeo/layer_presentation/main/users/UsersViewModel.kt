@@ -1,6 +1,7 @@
 package org.romeo.layer_presentation.main.users
 
 import org.romeo.layer_domain.entity.ad.Ad
+import org.romeo.layer_domain.repository_bounderies.AdsRepository
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_presentation.core.app_state.AppState
 
@@ -13,6 +14,7 @@ import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToCho
 class UsersViewModel(
     override val navigator: AppNavigator,
     private val userRepository: UserRepository,
+    private val adsRepository: AdsRepository,
     private val usersToChoseAdCommand: AnyToChoseAdCommand
 ) : BaseViewModel<UsersViewState>() {
 
@@ -20,22 +22,29 @@ class UsersViewModel(
         runAsync {
             mStateLiveData.postValue(AppState.Success(UsersViewState(userRepository.getUsers())))
         }
-    }
 
-    fun onUserClicked(userId: String) {
-        var chosenAd: Ad? = null
-
-        navigator.navigate(usersToChoseAdCommand)
         navigator.subscribeToResult(object : NavigationResultListener<Ad> {
             override fun onNavigationResult(result: Ad?) {
                 chosenAd = result
+                result?.id?.let { adId ->
+                    userIdChosen?.let { uid ->
+                        runAsync {
+                            adsRepository.advertiseMyAd(uid, adId)
+                        }
+                    }
+                }
             }
         }, CHOOSE_AD_KEY)
 
-        runAsync {
-            chosenAd?.let { userRepository.sendMyAd(userId, it.id) }
-        }
-
     }
 
+    fun onUserClicked(userId: String) {
+        navigator.navigate(usersToChoseAdCommand)
+        userIdChosen = userId
+    }
+
+    companion object {
+        private var userIdChosen: String? = null
+        private var chosenAd: Ad? = null
+    }
 }

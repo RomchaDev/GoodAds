@@ -6,7 +6,7 @@ import org.romeo.layer_data.data_sources.preferences.LoginResponseDataSourceLoca
 import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_data.dto.LoginRequest
-import org.romeo.layer_data.dto.SendMyAdRequest
+import org.romeo.layer_data.dto.ApplyAdRequest
 import org.romeo.layer_domain.entity.user.User
 
 class UserRepositoryImpl(
@@ -35,9 +35,6 @@ class UserRepositoryImpl(
 
     override suspend fun getToken() =
         loginResponseDataSource.get()?.token
-
-    override suspend fun sendMyAd(userId: String, adId: String) =
-        apiDataSource.sendMyAd(SendMyAdRequest(userId, adId)).await()
 
     override suspend fun getMyUserRequests() = apiDataSource.getMyUserRequests().await()
 

@@ -1,6 +1,7 @@
 package org.romeo.layer_data.image
 
-import org.romeo.repository.image.ImageLoadingListener
+import android.widget.ImageView
+import kotlinx.coroutines.CoroutineScope
 
 interface ImageLoader<T> {
     fun loadImage(
@@ -9,4 +10,14 @@ interface ImageLoader<T> {
         url: String,
         listener: ImageLoadingListener? = null
     )
+
+    fun loadImage(
+        target: ImageView,
+        url: String,
+        imageInsertScope: CoroutineScope
+    )
+
+    fun getImageBytes(
+        url: String
+    ): ByteArray
 }

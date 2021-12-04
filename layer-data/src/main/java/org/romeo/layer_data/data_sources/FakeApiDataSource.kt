@@ -1,16 +1,18 @@
 package org.romeo.layer_data.data_sources
 
+import android.util.Log
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import org.romeo.layer_data.dto.ChangePricesRequest
+import org.romeo.layer_data.dto.LoginRequest
+import org.romeo.layer_data.dto.LoginResponse
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
-import org.romeo.layer_data.dto.LoginRequest
-import org.romeo.layer_data.dto.LoginResponse
-import org.romeo.layer_data.dto.SendMyAdRequest
+import org.romeo.layer_data.dto.ApplyAdRequest
 import org.romeo.layer_domain.entity.user.User
+import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 
 class FakeApiDataSource : ApiDataSource {
     private val ads = mutableListOf<Ad>().apply {
@@ -32,7 +34,9 @@ class FakeApiDataSource : ApiDataSource {
                             "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
 
 
-                    ), "UID_$i"
+                    ), "UID_$i",
+                    "300$",
+                    11
                 )
             )
         }
@@ -103,13 +107,24 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun sendMyAd(request: SendMyAdRequest): Deferred<Unit> = runBlocking {
+    override fun advertiseMyAd(request: ApplyAdRequest): Deferred<Unit> = runBlocking {
+        async { Unit }
+    }
+
+    override fun advertiseOtherAd(adId: String): Deferred<Unit> = runBlocking {
         async { Unit }
     }
 
     override fun getAd(id: String) = runBlocking {
         async {
             ads.find { ad -> ad.id == id }!!
+        }
+    }
+
+    override fun createEditAd(createEditAd: CreateEditAdEntity): Deferred<Unit> = runBlocking {
+        async {
+            Log.d(TAG, "createEditAd: ad id:${createEditAd.ad.id}")
+            Unit
         }
     }
 
@@ -130,4 +145,8 @@ class FakeApiDataSource : ApiDataSource {
         async { listOf(user, user2) }
     }
 
+
+    companion object {
+        private const val TAG = "FAKE_API_DATA_SOURCE_TAG"
+    }
 }

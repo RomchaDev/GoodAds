@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="org.romeo.layer_presentation.main.create_edit_ad.CreateEditAdViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/app_bar"
+                    style="@style/HeaderTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/app_name"
+                    android:textSize="20sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/tv_select_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_image"
+                    android:layout_marginStart="168dp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/black" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/vp_images"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp" />
+
+                <me.relex.circleindicator.CircleIndicator3
+                    android:id="@+id/indicator"
+                    android:layout_width="120dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    app:ci_drawable="@color/black"
+                    app:ci_gravity="center"
+                    app:layout_constraintEnd_toStartOf="@id/accept_image"
+                    app:layout_constraintStart_toEndOf="@id/iv_grid"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/ad_title"
+                    app:layout_constraintEnd_toEndOf="@+id/logo_text"
+                    app:layout_constraintStart_toStartOf="@+id/logo_text"
+                    app:layout_constraintTop_toBottomOf="@+id/username_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/EditTextPrimary"
+                        android:text="@={viewModel.ad.title}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_edit_text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_type"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:labelFor="@id/type_auto_complete"
+                    android:hint="@string/ad_type"
+                    app:layout_constraintEnd_toEndOf="@+id/logo_text"
+                    app:layout_constraintStart_toStartOf="@+id/logo_text"
+                    app:layout_constraintTop_toBottomOf="@+id/username_text">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/type_auto_complete"
+                        style="@style/EditTextPrimary"
+                        android:text="@={viewModel.ad.typeStr}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_edit_text"
+                        android:inputType="none" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/description"
+                    app:layout_constraintEnd_toEndOf="@+id/logo_text"
+                    app:layout_constraintStart_toStartOf="@+id/logo_text"
+                    app:layout_constraintTop_toBottomOf="@+id/username_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:gravity="top|left"
+                        style="@style/EditTextPrimary"
+                        android:layout_width="match_parent"
+                        android:text="@={viewModel.ad.description}"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_edit_text"
+                        android:inputType="textMultiLine" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:onClick="@{viewModel::onCreateAdClicked}"
+            android:id="@+id/btn_accept"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="0.09"
+            android:text="@string/apply"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</layout>

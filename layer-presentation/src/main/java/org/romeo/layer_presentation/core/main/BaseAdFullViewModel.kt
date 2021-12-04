@@ -1,15 +1,14 @@
-package org.romeo.layer_presentation.main.ad_screen
+package org.romeo.layer_presentation.core.main
 
 import org.romeo.layer_domain.entity.AdUser
 import org.romeo.layer_domain.use_cases.GetAdUserUseCase
 import org.romeo.layer_presentation.core.app_state.AppState
-import org.romeo.layer_presentation.core.main.BaseViewModel
 import org.romeo.layer_presentation.core.navigation.AppNavigator
 
-class AdFullViewModel(
+abstract class BaseAdFullViewModel (
     override val navigator: AppNavigator,
     private val useCase: GetAdUserUseCase,
-    private val adId: String
+    protected val adId: String
 ) : BaseViewModel<AdUser>() {
 
     override fun onViewInit() {
@@ -19,11 +18,6 @@ class AdFullViewModel(
         }
     }
 
-    fun onAcceptPressed() {
+    abstract fun onBottomBtnPressed()
 
-    }
-
-    fun onDistributionPressed() {
-
-    }
 }

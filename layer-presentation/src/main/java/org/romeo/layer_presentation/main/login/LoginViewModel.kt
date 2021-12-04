@@ -14,6 +14,9 @@ class LoginViewModel(
 
     fun onLoginPressed(login: String, password: String) = runAsync {
         userRepository.login(login, password)
-        navigator.navigate(loginToHomeCommand)
+    }.invokeOnCompletion {
+        runOnMainThread {
+            navigator.navigate(loginToHomeCommand)
+        }
     }
 }

@@ -2,7 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/fragment_users"
-        android:icon="@drawable/ic_list"
+        android:icon="@drawable/ic_users"
+        android:title="@string/users" />
+
+    <item
+        android:id="@+id/fragment_ads"
+        android:icon="@drawable/ic_ads"
         android:title="@string/ads" />
 
     <item
@@ -13,6 +18,6 @@
     <item
         android:id="@+id/fragment_requests"
         android:icon="@drawable/ic_bell"
-        android:title="@string/wishlist" />
+        android:title="@string/requests" />
 
 </menu>

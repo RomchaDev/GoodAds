@@ -3,6 +3,7 @@ package org.romeo.layer_presentation.main.ad_screen
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import org.romeo.layer_presentation.core.view.loadImage
 import org.romeo.layer_presentation.databinding.ItemViewPagerAdBinding
 
 class AdViewPagerAdapter(
@@ -26,7 +27,7 @@ class AdViewPagerAdapter(
     }
 
     override fun onBindViewHolder(holder: AdViewPagerViewHolder, position: Int) {
-        holder.binding.imageUrl = images[position]
+        loadImage(holder.binding.ivAd, this.images[position])
     }
 
     override fun getItemCount(): Int = images.size
