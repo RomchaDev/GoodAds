@@ -27,6 +27,7 @@ import org.romeo.layer_presentation.main.requests.RequestsViewModel
 import org.romeo.layer_presentation.main.choose_ad_screen.ChooseAdViewModel
 import org.romeo.layer_presentation.main.create_edit_ad.CreateEditAdViewModel
 import org.romeo.layer_presentation.main.login.LoginViewModel
+import org.romeo.layer_presentation.main.user_request_full.UserRequestViewModel
 import org.romeo.layer_presentation.main.users.UsersViewModel
 
 val viewModelModule = module {
@@ -35,8 +36,9 @@ val viewModelModule = module {
     viewModel { UsersViewModel(get(), get(), get(), get()) }
     viewModel { ChooseAdViewModel(get(), get()) }
     viewModel { (adId: String) -> MyAdFullViewModel(get(), get(), adId) }
-    viewModel { RequestsViewModel(get(), get(), get(), get()) }
+    viewModel { RequestsViewModel(get(), get(), get(), get(), get()) }
     viewModel { (adId: String) -> AdRequestViewModel(get(), get(), adId) }
+    viewModel { (userId: String) -> UserRequestViewModel(get(), get(), userId) }
     viewModel { AdsViewModel(get(), get(), get()) }
     viewModel { (ad: Ad) -> CreateEditAdViewModel(get(), ad) }
     viewModel { (adId: String) -> AdListItemFullViewModel(get(), get(), get(), adId) }
@@ -51,6 +53,7 @@ val navigationModule = module {
     factory<AnyToAdFullCommand> { AnyToAdFullCommandImpl() }
     factory<AnyToCreateEditAdCommand> { AnyToCreateEditAdCommandImpl() }
     factory<RequestsToAdRequestCommand> { RequestsToAdRequestCommandImpl() }
+    factory<RequestsToUserRequestCommand> { RequestsToUserRequestCommandImpl() }
     factory<AdsToAdListItemFullCommand> { AdsToAdListItemFullCommandImpl() }
 }
 

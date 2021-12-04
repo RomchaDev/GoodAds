@@ -11,6 +11,7 @@ import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.ApplyAdRequest
+import org.romeo.layer_domain.entity.AdUser
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 
@@ -111,7 +112,7 @@ class FakeApiDataSource : ApiDataSource {
         async { Unit }
     }
 
-    override fun advertiseOtherAd(adId: String): Deferred<Unit> = runBlocking {
+    override fun advertiseOtherAd(id: String): Deferred<Unit> = runBlocking {
         async { Unit }
     }
 
@@ -145,6 +146,9 @@ class FakeApiDataSource : ApiDataSource {
         async { listOf(user, user2) }
     }
 
+    override fun getMyUserRequest(userId: String): Deferred<AdUser> = runBlocking {
+        async { AdUser(ads[0], getUser(userId).await()) }
+    }
 
     companion object {
         private const val TAG = "FAKE_API_DATA_SOURCE_TAG"

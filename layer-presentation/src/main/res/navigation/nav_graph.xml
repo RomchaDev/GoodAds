@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_fragment_requests_to_adRequestFragment"
             app:destination="@id/adRequestFragment" />
+        <action
+            android:id="@+id/action_fragment_requests_to_userRequestFragment"
+            app:destination="@id/userRequestFragment" />
     </fragment>
     <fragment
         android:id="@+id/adRequestFragment"
@@ -74,5 +77,9 @@
         android:id="@+id/adListItemFullFragment"
         android:name="org.romeo.layer_presentation.main.ad_list_item_full.AdListItemFullFragment"
         android:label="AdListItemFullFragment" />
+    <fragment
+        android:id="@+id/userRequestFragment"
+        android:name="org.romeo.layer_presentation.main.user_request_full.UserRequestFragment"
+        android:label="UserRequestFragment" />
 
 </navigation>

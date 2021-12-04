@@ -8,14 +8,17 @@ import org.romeo.layer_presentation.core.app_state.AppState
 import org.romeo.layer_presentation.core.main.BaseViewModel
 import org.romeo.layer_presentation.core.navigation.AD_FULL_KEY
 import org.romeo.layer_presentation.core.navigation.AppNavigator
+import org.romeo.layer_presentation.core.navigation.USER_FULL_KEY
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToAdFullCommand
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.RequestsToAdRequestCommand
+import org.romeo.layer_presentation.core.navigation.commands.interfaces.RequestsToUserRequestCommand
 
 class RequestsViewModel(
     override val navigator: AppNavigator,
     private val adsRepository: AdsRepository,
     private val userRepository: UserRepository,
-    private val adRequestCommand: RequestsToAdRequestCommand
+    private val adRequestCommand: RequestsToAdRequestCommand,
+    private val userRequestCommand: RequestsToUserRequestCommand
 ) : BaseViewModel<RequestsViewState>() {
 
     override fun onViewInit() {
@@ -50,6 +53,13 @@ class RequestsViewModel(
         navigator.navigate(
             adRequestCommand,
             Bundle().apply { putString(AD_FULL_KEY, id) }
+        )
+    }
+
+    fun onUserClicked(id: String) {
+        navigator.navigate(
+            userRequestCommand,
+            Bundle().apply { putString(USER_FULL_KEY, id) }
         )
     }
 

@@ -42,6 +42,10 @@ class RequestsFragment :
                 binding.data = UserAdsListItem.UserListItem(item.user)
                 binding.etPostPrice.isFocusable = false
                 binding.etStoryPrice.isFocusable = false
+
+                binding.root.setOnClickListener {
+                    viewModel.onUserClicked(item.user.id)
+                }
             }
         }
 

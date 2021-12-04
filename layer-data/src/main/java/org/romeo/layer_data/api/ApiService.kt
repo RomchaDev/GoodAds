@@ -6,6 +6,7 @@ import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
 import org.romeo.layer_data.dto.ApplyAdRequest
+import org.romeo.layer_domain.entity.AdUser
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.user.User
@@ -40,10 +41,13 @@ interface ApiService {
     fun advertiseMyAd(@Body request: ApplyAdRequest): Deferred<Unit>
 
     @POST("api/users/send-other-ad/{id}")
-    fun advertiseOtherAd(@Query("id") adId: String): Deferred<Unit>
+    fun advertiseOtherAd(@Query("id") id: String): Deferred<Unit>
 
-    @POST("api/my-ad-requests")
+    @GET("api/my-ad-requests")
     fun getMyAdRequests(): Deferred<Ads>
+
+    @GET("api/my-user-requests/{userId}")
+    fun getMyUserRequest(@Query("userId") userId: String): Deferred<AdUser>
 
     @POST("api/my-user-requests")
     fun getMyUserRequests(): Deferred<List<User>>
