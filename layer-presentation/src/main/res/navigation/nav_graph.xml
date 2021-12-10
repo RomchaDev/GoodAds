@@ -38,7 +38,11 @@
     <fragment
         android:id="@+id/adFullFragment"
         android:name="org.romeo.layer_presentation.main.ad_screen.MyAdFullFragment"
-        android:label="AdFullFragment" />
+        android:label="AdFullFragment" >
+        <action
+            android:id="@+id/action_adFullFragment_to_createDistributionDialogFragment"
+            app:destination="@id/createDistributionDialogFragment" />
+    </fragment>
     <action
         android:id="@+id/action_global_adFullFragment"
         app:destination="@id/adFullFragment" />
@@ -74,5 +78,9 @@
         android:id="@+id/adListItemFullFragment"
         android:name="org.romeo.layer_presentation.main.ad_list_item_full.AdListItemFullFragment"
         android:label="AdListItemFullFragment" />
+    <dialog
+        android:id="@+id/createDistributionDialogFragment"
+        android:name="org.romeo.layer_presentation.main.create_distribution.CreateDistributionDialogFragment"
+        android:label="CreateDistributionDialogFragment" />
 
 </navigation>

@@ -8,6 +8,7 @@ import org.romeo.layer_data.dto.LoginResponse
 import org.romeo.layer_data.dto.ApplyAdRequest
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
+import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.User
 import retrofit2.http.*
 
@@ -51,6 +52,9 @@ interface ApiService {
     @GET("api/ads/{id}")
     fun getAd(@Query("id") id: String): Deferred<Ad>
 
-    @POST
+    @POST("api/ads/create-edit")
     fun createEditAd(@Body createEditAd: CreateEditAdEntity): Deferred<Unit>
+
+    @POST("api/distribution/create")
+    fun createDistribution(@Body distribution: Distribution): Deferred<Unit>
 }

@@ -25,6 +25,7 @@ import org.romeo.layer_presentation.main.ad_screen.MyAdFullViewModel
 import org.romeo.layer_presentation.main.ads.AdsViewModel
 import org.romeo.layer_presentation.main.requests.RequestsViewModel
 import org.romeo.layer_presentation.main.choose_ad_screen.ChooseAdViewModel
+import org.romeo.layer_presentation.main.create_distribution.CreateDistributionViewModel
 import org.romeo.layer_presentation.main.create_edit_ad.CreateEditAdViewModel
 import org.romeo.layer_presentation.main.login.LoginViewModel
 import org.romeo.layer_presentation.main.users.UsersViewModel
@@ -34,24 +35,25 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get(), get(), get(), get(), get(), get()) }
     viewModel { UsersViewModel(get(), get(), get(), get()) }
     viewModel { ChooseAdViewModel(get(), get()) }
-    viewModel { (adId: String) -> MyAdFullViewModel(get(), get(), adId) }
+    viewModel { (adId: String) -> MyAdFullViewModel(get(), get(), get(), adId) }
     viewModel { RequestsViewModel(get(), get(), get(), get()) }
     viewModel { (adId: String) -> AdRequestViewModel(get(), get(), adId) }
     viewModel { AdsViewModel(get(), get(), get()) }
     viewModel { (ad: Ad) -> CreateEditAdViewModel(get(), ad) }
     viewModel { (adId: String) -> AdListItemFullViewModel(get(), get(), get(), adId) }
+    viewModel { CreateDistributionViewModel(get(), get()) }
 }
 
 val navigationModule = module {
     single { AndroidNavigator() }
     single<AppNavigator> { get<AndroidNavigator>() }
-
     factory<LoginToHomeCommand> { LoginToHomeCommandImpl() }
     factory<AnyToChoseAdCommand> { AnyToChoseAdCommandImpl() }
     factory<AnyToAdFullCommand> { AnyToAdFullCommandImpl() }
     factory<AnyToCreateEditAdCommand> { AnyToCreateEditAdCommandImpl() }
     factory<RequestsToAdRequestCommand> { RequestsToAdRequestCommandImpl() }
     factory<AdsToAdListItemFullCommand> { AdsToAdListItemFullCommandImpl() }
+    factory<AdFullToDistributionCommand> { AdFullToDistributionCommandImpl() }
 }
 
 val mapperModule = module {

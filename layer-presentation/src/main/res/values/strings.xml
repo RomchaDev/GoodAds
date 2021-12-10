@@ -32,6 +32,9 @@
     <string name="select_image">Select Image</string>
     <string name="apply">Apply</string>
     <string name="create_distribution">Create Distribution</string>
-    <string name="create_distribution_description">If you enter data and press \'Create\' your ad will be sent to all users of Good Ads.</string>
+    <string name="create_distribution_description">If you enter data and press \'Create\' your ad will be sent to all users of Good Ads, after you complete a payment</string>
+    <string name="cancel">Cancel</string>
+    <string name="price_for_one_ad">Price for one ad</string>
+    <string name="advertisers_number">Advertisers number</string>
 
 </resources>

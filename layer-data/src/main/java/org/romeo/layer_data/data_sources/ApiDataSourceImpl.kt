@@ -7,6 +7,7 @@ import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.ApplyAdRequest
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
+import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.User
 
 class ApiDataSourceImpl(
@@ -41,4 +42,7 @@ class ApiDataSourceImpl(
     override fun getMyAdRequests(): Deferred<Ads> = service.getMyAdRequests()
 
     override fun getMyUserRequests(): Deferred<List<User>> = service.getMyUserRequests()
+
+    override fun createDistribution(distribution: Distribution) = service.createDistribution(distribution)
+
 }

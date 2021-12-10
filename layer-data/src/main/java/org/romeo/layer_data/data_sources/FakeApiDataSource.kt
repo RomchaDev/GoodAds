@@ -13,6 +13,7 @@ import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.ApplyAdRequest
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
+import org.romeo.layer_domain.entity.distribution.Distribution
 
 class FakeApiDataSource : ApiDataSource {
     private val ads = mutableListOf<Ad>().apply {
@@ -145,6 +146,11 @@ class FakeApiDataSource : ApiDataSource {
         async { listOf(user, user2) }
     }
 
+    override fun createDistribution(distribution: Distribution) = runBlocking {
+        async {
+            //Creating a distribution
+        }
+    }
 
     companion object {
         private const val TAG = "FAKE_API_DATA_SOURCE_TAG"

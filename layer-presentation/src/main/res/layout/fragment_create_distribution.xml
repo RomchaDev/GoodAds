@@ -1,41 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="400dp"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minWidth="350dp"
+        android:background="@drawable/bg_dialog"
+        android:minHeight="320dp"
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <TextView
-            android:layout_marginStart="8dp"
+            style="@style/HeaderTextView"
             android:layout_width="wrap_content"
-            style="@style/DescriptionTextView"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/create_distribution"
             android:textColor="@color/black_dark"
-            android:textSize="18sp"
-            android:text="@string/create_distribution_description"
-            android:maxLines="4"
+            android:textSize="25sp" />
+
+        <TextView
+            style="@style/DescriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:layout_marginStart="8dp"
             android:lines="4"
-            android:layout_height="70dp"/>
+            android:maxLines="4"
+            android:text="@string/create_distribution_description"
+            android:textColor="@color/black_dark"
+            android:textSize="17sp" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:baselineAligned="false"
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_post_price"
+                android:id="@+id/et_price_for_one_ad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:hint="@string/post_price_hint"
+                android:hint="@string/price_for_one_ad"
                 app:layout_constraintEnd_toEndOf="@+id/logo_text"
                 app:layout_constraintStart_toStartOf="@+id/logo_text"
                 app:layout_constraintTop_toBottomOf="@+id/username_text">
@@ -51,15 +64,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_story_price"
+                android:id="@+id/et_advertisers_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
-                android:hint="@string/story_price_hint"
+                android:hint="@string/advertisers_number"
                 app:layout_constraintEnd_toEndOf="@+id/logo_text"
                 app:layout_constraintStart_toStartOf="@+id/logo_text"
                 app:layout_constraintTop_toBottomOf="@+id/username_text">
@@ -76,10 +88,12 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_login"
+            android:layout_marginStart="4dp"
+            android:id="@+id/btn_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
             android:backgroundTint="#3897f0"
             android:padding="16dp"
             android:text="@string/create"
@@ -87,31 +101,19 @@
             android:textColor="@color/white"
             app:cornerRadius="4dp" />
 
-
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="#3897f0"
+            android:padding="16dp"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:cornerRadius="4dp" />
 
     </LinearLayout>
 
-
-
-<!--
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_title"
-        constraintSta
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:hint="@string/ad_title" >
-
-        <com.google.android.material.textfield.TextInputEditText
-            style="@style/EditTextPrimary"
-            android:text="@={viewModel.ad.title}"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_edit_text" />
-    </com.google.android.material.textfield.TextInputLayout>
--->
-
-
-</FrameLayout>
+</layout>

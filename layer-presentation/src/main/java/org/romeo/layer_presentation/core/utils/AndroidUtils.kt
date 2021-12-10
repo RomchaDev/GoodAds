@@ -1,7 +1,9 @@
 package org.romeo.layer_presentation.core.utils
 
 import android.content.Context
+import android.content.res.Resources
 import android.net.Uri
+import android.util.TypedValue
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 
@@ -16,6 +18,12 @@ fun Uri.getByteArray(context: Context): ByteArray? {
 
     return fileByte
 }
+
+val Number.toPx get() = TypedValue.applyDimension(
+    TypedValue.COMPLEX_UNIT_DIP,
+    this.toFloat(),
+    Resources.getSystem().displayMetrics)
+
 
 private fun getBytes(inputStream: InputStream): ByteArray? {
 
