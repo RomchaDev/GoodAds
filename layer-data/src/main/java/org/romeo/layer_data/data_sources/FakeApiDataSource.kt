@@ -11,6 +11,7 @@ import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.ApplyAdRequest
+import org.romeo.layer_domain.entity.AdUser
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.distribution.Distribution
@@ -150,6 +151,9 @@ class FakeApiDataSource : ApiDataSource {
         async {
             //Creating a distribution
         }
+    }
+    override fun getMyUserRequest(userId: String): Deferred<AdUser> = runBlocking {
+        async { AdUser(ads[0], getUser(userId).await()) }
     }
 
     companion object {

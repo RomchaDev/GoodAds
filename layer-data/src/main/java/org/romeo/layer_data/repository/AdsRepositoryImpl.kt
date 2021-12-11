@@ -2,7 +2,6 @@ package org.romeo.layer_data.repository
 
 import org.romeo.layer_data.data_sources.ApiDataSource
 import org.romeo.layer_data.dto.ApplyAdRequest
-import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
@@ -24,4 +23,7 @@ class AdsRepositoryImpl(
 
     override suspend fun advertiseOtherAd(adId: String) =
         apiDataSource.advertiseOtherAd(adId).await()
+
+    override suspend fun getMyUserRequest(userId: String) =
+        apiDataSource.getMyUserRequest(userId).await()
 }

@@ -78,6 +78,10 @@
         android:id="@+id/adListItemFullFragment"
         android:name="org.romeo.layer_presentation.main.ad_list_item_full.AdListItemFullFragment"
         android:label="AdListItemFullFragment" />
+    <fragment
+        android:id="@+id/userRequestFragment"
+        android:name="org.romeo.layer_presentation.main.user_request_full.UserRequestFragment"
+        android:label="UserRequestFragment" />
     <dialog
         android:id="@+id/createDistributionDialogFragment"
         android:name="org.romeo.layer_presentation.main.create_distribution.CreateDistributionDialogFragment"
