@@ -9,15 +9,17 @@ import kotlinx.coroutines.launch
 import org.romeo.layer_data.image.GlideImageLoader
 
 @BindingAdapter("load_image")
-fun loadImage(img: ImageView, url: String) {
-    val loader = GlideImageLoader()
+fun loadImage(img: ImageView, url: String?) {
+    url?.let {
+        val loader = GlideImageLoader()
 
-    imageLoadingCoroutineScope.launch {
-        loader.loadImage(
-            target = img,
-            url = url,
-            imageInsertCoroutineScope
-        )
+        imageLoadingCoroutineScope.launch {
+            loader.loadImage(
+                target = img,
+                url = url,
+                imageInsertCoroutineScope
+            )
+        }
     }
 }
 
