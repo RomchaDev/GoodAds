@@ -11,10 +11,13 @@
             layout="@layout/layout_user" />
 
         <TextView
-            style="@style/HeaderTextView"
+            android:id="@+id/bottom_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/white"
             android:text="@string/user_wants_to_advertise" />
 
         <include
@@ -23,8 +26,9 @@
 
         <Button
             android:id="@+id/btn_accept"
+            android:layout_margin="16dp"
             style="@style/AppButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/accept" />
