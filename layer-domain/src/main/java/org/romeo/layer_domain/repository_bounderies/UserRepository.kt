@@ -10,4 +10,5 @@ interface UserRepository {
     suspend fun getUsers(): List<User>
     suspend fun getToken(): String?
     suspend fun getMyUserRequests(): List<User>
+    suspend fun declineUser(userId: String)
 }

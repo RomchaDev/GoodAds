@@ -26,4 +26,7 @@ class AdsRepositoryImpl(
 
     override suspend fun getMyUserRequest(userId: String) =
         apiDataSource.getMyUserRequest(userId).await()
+
+    override suspend fun declineAd(adId: String) =
+        apiDataSource.declineAd(adId).await()
 }

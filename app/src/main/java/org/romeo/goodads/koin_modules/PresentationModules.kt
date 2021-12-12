@@ -37,7 +37,7 @@ val viewModelModule = module {
     viewModel { UsersViewModel(get(), get(), get(), get()) }
     viewModel { ChooseAdViewModel(get(), get()) }
     viewModel { (adId: String) -> MyAdFullViewModel(get(), get(), get(), adId) }
-    viewModel { RequestsViewModel(get(), get(), get(), get()) }
+    viewModel { RequestsViewModel(get(), get(), get(), get(), get()) }
     viewModel { (adId: String) -> AdRequestViewModel(get(), get(), adId) }
     viewModel { (userId: String) -> UserRequestViewModel(get(), get(), userId) }
     viewModel { AdsViewModel(get(), get(), get()) }
@@ -57,6 +57,7 @@ val navigationModule = module {
     factory<RequestsToAdRequestCommand> { RequestsToAdRequestCommandImpl() }
     factory<RequestsToUserRequestCommand> { RequestsToUserRequestCommandImpl() }
     factory<AdsToAdListItemFullCommand> { AdsToAdListItemFullCommandImpl() }
+    factory<AdFullToDistributionCommand> { AdFullToDistributionCommandImpl() }
 }
 
 val mapperModule = module {

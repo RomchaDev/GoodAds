@@ -38,4 +38,6 @@ class UserRepositoryImpl(
 
     override suspend fun getMyUserRequests() = apiDataSource.getMyUserRequests().await()
 
+    override suspend fun declineUser(userId: String) =
+        apiDataSource.declineUser(userId).await()
 }

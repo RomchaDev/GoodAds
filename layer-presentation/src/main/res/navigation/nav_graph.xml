@@ -61,6 +61,9 @@
         <action
             android:id="@+id/action_fragment_requests_to_adRequestFragment"
             app:destination="@id/adRequestFragment" />
+        <action
+            android:id="@+id/action_fragment_requests_to_userRequestFragment"
+            app:destination="@id/userRequestFragment" />
     </fragment>
     <fragment
         android:id="@+id/adRequestFragment"

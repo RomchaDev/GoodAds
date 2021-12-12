@@ -113,7 +113,7 @@ class FakeApiDataSource : ApiDataSource {
         async { Unit }
     }
 
-    override fun advertiseOtherAd(adId: String): Deferred<Unit> = runBlocking {
+    override fun advertiseOtherAd(id: String): Deferred<Unit> = runBlocking {
         async { Unit }
     }
 
@@ -152,8 +152,19 @@ class FakeApiDataSource : ApiDataSource {
             //Creating a distribution
         }
     }
-    override fun getMyUserRequest(userId: String): Deferred<AdUser> = runBlocking {
+    override fun getMyUserRequest(userId: String) = runBlocking {
         async { AdUser(ads[0], getUser(userId).await()) }
+    }
+
+    override fun declineAd(adId: String) = runBlocking {
+        async {
+            //Declining an ad
+        }
+    }
+    override fun declineUser(userId: String) = runBlocking {
+        async {
+            //Declining a user
+        }
     }
 
     companion object {

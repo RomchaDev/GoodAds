@@ -61,4 +61,10 @@ interface ApiService {
 
     @POST("api/distribution/create")
     fun createDistribution(@Body distribution: Distribution): Deferred<Unit>
+
+    @DELETE("api/ads/decline/{id}")
+    fun declineAd(@Query("id") adId: String): Deferred<Unit>
+
+    @DELETE("api/users/decline/{id}")
+    fun declineUser(@Query("id") userId: String): Deferred<Unit>
 }

@@ -21,32 +21,42 @@ class RequestsViewModel(
     private val userRequestCommand: RequestsToUserRequestCommand
 ) : BaseViewModel<RequestsViewState>() {
 
+    var items = mutableListOf<UserAdsListItem>()
+
     override fun onViewInit() {
         getAdRequests()
     }
 
     fun getAdRequests() {
         runAsync {
-            val list: MutableList<UserAdsListItem.AdListItem> = mutableListOf()
+            val list: MutableList<UserAdsListItem> = mutableListOf()
 
             adsRepository.getMyAdRequests().adsList.forEach {
                 list.add(UserAdsListItem.AdListItem(it))
             }
 
-            mStateLiveData.postValue(AppState.Success(RequestsViewState(list)))
+            updateList(list)
+
+            items = list
         }
     }
 
     fun getUserRequests() {
         runAsync {
-            val list: MutableList<UserAdsListItem.UserListItem> = mutableListOf()
+            val list: MutableList<UserAdsListItem> = mutableListOf()
 
             userRepository.getMyUserRequests().forEach {
                 list.add(UserAdsListItem.UserListItem(it))
             }
 
-            mStateLiveData.postValue(AppState.Success(RequestsViewState(list)))
+            updateList(list)
+
+            items = list
         }
+    }
+
+    private fun updateList(list: MutableList<UserAdsListItem>) {
+        mStateLiveData.postValue(AppState.Success(RequestsViewState(list)))
     }
 
     fun onAdClicked(id: String) {
@@ -56,11 +66,30 @@ class RequestsViewModel(
         )
     }
 
+    fun declineUser(userId: String) {
+        runAsync {
+            userRepository.declineUser(userId)
+            val itemsNew = items.toMutableList()
+            itemsNew.removeIf { (it as UserAdsListItem.UserListItem).user.id == userId }
+            updateList(itemsNew)
+            items = itemsNew
+        }
+    }
+
+    fun declineAd(adId: String) {
+        runAsync {
+            adsRepository.declineAd(adId)
+            val itemsNew = items.toMutableList()
+            itemsNew.removeIf { (it as UserAdsListItem.AdListItem).ad.id == adId }
+            updateList(itemsNew)
+            items = itemsNew
+        }
+    }
+
     fun onUserClicked(id: String) {
         navigator.navigate(
             userRequestCommand,
             Bundle().apply { putString(USER_FULL_KEY, id) }
         )
     }
-
 }

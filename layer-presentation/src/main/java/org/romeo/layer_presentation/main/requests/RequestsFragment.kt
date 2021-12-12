@@ -2,6 +2,7 @@ package org.romeo.layer_presentation.main.requests
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.main.BaseFragment
@@ -29,6 +30,26 @@ class RequestsFragment :
                 UserAdsListItem.USER_VIEW_TYPE to R.layout.layout_user
             )
         ) { binding, item ->
+
+            binding.root.setOnLongClickListener { view ->
+                val menu = PopupMenu(requireContext(), view)
+                menu.inflate(R.menu.delete_menu)
+
+                menu.setOnMenuItemClickListener { menuItem ->
+                    if (menuItem.itemId == R.id.delete) {
+                        if (item is UserAdsListItem.AdListItem && binding is ItemAdBinding)
+                            item.ad.id?.let { adId -> viewModel.declineAd(adId) }
+                        else if (item is UserAdsListItem.UserListItem && binding is LayoutUserBinding) {
+                            viewModel.declineUser(item.user.id)
+                        }
+                        true
+                    } else false
+                }
+
+                menu.show()
+                true
+            }
+
             if (item is UserAdsListItem.AdListItem && binding is ItemAdBinding) {
                 binding.data = item.ad
 

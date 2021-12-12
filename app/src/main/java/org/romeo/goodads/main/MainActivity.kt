@@ -38,7 +38,8 @@ class MainActivity : NavigationContainerActivity(
                 destination.id == R.id.createEditAdFragment ||
                 destination.id == R.id.createEditAdFragment ||
                 destination.id == R.id.adListItemFullFragment ||
-                destination.id == R.id.adRequestFragment
+                destination.id == R.id.adRequestFragment ||
+                destination.id == R.id.userRequestFragment
             ) {
                 binding?.bottomNavigation?.visibility = View.GONE
                 bottomNavigationView.visibility = View.GONE
