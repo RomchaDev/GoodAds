@@ -17,7 +17,7 @@ class AdsViewModel(
 
     override fun onViewInit() {
         runAsync {
-            mStateLiveData.postValue(AppState.Success(adsRepository.getOtherAds()))
+            mSharedFlow.emit(AppState.Success(adsRepository.getOtherAds()))
         }
     }
 

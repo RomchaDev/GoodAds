@@ -14,7 +14,7 @@ abstract class BaseAdFullViewModel (
     override fun onViewInit() {
         runAsync {
             val adUser = useCase.execute(adId)
-            mStateLiveData.postValue(AppState.Success(adUser))
+            mSharedFlow.emit(AppState.Success(adUser))
         }
     }
 

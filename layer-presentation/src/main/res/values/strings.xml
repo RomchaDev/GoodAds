@@ -37,5 +37,6 @@
     <string name="price_for_one_ad">Price for one ad</string>
     <string name="advertisers_number">Advertisers number</string>
     <string name="user_wants_to_advertise">Wants to push your advertisement</string>
+    <string name="ok">Ok</string>
 
 </resources>

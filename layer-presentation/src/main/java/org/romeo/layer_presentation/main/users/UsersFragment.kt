@@ -3,6 +3,7 @@ package org.romeo.layer_presentation.main.users
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.main.BaseFragment
 import org.romeo.layer_presentation.databinding.FragmentUsersBinding
@@ -45,4 +46,10 @@ class UsersFragment :
         super.renderSuccess(data)
     }
 
+    override fun showMessage(message: String) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setMessage(message)
+            .setNeutralButton(R.string.ok, null)
+            .show()
+    }
 }

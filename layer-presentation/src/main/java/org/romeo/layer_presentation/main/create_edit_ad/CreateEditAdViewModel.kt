@@ -17,7 +17,7 @@ class CreateEditAdViewModel(
 
     override fun onViewInit() {
         runAsync {
-            mStateLiveData.postValue(AppState.Success(ImagesUrlsViewState(ad.imageUrls)))
+            mSharedFlow.emit(AppState.Success(ImagesUrlsViewState(ad.imageUrls)))
         }
     }
 
@@ -27,11 +27,13 @@ class CreateEditAdViewModel(
             navigator.setResult(CREATE_AD_OUT, CreateEditAdEntity(ad, images))
             navigator.back()
         } else {
-            mStateLiveData.postValue(
-                AppState.Error(
-                    RuntimeException("There should been at least one image chosen")
+            runOnMainThread {
+                mSharedFlow.emit(
+                    AppState.Error(
+                        RuntimeException("There should been at least one image chosen")
+                    )
                 )
-            )
+            }
         }
     }
 }

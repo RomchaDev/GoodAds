@@ -9,7 +9,6 @@ import org.romeo.layer_presentation.core.main.BaseViewModel
 import org.romeo.layer_presentation.core.navigation.AD_FULL_KEY
 import org.romeo.layer_presentation.core.navigation.AppNavigator
 import org.romeo.layer_presentation.core.navigation.USER_FULL_KEY
-import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToAdFullCommand
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.RequestsToAdRequestCommand
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.RequestsToUserRequestCommand
 
@@ -56,7 +55,9 @@ class RequestsViewModel(
     }
 
     private fun updateList(list: MutableList<UserAdsListItem>) {
-        mStateLiveData.postValue(AppState.Success(RequestsViewState(list)))
+        runAsync {
+            mSharedFlow.emit(AppState.Success(RequestsViewState(list)))
+        }
     }
 
     fun onAdClicked(id: String) {

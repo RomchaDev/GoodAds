@@ -10,6 +10,7 @@ import org.romeo.layer_presentation.core.navigation.AppNavigator
 import org.romeo.layer_presentation.core.navigation.CHOOSE_AD_KEY
 import org.romeo.layer_presentation.core.navigation.NavigationResultListener
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToChoseAdCommand
+import org.romeo.layer_presentation.core.view.REQUEST_SUCCESSFULLY_SENT_MESSAGE
 
 class UsersViewModel(
     override val navigator: AppNavigator,
@@ -20,7 +21,7 @@ class UsersViewModel(
 
     override fun onViewInit() {
         runAsync {
-            mStateLiveData.postValue(AppState.Success(UsersViewState(userRepository.getUsers())))
+            mSharedFlow.emit(AppState.Success(UsersViewState(userRepository.getUsers())))
         }
 
         navigator.subscribeToResult(object : NavigationResultListener<Ad> {
@@ -36,6 +37,12 @@ class UsersViewModel(
             }
         }, CHOOSE_AD_KEY)
 
+        chosenAd?.let {
+            runOnMainThread {
+                mSharedFlow.emit(AppState.Message(REQUEST_SUCCESSFULLY_SENT_MESSAGE))
+                chosenAd = null
+            }
+        }
     }
 
     fun onUserClicked(userId: String) {

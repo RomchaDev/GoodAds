@@ -16,7 +16,7 @@ class ChooseAdViewModel(
     override fun onViewInit() {
         runAsync {
             val ads = adsRepository.getMyAds()
-            mStateLiveData.postValue(AppState.Success(ads))
+            mSharedFlow.emit(AppState.Success(ads))
         }
     }
 

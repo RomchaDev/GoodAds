@@ -1,9 +1,10 @@
 package org.romeo.layer_presentation.core.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import org.romeo.layer_presentation.core.app_state.AppState
 import org.romeo.layer_presentation.core.navigation.AppNavigator
 import org.romeo.layer_domain.app_state.AppStateEntity
@@ -14,8 +15,12 @@ abstract class BaseViewModel<D : AppStateEntity>(
 
     protected abstract val navigator : AppNavigator
 
-    protected val mStateLiveData = MutableLiveData<AppState<D>>()
-    val stateLiveData get() = mStateLiveData as LiveData<AppState<D>>
+    protected val mSharedFlow = MutableSharedFlow<AppState<D>>(
+        replay = 2,
+        extraBufferCapacity = 1,
+        onBufferOverflow = BufferOverflow.SUSPEND
+    )
+    val stateLiveData get() = mSharedFlow.asSharedFlow()
 
     private val ioCoroutineScope = CoroutineScope(
         Dispatchers.IO
@@ -48,7 +53,9 @@ abstract class BaseViewModel<D : AppStateEntity>(
         }*/
 
         error.printStackTrace()
-        mStateLiveData.postValue(AppState.Error(error))
+        runAsync {
+            mSharedFlow.emit(AppState.Error(error))
+        }
     }
 
     open fun onViewInit() {

@@ -26,7 +26,7 @@ class HomeViewModel(
     override fun onViewInit() {
         runAsync {
             ads = getUserAdsUseCase.execute() as MutableList<UserAdsListItem>
-            mStateLiveData.postValue(AppState.Success(HomeViewState(ads)))
+            mSharedFlow.emit(AppState.Success(HomeViewState(ads)))
         }
 
         navigator.subscribeToResult(object : NavigationResultListener<CreateEditAdEntity> {
@@ -62,7 +62,7 @@ class HomeViewModel(
                 else false
             }
 
-            mStateLiveData.postValue(AppState.Success(HomeViewState(adsNew)))
+            mSharedFlow.emit(AppState.Success(HomeViewState(adsNew)))
             ads = adsNew
             adsRepository.deleteAd(id)
         }

@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.utils.toPx
+import org.romeo.layer_presentation.core.view.launchWhenStarted
 import org.romeo.layer_presentation.databinding.FragmentCreateDistributionBinding
 import java.lang.NumberFormatException
 
@@ -57,7 +59,7 @@ class CreateDistributionDialogFragment : DialogFragment() {
             viewModel.onCancelPressed()
         }
 
-        viewModel.stateLiveData.observe(viewLifecycleOwner) {
+        viewModel.stateLiveData.launchWhenStarted(lifecycleScope) {
             dismiss()
         }
     }

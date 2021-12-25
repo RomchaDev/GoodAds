@@ -9,8 +9,10 @@ import androidx.annotation.CallSuper
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import org.romeo.layer_presentation.core.app_state.AppState
 import org.romeo.layer_domain.app_state.AppStateEntity
+import org.romeo.layer_presentation.core.view.launchWhenStarted
 
 abstract class BaseFragment<VB : ViewDataBinding, D : AppStateEntity, VM : BaseViewModel<D>>(
     private val layoutID: Int
@@ -45,7 +47,7 @@ abstract class BaseFragment<VB : ViewDataBinding, D : AppStateEntity, VM : BaseV
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.stateLiveData.observe(viewLifecycleOwner) { state ->
+        viewModel.stateLiveData.launchWhenStarted(lifecycleScope) { state ->
             renderData(state)
         }
 

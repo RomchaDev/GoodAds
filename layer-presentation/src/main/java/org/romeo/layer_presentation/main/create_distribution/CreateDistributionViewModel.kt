@@ -1,6 +1,5 @@
 package org.romeo.layer_presentation.main.create_distribution
 
-import org.romeo.layer_domain.app_state.AppStateEntity
 import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.repository_bounderies.DistributionRepository
 import org.romeo.layer_presentation.core.app_state.AppState
@@ -27,6 +26,8 @@ class CreateDistributionViewModel(
     }
 
     private fun dismiss() {
-        mStateLiveData.postValue(AppState.Success(DismissAppStateEntity))
+        runAsync {
+            mSharedFlow.emit(AppState.Success(DismissAppStateEntity))
+        }
     }
 }
