@@ -44,7 +44,7 @@ class RequestsViewModel(
         runAsync {
             val list: MutableList<UserAdsListItem> = mutableListOf()
 
-            userRepository.getUserRequests().forEach {
+            userRepository.getUserRequests().users.forEach {
                 list.add(UserAdsListItem.UserListItem(it))
             }
 

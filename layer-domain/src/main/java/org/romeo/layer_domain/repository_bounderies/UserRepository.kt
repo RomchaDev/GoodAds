@@ -1,6 +1,7 @@
 package org.romeo.layer_domain.repository_bounderies
 
 import org.romeo.layer_domain.entity.user.User
+import org.romeo.layer_domain.entity.user.Users
 
 interface UserRepository {
     suspend fun login(username: String, password: String): User
@@ -9,6 +10,6 @@ interface UserRepository {
     suspend fun getUserById(uid: String): User
     suspend fun getAdvertisers(): List<User>
     suspend fun getToken(): String?
-    suspend fun getUserRequests(): List<User>
+    suspend fun getUserRequests(): Users
     suspend fun declineUserRequest(userId: String)
 }
