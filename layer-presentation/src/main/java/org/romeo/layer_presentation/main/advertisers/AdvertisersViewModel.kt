@@ -1,6 +1,7 @@
 package org.romeo.layer_presentation.main.advertisers
 
 import org.romeo.layer_domain.entity.ad.Ad
+import org.romeo.layer_domain.entity.user.Users
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_presentation.core.app_state.AppState
@@ -17,11 +18,11 @@ class AdvertisersViewModel(
     private val userRepository: UserRepository,
     private val adsRepository: AdsRepository,
     private val usersToChoseAdCommand: AnyToChoseAdCommand
-) : BaseViewModel<AdvertisersViewState>() {
+) : BaseViewModel<Users>() {
 
     override fun onViewInit() {
         runAsync {
-            mSharedFlow.emit(AppState.Success(AdvertisersViewState(userRepository.getAdvertisers())))
+            mSharedFlow.emit(AppState.Success(userRepository.getAdvertisers()))
         }
 
         navigator.subscribeToResult(object : NavigationResultListener<Ad> {

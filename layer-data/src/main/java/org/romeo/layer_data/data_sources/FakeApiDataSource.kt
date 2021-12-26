@@ -95,8 +95,8 @@ class FakeApiDataSource : ApiDataSource {
         async { user }
     }
 
-    override fun getAdvertisers(): Deferred<List<User>> = runBlocking {
-        async { listOf(user, user2) }
+    override fun getAdvertisers(): Deferred<Users> = runBlocking {
+        async { Users(listOf(user, user2)) }
     }
 
     override fun changePrices(prices: ChangePricesRequest): Deferred<Unit> = runBlocking {

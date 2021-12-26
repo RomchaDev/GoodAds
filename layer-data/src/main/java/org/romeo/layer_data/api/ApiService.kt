@@ -31,7 +31,7 @@ interface ApiService {
     fun getUserById(@Query("id") uid: String): Deferred<User>
 
     @GET("api/users/advertisers")
-    fun getAdvertisers(): Deferred<List<User>>
+    fun getAdvertisers(): Deferred<Users>
 
     @POST("api/users/my-user/prices")
     fun changePrices(@Body prices: ChangePricesRequest): Deferred<Unit>

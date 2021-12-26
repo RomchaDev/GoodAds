@@ -6,6 +6,7 @@ import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_domain.entity.user.User
+import org.romeo.layer_domain.entity.user.Users
 
 class UserRepositoryImpl(
     private val apiDataSource: ApiDataSource,
@@ -29,7 +30,7 @@ class UserRepositoryImpl(
     override suspend fun getUserById(uid: String) =
         apiDataSource.getUserById(uid).await()
 
-    override suspend fun getAdvertisers(): List<User> = apiDataSource.getAdvertisers().await()
+    override suspend fun getAdvertisers(): Users = apiDataSource.getAdvertisers().await()
 
     override suspend fun getToken() =
         loginResponseDataSource.get()?.token
