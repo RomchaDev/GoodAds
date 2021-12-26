@@ -15,6 +15,6 @@ interface AdsRepository {
     suspend fun getAd(id: String): Ad
     suspend fun advertiseMyAd(userId: String, adId: String)
     suspend fun advertiseOtherAd(adId: String)
-    suspend fun getMyUserRequest(userId: String): AdUser
+    suspend fun getUserRequest(userId: String): AdUser
     suspend fun declineAd(adId: String)
 }

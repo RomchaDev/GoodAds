@@ -24,7 +24,7 @@ class AdsRepositoryImpl(
     override suspend fun advertiseOtherAd(adId: String) =
         apiDataSource.advertiseOtherAd(adId).await()
 
-    override suspend fun getMyUserRequest(userId: String) =
+    override suspend fun getUserRequest(userId: String) =
         apiDataSource.getUserRequest(userId).await()
 
     override suspend fun declineAd(adId: String) =

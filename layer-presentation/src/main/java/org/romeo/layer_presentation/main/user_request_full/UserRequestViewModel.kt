@@ -16,7 +16,7 @@ class UserRequestViewModel(
 
     override fun onViewInit() {
         runAsync {
-            mSharedFlow.emit(AppState.Success(adsRepository.getMyUserRequest(userId)))
+            mSharedFlow.emit(AppState.Success(adsRepository.getUserRequest(userId)))
         }
     }
 
@@ -26,9 +26,10 @@ class UserRequestViewModel(
 
     fun onDeclinePressed() {
         runAsync {
-            userRepository.declineUser(userId)
-            navigator.back()
+            userRepository.declineUserRequest(userId)
         }
+
+        navigator.back()
     }
 
 }
