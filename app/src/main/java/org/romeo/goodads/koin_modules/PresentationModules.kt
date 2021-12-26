@@ -4,7 +4,6 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import org.romeo.goodads.navigation.AndroidNavigator
 import org.romeo.layer_domain.entity.ad.Ad
-import org.romeo.layer_presentation.core.main.BaseAdFullViewModel
 import org.romeo.layer_presentation.main.home.HomeViewModel
 import org.romeo.layer_presentation.core.navigation.AppNavigator
 import org.romeo.layer_presentation.core.navigation.commands.impl.*
@@ -22,25 +21,25 @@ import org.romeo.layer_presentation.core.navigation.commands.interfaces.LoginToH
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.RequestsToAdRequestCommand
 import org.romeo.layer_presentation.main.ad_request_full.AdRequestViewModel
 import org.romeo.layer_presentation.main.ad_screen.MyAdFullViewModel
-import org.romeo.layer_presentation.main.ads.AdsViewModel
+import org.romeo.layer_presentation.main.other_ads.OtherAdsViewModel
 import org.romeo.layer_presentation.main.requests.RequestsViewModel
 import org.romeo.layer_presentation.main.choose_ad_screen.ChooseAdViewModel
 import org.romeo.layer_presentation.main.create_distribution.CreateDistributionViewModel
 import org.romeo.layer_presentation.main.create_edit_ad.CreateEditAdViewModel
 import org.romeo.layer_presentation.main.login.LoginViewModel
 import org.romeo.layer_presentation.main.user_request_full.UserRequestViewModel
-import org.romeo.layer_presentation.main.users.UsersViewModel
+import org.romeo.layer_presentation.main.advertisers.AdvertisersViewModel
 
 val viewModelModule = module {
     viewModel { LoginViewModel(get(), get(), get()) }
     viewModel { HomeViewModel(get(), get(), get(), get(), get(), get()) }
-    viewModel { UsersViewModel(get(), get(), get(), get()) }
+    viewModel { AdvertisersViewModel(get(), get(), get(), get()) }
     viewModel { ChooseAdViewModel(get(), get()) }
     viewModel { (adId: String) -> MyAdFullViewModel(get(), get(), get(), adId) }
     viewModel { RequestsViewModel(get(), get(), get(), get(), get()) }
     viewModel { (adId: String) -> AdRequestViewModel(get(), get(), adId) }
     viewModel { (userId: String) -> UserRequestViewModel(get(), get(), userId) }
-    viewModel { AdsViewModel(get(), get(), get()) }
+    viewModel { OtherAdsViewModel(get(), get(), get()) }
     viewModel { (ad: Ad) -> CreateEditAdViewModel(get(), ad) }
     viewModel { (adId: String) -> AdListItemFullViewModel(get(), get(), get(), adId) }
     viewModel { CreateDistributionViewModel(get(), get()) }

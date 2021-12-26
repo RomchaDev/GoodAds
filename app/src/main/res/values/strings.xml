@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Good Ads</string>
     <string name="requests">requests</string>
+    <string name="advertisers">advertisers</string>
 </resources>

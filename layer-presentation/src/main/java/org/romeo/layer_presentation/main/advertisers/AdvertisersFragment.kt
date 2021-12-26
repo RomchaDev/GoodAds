@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.main.users
+package org.romeo.layer_presentation.main.advertisers
 
 import android.os.Bundle
 import android.view.View
@@ -14,10 +14,10 @@ import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_presentation.core.list.MainListAdapter
 import org.romeo.layer_presentation.databinding.LayoutUserBinding
 
-class UsersFragment :
-    BaseFragment<FragmentUsersBinding, UsersViewState, UsersViewModel>(R.layout.fragment_users) {
+class AdvertisersFragment :
+    BaseFragment<FragmentUsersBinding, AdvertisersViewState, AdvertisersViewModel>(R.layout.fragment_users) {
 
-    override val viewModel: UsersViewModel by viewModel()
+    override val viewModel: AdvertisersViewModel by viewModel()
     private lateinit var listAdapter: MainListAdapter<User>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ class UsersFragment :
         binding.adsRecycler.adapter = listAdapter
     }
 
-    override fun renderSuccess(data: UsersViewState) {
+    override fun renderSuccess(data: AdvertisersViewState) {
         listAdapter.submitList(data.stateList)
         super.renderSuccess(data)
     }

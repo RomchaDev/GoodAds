@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.main.users
+package org.romeo.layer_presentation.main.advertisers
 
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
@@ -12,16 +12,16 @@ import org.romeo.layer_presentation.core.navigation.NavigationResultListener
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToChoseAdCommand
 import org.romeo.layer_presentation.core.view.REQUEST_SUCCESSFULLY_SENT_MESSAGE
 
-class UsersViewModel(
+class AdvertisersViewModel(
     override val navigator: AppNavigator,
     private val userRepository: UserRepository,
     private val adsRepository: AdsRepository,
     private val usersToChoseAdCommand: AnyToChoseAdCommand
-) : BaseViewModel<UsersViewState>() {
+) : BaseViewModel<AdvertisersViewState>() {
 
     override fun onViewInit() {
         runAsync {
-            mSharedFlow.emit(AppState.Success(UsersViewState(userRepository.getUsers())))
+            mSharedFlow.emit(AppState.Success(AdvertisersViewState(userRepository.getUsers())))
         }
 
         navigator.subscribeToResult(object : NavigationResultListener<Ad> {

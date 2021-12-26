@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.main.ads
+package org.romeo.layer_presentation.main.other_ads
 
 import android.os.Bundle
 import org.romeo.layer_domain.entity.ad.Ads
@@ -9,7 +9,7 @@ import org.romeo.layer_presentation.core.navigation.AD_FULL_KEY
 import org.romeo.layer_presentation.core.navigation.AppNavigator
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.AdsToAdListItemFullCommand
 
-class AdsViewModel(
+class OtherAdsViewModel(
     override val navigator: AppNavigator,
     private val adsRepository: AdsRepository,
     private val command: AdsToAdListItemFullCommand

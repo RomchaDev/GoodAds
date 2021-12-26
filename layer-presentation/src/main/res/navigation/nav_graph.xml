@@ -48,7 +48,7 @@
         app:destination="@id/adFullFragment" />
     <fragment
         android:id="@+id/fragment_users"
-        android:name="org.romeo.layer_presentation.main.users.UsersFragment"
+        android:name="org.romeo.layer_presentation.main.advertisers.AdvertisersFragment"
         android:label="UsersFragment" />
     <fragment
         android:id="@+id/createEditAdFragment"
@@ -71,7 +71,7 @@
         android:label="AdRequestFragment" />
     <fragment
         android:id="@+id/fragment_ads"
-        android:name="org.romeo.layer_presentation.main.ads.AdsFragment"
+        android:name="org.romeo.layer_presentation.main.other_ads.OtherAdsFragment"
         android:label="AdsFragment" >
         <action
             android:id="@+id/action_fragment_ads_to_adListItemFullFragment"

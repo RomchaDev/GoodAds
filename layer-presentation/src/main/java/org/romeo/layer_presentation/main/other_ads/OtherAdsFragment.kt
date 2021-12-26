@@ -1,4 +1,4 @@
-package org.romeo.layer_presentation.main.ads
+package org.romeo.layer_presentation.main.other_ads
 
 import android.os.Bundle
 import android.view.View
@@ -14,10 +14,10 @@ import org.romeo.layer_presentation.core.main.BaseFragment
 import org.romeo.layer_presentation.databinding.FragmentAdsBinding
 import org.romeo.layer_presentation.databinding.ItemAdBinding
 
-class AdsFragment :
-    BaseFragment<FragmentAdsBinding, Ads, AdsViewModel>(R.layout.fragment_ads) {
+class OtherAdsFragment :
+    BaseFragment<FragmentAdsBinding, Ads, OtherAdsViewModel>(R.layout.fragment_ads) {
 
-    override val viewModel: AdsViewModel by viewModel()
+    override val viewModel: OtherAdsViewModel by viewModel()
     private lateinit var listAdapter: MainListAdapter<Ad>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
