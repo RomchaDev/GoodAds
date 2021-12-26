@@ -15,6 +15,7 @@ import org.romeo.layer_domain.entity.AdUser
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.distribution.Distribution
+import org.romeo.layer_domain.entity.user.Users
 
 class FakeApiDataSource : ApiDataSource {
     private val ads = mutableListOf<Ad>().apply {
@@ -94,8 +95,8 @@ class FakeApiDataSource : ApiDataSource {
         async { user }
     }
 
-    override fun getAdvertisers(): Deferred<List<User>> = runBlocking {
-        async { listOf(user, user2) }
+    override fun getAdvertisers(): Deferred<Users> = runBlocking {
+        async { Users(listOf(user, user2)) }
     }
 
     override fun changePrices(prices: ChangePricesRequest): Deferred<Unit> = runBlocking {

@@ -11,6 +11,7 @@ import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.User
+import org.romeo.layer_domain.entity.user.Users
 import retrofit2.http.*
 
 interface ApiService {
@@ -20,7 +21,7 @@ interface ApiService {
     @GET("api/ads/other-ads")
     fun getOtherAds(): Deferred<Ads>
 
-    @POST("api/users/lo gin")
+    @POST("api/users/login")
     fun login(@Body auth: LoginRequest): Deferred<LoginResponse>
 
     @GET("api/users/my-user")
@@ -30,7 +31,7 @@ interface ApiService {
     fun getUserById(@Query("id") uid: String): Deferred<User>
 
     @GET("api/users/advertisers")
-    fun getAdvertisers(): Deferred<List<User>>
+    fun getAdvertisers(): Deferred<Users>
 
     @POST("api/users/my-user/prices")
     fun changePrices(@Body prices: ChangePricesRequest): Deferred<Unit>

@@ -11,11 +11,12 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import org.romeo.layer_domain.entity.list.ListItem
 import org.romeo.layer_domain.entity.list.items.UserAdsListItem
 import org.romeo.layer_domain.entity.user.User
+import org.romeo.layer_domain.entity.user.Users
 import org.romeo.layer_presentation.core.list.MainListAdapter
 import org.romeo.layer_presentation.databinding.LayoutUserBinding
 
 class AdvertisersFragment :
-    BaseFragment<FragmentUsersBinding, AdvertisersViewState, AdvertisersViewModel>(R.layout.fragment_users) {
+    BaseFragment<FragmentUsersBinding, Users, AdvertisersViewModel>(R.layout.fragment_users) {
 
     override val viewModel: AdvertisersViewModel by viewModel()
     private lateinit var listAdapter: MainListAdapter<User>
@@ -41,8 +42,8 @@ class AdvertisersFragment :
         binding.adsRecycler.adapter = listAdapter
     }
 
-    override fun renderSuccess(data: AdvertisersViewState) {
-        listAdapter.submitList(data.stateList)
+    override fun renderSuccess(data: Users) {
+        listAdapter.submitList(data.users)
         super.renderSuccess(data)
     }
 
