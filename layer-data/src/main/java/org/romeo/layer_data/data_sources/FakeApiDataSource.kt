@@ -94,7 +94,7 @@ class FakeApiDataSource : ApiDataSource {
         async { user }
     }
 
-    override fun getUsers(): Deferred<List<User>> = runBlocking {
+    override fun getAdvertisers(): Deferred<List<User>> = runBlocking {
         async { listOf(user, user2) }
     }
 
@@ -130,20 +130,20 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun getUser(uid: String) = runBlocking {
+    override fun getUserById(uid: String) = runBlocking {
         async {
             if (uid.last().code % 2 == 0) user
             else user2
         }
     }
 
-    override fun getMyAdRequests(): Deferred<Ads> = runBlocking {
+    override fun getAdRequests(): Deferred<Ads> = runBlocking {
         async {
             Ads(ads)
         }
     }
 
-    override fun getMyUserRequests(): Deferred<List<User>> = runBlocking {
+    override fun getUserRequests(): Deferred<List<User>> = runBlocking {
         async { listOf(user, user2) }
     }
 
@@ -152,8 +152,8 @@ class FakeApiDataSource : ApiDataSource {
             //Creating a distribution
         }
     }
-    override fun getMyUserRequest(userId: String) = runBlocking {
-        async { AdUser(ads[0], getUser(userId).await()) }
+    override fun getUserRequest(userId: String) = runBlocking {
+        async { AdUser(ads[0], getUserById(userId).await()) }
     }
 
     override fun declineAd(adId: String) = runBlocking {
@@ -161,7 +161,7 @@ class FakeApiDataSource : ApiDataSource {
             //Declining an ad
         }
     }
-    override fun declineUser(userId: String) = runBlocking {
+    override fun declineUserRequest(userId: String) = runBlocking {
         async {
             //Declining a user
         }

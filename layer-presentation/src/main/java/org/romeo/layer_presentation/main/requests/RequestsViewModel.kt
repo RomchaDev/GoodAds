@@ -30,7 +30,7 @@ class RequestsViewModel(
         runAsync {
             val list: MutableList<UserAdsListItem> = mutableListOf()
 
-            adsRepository.getMyAdRequests().adsList.forEach {
+            adsRepository.getAdRequests().adsList.forEach {
                 list.add(UserAdsListItem.AdListItem(it))
             }
 
@@ -44,7 +44,7 @@ class RequestsViewModel(
         runAsync {
             val list: MutableList<UserAdsListItem> = mutableListOf()
 
-            userRepository.getMyUserRequests().forEach {
+            userRepository.getUserRequests().forEach {
                 list.add(UserAdsListItem.UserListItem(it))
             }
 
@@ -69,7 +69,7 @@ class RequestsViewModel(
 
     fun declineUser(userId: String) {
         runAsync {
-            userRepository.declineUser(userId)
+            userRepository.declineUserRequest(userId)
             val itemsNew = items.toMutableList()
             itemsNew.removeIf { (it as UserAdsListItem.UserListItem).user.id == userId }
             updateList(itemsNew)

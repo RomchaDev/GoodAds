@@ -19,9 +19,9 @@ class ApiDataSourceImpl(
 
     override fun myUser() = service.myUser()
 
-    override fun getUser(uid: String) = service.getUser(uid)
+    override fun getUserById(uid: String) = service.getUserById(uid)
 
-    override fun getUsers(): Deferred<List<User>> = service.getUsers()
+    override fun getAdvertisers(): Deferred<List<User>> = service.getAdvertisers()
 
     override fun changePrices(prices: ChangePricesRequest): Deferred<Unit> =
         service.changePrices(prices)
@@ -39,15 +39,15 @@ class ApiDataSourceImpl(
 
     override fun getOtherAds(): Deferred<Ads> = service.getOtherAds()
 
-    override fun getMyAdRequests(): Deferred<Ads> = service.getMyAdRequests()
+    override fun getAdRequests(): Deferred<Ads> = service.getAdRequests()
 
-    override fun getMyUserRequest(userId: String) = service.getMyUserRequest(userId)
+    override fun getUserRequest(userId: String) = service.getUserRequest(userId)
 
-    override fun getMyUserRequests(): Deferred<List<User>> = service.getMyUserRequests()
+    override fun getUserRequests(): Deferred<List<User>> = service.getUserRequests()
 
     override fun createDistribution(distribution: Distribution) = service.createDistribution(distribution)
 
     override fun declineAd(adId: String) = service.declineAd(adId)
 
-    override fun declineUser(userId: String)  = service.declineUser(userId)
+    override fun declineUserRequest(userId: String)  = service.declineUserRequest(userId)
 }

@@ -8,7 +8,7 @@ import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 
 interface AdsRepository {
     suspend fun getMyAds(): Ads
-    suspend fun getMyAdRequests(): Ads
+    suspend fun getAdRequests(): Ads
     suspend fun getOtherAds(): Ads
     suspend fun deleteAd(id: String)
     suspend fun createEditAd(createEditAdEntity: CreateEditAdEntity)

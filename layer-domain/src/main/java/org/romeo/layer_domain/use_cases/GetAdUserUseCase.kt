@@ -10,7 +10,7 @@ class GetAdUserUseCase(
 ) {
     suspend fun execute(adId: String): AdUser {
         val ad = adsRepository.getAd(adId)
-        val user = userRepository.getUser(ad.userId!!)
+        val user = userRepository.getUserById(ad.userId!!)
         return AdUser(ad, user)
     }
 }

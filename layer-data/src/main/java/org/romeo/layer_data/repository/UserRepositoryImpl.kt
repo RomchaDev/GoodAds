@@ -1,12 +1,10 @@
 package org.romeo.layer_data.repository
 
-import kotlinx.coroutines.Deferred
 import org.romeo.layer_data.data_sources.ApiDataSource
 import org.romeo.layer_data.data_sources.preferences.LoginResponseDataSourceLocal
 import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_data.dto.LoginRequest
-import org.romeo.layer_data.dto.ApplyAdRequest
 import org.romeo.layer_domain.entity.user.User
 
 class UserRepositoryImpl(
@@ -28,16 +26,16 @@ class UserRepositoryImpl(
         loginResponseDataSource.get()?.user
             ?: apiDataSource.myUser().await()
 
-    override suspend fun getUser(uid: String) =
-        apiDataSource.getUser(uid).await()
+    override suspend fun getUserById(uid: String) =
+        apiDataSource.getUserById(uid).await()
 
-    override suspend fun getUsers(): List<User> = apiDataSource.getUsers().await()
+    override suspend fun getAdvertisers(): List<User> = apiDataSource.getAdvertisers().await()
 
     override suspend fun getToken() =
         loginResponseDataSource.get()?.token
 
-    override suspend fun getMyUserRequests() = apiDataSource.getMyUserRequests().await()
+    override suspend fun getUserRequests() = apiDataSource.getUserRequests().await()
 
-    override suspend fun declineUser(userId: String) =
-        apiDataSource.declineUser(userId).await()
+    override suspend fun declineUserRequest(userId: String) =
+        apiDataSource.declineUserRequest(userId).await()
 }

@@ -21,7 +21,7 @@ class AdvertisersViewModel(
 
     override fun onViewInit() {
         runAsync {
-            mSharedFlow.emit(AppState.Success(AdvertisersViewState(userRepository.getUsers())))
+            mSharedFlow.emit(AppState.Success(AdvertisersViewState(userRepository.getAdvertisers())))
         }
 
         navigator.subscribeToResult(object : NavigationResultListener<Ad> {

@@ -6,9 +6,9 @@ interface UserRepository {
     suspend fun login(username: String, password: String): User
     suspend fun changePrices(postPrice: Int, storyPrice: Int)
     suspend fun myUser(): User
-    suspend fun getUser(uid: String): User
-    suspend fun getUsers(): List<User>
+    suspend fun getUserById(uid: String): User
+    suspend fun getAdvertisers(): List<User>
     suspend fun getToken(): String?
-    suspend fun getMyUserRequests(): List<User>
-    suspend fun declineUser(userId: String)
+    suspend fun getUserRequests(): List<User>
+    suspend fun declineUserRequest(userId: String)
 }

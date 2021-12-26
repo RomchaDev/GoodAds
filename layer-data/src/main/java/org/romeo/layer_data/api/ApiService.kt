@@ -14,49 +14,49 @@ import org.romeo.layer_domain.entity.user.User
 import retrofit2.http.*
 
 interface ApiService {
-    @GET("api/my-ads")
+    @GET("api/ads/my-ads")
     fun getMyAds(): Deferred<Ads>
 
-    @GET("api/other-ads")
+    @GET("api/ads/other-ads")
     fun getOtherAds(): Deferred<Ads>
 
-    @POST("api/users/login")
+    @POST("api/users/lo gin")
     fun login(@Body auth: LoginRequest): Deferred<LoginResponse>
 
-    @GET("api/users/me")
+    @GET("api/users/my-user")
     fun myUser(): Deferred<User>
 
     @GET("api/users/{id}")
-    fun getUser(@Query("id") uid: String): Deferred<User>
+    fun getUserById(@Query("id") uid: String): Deferred<User>
 
-    @GET("api/users")
-    fun getUsers(): Deferred<List<User>>
+    @GET("api/users/advertisers")
+    fun getAdvertisers(): Deferred<List<User>>
 
-    @POST("api/users/me/prices")
+    @POST("api/users/my-user/prices")
     fun changePrices(@Body prices: ChangePricesRequest): Deferred<Unit>
 
-    @DELETE("api/my-ads/{id}")
+    @DELETE("api/ads/{id}")
     fun deleteAd(@Query("id") id: String): Deferred<Unit>
 
     @POST("api/users/send-my-ad")
     fun advertiseMyAd(@Body request: ApplyAdRequest): Deferred<Unit>
 
-    @POST("api/users/send-other-ad/{id}")
+    @POST("api/ads/advertise-other-ad/{id}")
     fun advertiseOtherAd(@Query("id") id: String): Deferred<Unit>
 
-    @GET("api/my-ad-requests")
-    fun getMyAdRequests(): Deferred<Ads>
+    @GET("api/ad-requests")
+    fun getAdRequests(): Deferred<Ads>
 
-    @GET("api/my-user-requests/{userId}")
-    fun getMyUserRequest(@Query("userId") userId: String): Deferred<AdUser>
+    @GET("api/user-requests/{userId}")
+    fun getUserRequest(@Query("userId") userId: String): Deferred<AdUser>
 
-    @POST("api/my-user-requests")
-    fun getMyUserRequests(): Deferred<List<User>>
+    @GET("api/user-requests")
+    fun getUserRequests(): Deferred<List<User>>
 
     @GET("api/ads/{id}")
     fun getAd(@Query("id") id: String): Deferred<Ad>
 
-    @POST("api/ads/create-edit")
+    @POST("api/ads")
     fun createEditAd(@Body createEditAd: CreateEditAdEntity): Deferred<Unit>
 
     @POST("api/distribution/create")
@@ -66,5 +66,5 @@ interface ApiService {
     fun declineAd(@Query("id") adId: String): Deferred<Unit>
 
     @DELETE("api/users/decline/{id}")
-    fun declineUser(@Query("id") userId: String): Deferred<Unit>
+    fun declineUserRequest(@Query("id") userId: String): Deferred<Unit>
 }

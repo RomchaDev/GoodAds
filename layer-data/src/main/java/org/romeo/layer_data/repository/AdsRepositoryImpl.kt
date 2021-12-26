@@ -16,7 +16,7 @@ class AdsRepositoryImpl(
         apiDataSource.createEditAd(createEditAdEntity).await()
 
     override suspend fun getAd(id: String) = apiDataSource.getAd(id).await()
-    override suspend fun getMyAdRequests(): Ads = apiDataSource.getMyAdRequests().await()
+    override suspend fun getAdRequests(): Ads = apiDataSource.getAdRequests().await()
 
     override suspend fun advertiseMyAd(userId: String, adId: String) =
         apiDataSource.advertiseMyAd(ApplyAdRequest(userId, adId)).await()
@@ -25,7 +25,7 @@ class AdsRepositoryImpl(
         apiDataSource.advertiseOtherAd(adId).await()
 
     override suspend fun getMyUserRequest(userId: String) =
-        apiDataSource.getMyUserRequest(userId).await()
+        apiDataSource.getUserRequest(userId).await()
 
     override suspend fun declineAd(adId: String) =
         apiDataSource.declineAd(adId).await()
