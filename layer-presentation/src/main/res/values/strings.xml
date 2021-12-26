@@ -18,7 +18,7 @@
     <string name="followers">followers</string>
     <string name="create_ad">Create ad</string>
     <string name="edit_ad">Edit Ad</string>
-    <string name="delete_ad">Delete</string>
+    <string name="decline_ad">Decline</string>
     <string name="choose_the_ad">Choose the ad</string>
     <string name="app_name">Good Ads</string>
     <string name="accept">Accept</string>

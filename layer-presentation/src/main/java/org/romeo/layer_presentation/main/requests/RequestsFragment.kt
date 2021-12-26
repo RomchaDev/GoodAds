@@ -33,7 +33,7 @@ class RequestsFragment :
 
             binding.root.setOnLongClickListener { view ->
                 val menu = PopupMenu(requireContext(), view)
-                menu.inflate(R.menu.delete_menu)
+                menu.inflate(R.menu.decline_menu)
 
                 menu.setOnMenuItemClickListener { menuItem ->
                     if (menuItem.itemId == R.id.delete) {

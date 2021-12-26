@@ -2,6 +2,7 @@ package org.romeo.layer_presentation.main.user_request_full
 
 import org.romeo.layer_domain.entity.AdUser
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
+import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_presentation.core.app_state.AppState
 import org.romeo.layer_presentation.core.main.BaseViewModel
 import org.romeo.layer_presentation.core.navigation.AppNavigator
@@ -9,6 +10,7 @@ import org.romeo.layer_presentation.core.navigation.AppNavigator
 class UserRequestViewModel(
     override val navigator: AppNavigator,
     private val adsRepository: AdsRepository,
+    private val userRepository: UserRepository,
     private val userId: String
 ) : BaseViewModel<AdUser>() {
 
@@ -20,6 +22,13 @@ class UserRequestViewModel(
 
     fun onAcceptPressed() {
 
+    }
+
+    fun onDeclinePressed() {
+        runAsync {
+            userRepository.declineUser(userId)
+            navigator.back()
+        }
     }
 
 }

@@ -1,5 +1,7 @@
 package org.romeo.layer_presentation.main.user_request_full
 
+import android.os.Bundle
+import android.view.View
 import org.romeo.layer_domain.entity.AdUser
 import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.main.BaseFragment
@@ -14,6 +16,14 @@ class UserRequestFragment :
 
     override val viewModel: UserRequestViewModel by viewModel {
         parametersOf(arguments?.getString(USER_FULL_KEY))
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnDecline.setOnClickListener {
+            viewModel.onDeclinePressed()
+        }
     }
 
     override fun renderSuccess(data: AdUser) {
