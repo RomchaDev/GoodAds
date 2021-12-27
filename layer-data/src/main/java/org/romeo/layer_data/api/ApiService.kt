@@ -100,30 +100,77 @@ interface ApiService {
     @DELETE("api/users/decline/{id}")
     fun declineUserRequest(@Path("id") userId: String): Deferred<Unit>
 
+    /**
+     * Deletes the ad given by id from the AdRequests table.
+     *
+     * @param adId - id of the ad that must be declined
+     */
     @DELETE("api/ads/decline/{id}")
     fun declineAd(@Path("id") adId: String): Deferred<Unit>
 
+    /**
+     * Changes the ad or creates new one in Ads table.
+     *
+     * @param createEditAd - an object that contains Ad and list of images that
+     * advertiser wants instagram users to see.
+     * That list can be null.
+     */
     @POST("api/ads")
     fun createEditAd(@Body createEditAd: CreateEditAdEntity): Deferred<Unit>
 
+    /**
+     * Gets Ad from Ads table by it`s id.
+     *
+     * @param id - id of ad
+     * @return ad
+     */
     @GET("api/ads/{id}")
     fun getAd(@Path("id") id: String): Deferred<Ad>
 
+    /**
+     * Gets user`s ad requests from AdRequests table by his token.
+     *
+     * @return ads - an object that contains list of ads
+     */
     @GET("api/ads/ad-requests")
     fun getAdRequests(): Deferred<Ads>
 
+    /**
+     * Creates a user request into UserRequests table.
+     *
+     * @param adId - id of ad that user wants to advertise
+     */
     @POST("api/ads/advertise-other-ad/{ad-id}")
     fun advertiseOtherAd(@Path("ad-id") adId: String): Deferred<Unit>
 
+    /**
+     * Deletes an ad from Ads table.
+     *
+     * @param id - id of ad that must be deleted
+     */
     @DELETE("api/ads/{id}")
     fun deleteAd(@Query("id") id: String): Deferred<Unit>
 
+    /**
+     * Gets ALL ads from Ads table.
+     *
+     * @return object that contains list of ads
+     */
     @GET("api/ads/other-ads")
     fun getOtherAds(): Deferred<Ads>
 
+    /**
+     * Gets all user`s ads by his token.
+     *
+     * @return object that contains list of ads
+     */
     @GET("api/ads/my-ads")
     fun getMyAds(): Deferred<Ads>
 
+    /**
+     * Deprecated.
+     * Use createEditAd instead
+     */
     @POST("api/distribution/create")
     fun createDistribution(@Body distribution: Distribution): Deferred<Unit>
 }
