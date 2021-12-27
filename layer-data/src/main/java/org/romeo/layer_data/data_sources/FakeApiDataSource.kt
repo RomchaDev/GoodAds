@@ -114,7 +114,7 @@ class FakeApiDataSource : ApiDataSource {
         async { Unit }
     }
 
-    override fun advertiseOtherAd(id: String): Deferred<Unit> = runBlocking {
+    override fun advertiseOtherAd(adId: String): Deferred<Unit> = runBlocking {
         async { Unit }
     }
 
