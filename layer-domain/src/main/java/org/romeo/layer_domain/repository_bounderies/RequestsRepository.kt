@@ -1,5 +1,7 @@
 package org.romeo.layer_domain.repository_bounderies
 
-interface RequestsRepository {
+import org.romeo.layer_domain.entity.ad_user.AdUsers
 
+interface RequestsRepository {
+    suspend fun getRequests(): AdUsers
 }

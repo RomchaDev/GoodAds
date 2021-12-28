@@ -42,7 +42,7 @@ class ApiDataSourceImpl(
 
     override fun getRequest(userId: String) = service.getRequest(userId)
 
-    override fun getRequests(): Deferred<AdUsers> = service.getRequests()
+    override fun getRequests() = service.getRequests()
 
     override fun createDistribution(distribution: Distribution) = service.createDistribution(distribution)
 
