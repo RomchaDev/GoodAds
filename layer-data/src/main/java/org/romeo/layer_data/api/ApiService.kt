@@ -135,9 +135,9 @@ interface ApiService {
      * @param userId id of particular user
      * @return object that contains list of ads
      */
-    @GET("api/ads")
+    @GET("api/ads/{userId}")
     fun getAdsByUserId(
-        @Path("id") userId: String,
+        @Path("userId") userId: String,
         @Query("start") start: Int,
         @Query("end") end: Int
     ): Deferred<Ads>
