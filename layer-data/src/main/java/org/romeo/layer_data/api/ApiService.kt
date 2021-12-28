@@ -67,7 +67,10 @@ interface ApiService {
      * @return object that contains all the users from table Users
      * */
     @GET("api/users")
-    fun getAdvertisers(): Deferred<Users>//TODO
+    fun getAdvertisers(
+        @Query("start") start: Int,
+        @Query("end") end: Int
+    ): Deferred<Users>
 
     /**
      * Takes the user from TokenUsers table that has id the same as given in params

@@ -30,7 +30,10 @@ class UserRepositoryImpl(
     override suspend fun getUserById(uid: String) =
         apiDataSource.getUserById(uid).await()
 
-    override suspend fun getAdvertisers(): Users = apiDataSource.getAdvertisers().await()
+    override suspend fun getAdvertisers(
+        start: Int,
+        end: Int
+    ): Users = apiDataSource.getAdvertisers(start, end).await()
 
     override suspend fun getToken() =
         loginResponseDataSource.get()?.token

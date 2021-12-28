@@ -8,6 +8,6 @@ interface UserRepository {
     suspend fun changePrices(postPrice: Int, storyPrice: Int)
     suspend fun myUser(): User
     suspend fun getUserById(uid: String): User
-    suspend fun getAdvertisers(): Users
+    suspend fun getAdvertisers(start: Int, end: Int): Users
     suspend fun getToken(): String?
 }

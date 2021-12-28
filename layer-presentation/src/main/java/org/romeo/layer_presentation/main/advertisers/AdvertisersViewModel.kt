@@ -23,7 +23,14 @@ class AdvertisersViewModel(
 
     override fun onViewInit() {
         runAsync {
-            mSharedFlow.emit(AppState.Success(userRepository.getAdvertisers()))
+            mSharedFlow.emit(
+                AppState.Success(
+                    userRepository.getAdvertisers(
+                        DEFAULT_START_NUM,
+                        DEFAULT_END_NUM
+                    )
+                )
+            )
         }
 
         navigator.subscribeToResult(object : NavigationResultListener<Ad> {
@@ -55,5 +62,7 @@ class AdvertisersViewModel(
     companion object {
         private var userIdChosen: String? = null
         private var chosenAd: Ad? = null
+        private const val DEFAULT_START_NUM = 0
+        private const val DEFAULT_END_NUM = 9
     }
 }

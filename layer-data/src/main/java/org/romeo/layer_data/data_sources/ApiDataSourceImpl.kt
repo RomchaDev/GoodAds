@@ -19,7 +19,10 @@ class ApiDataSourceImpl(
 
     override fun getUserById(uid: String) = service.getUserById(uid)
 
-    override fun getAdvertisers() = service.getAdvertisers()
+    override fun getAdvertisers(
+        start: Int,
+        end: Int
+    ) = service.getAdvertisers(start, end)
 
     override fun changePrices(prices: ChangePricesRequest): Deferred<Unit> =
         service.changePrices(prices)
