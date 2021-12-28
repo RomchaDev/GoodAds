@@ -27,6 +27,7 @@ Ad {
     freePlaces: Int
 }
 
+// Deprecated
 Distribution {
     userId: Int
     oneAdPrice: Int,
@@ -39,7 +40,7 @@ AdUser {
      user: User
 }
 
-LoginResponse {
+TokenUser {
     token: String,
     user: User
 }
@@ -49,7 +50,7 @@ LoginRequest {
     val password: String
 }
 
-AdRequest {
+Request {
     advertiserId: String, // id of the user that is going to advertise the ad
     adId: String // id of the ad that is going to be advertised
 }
@@ -70,22 +71,12 @@ Ads {
 
 Tables:
 
-TokenUsers // 1 row = 1 LoginResponse
+TokenUsers // 1 row = 1 TokenUser
 
 Ads // 1 row = 1 Ad
 
-UserRequests // 1 row = {
-    [id //id of request]
-    [User.id //User that requests]
-    [Ad.id // Id of the ad that is going to be advertised. The owner of ad can be got by Ad.userId]
-}
-
-AdRequests // 1 row = {
+Requests // 1 row = {
     [id // id of request]
+    [Advertiser.id // User that is going to advertise]
     [Ad.id // Id of the ad that is going to be advertised]
-    [Advertiser.id //User that is going to advertise]
 }
-
-Difference between UserRequests and AdRequests:
-UserRequests is used for advertisable could see who wants to advertise their ad
-AdRequest is used for advertisers could see the ads that advertisable want them to advertise
