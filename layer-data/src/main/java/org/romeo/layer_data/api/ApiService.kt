@@ -19,7 +19,9 @@ interface ApiService {
 
     /**
      * should take data from Requests table
-     * @return List of all the users that want to advertise ad of a user given by token
+     *
+     * @return List of all the full requests where Request.advertiser id equals to id of current user
+     * or Request.adId is id of an ad which has Ad.userId equal to current user
      * */
     @GET("api/requests")
     fun getRequests(): Deferred<RequestsFull>
@@ -27,15 +29,15 @@ interface ApiService {
     /**
      * Should take data from Requests table
      *
-     * @param requestId - id of the advertiser that wants to advertise current user's ad
-     * @return AdUser where Ad is the ad of the current user that is going to be advertised
-     * and User is the user that wants to advertise the ad
+     * @param requestId - id of the request that should be returned
+     *
+     * @return RequestFull, which has id the same as given in params
      * */
     @GET("api/requests/{requestId}")
-    fun getRequest(@Path("requestId") requestId: String): Deferred<RequestFull>//TODO
+    fun getRequest(@Path("requestId") requestId: String): Deferred<RequestFull>
 
     /**
-     * Creates new Request in Requests table
+     * Creates a new Request in Requests table
      *
      * @param request - ad request
      * */
@@ -43,11 +45,19 @@ interface ApiService {
     fun createRequest(@Body request: Request): Deferred<Unit>
 
     /**
+     * Deletes the request having id the same as given in params from Requests table
+     *
+     * @param requestId id of the user
+     * */
+    @DELETE("api/requests/{request-id}")
+    fun declineRequest(@Path("request-id") requestId: String): Deferred<Unit>
+
+    /**
      * Should change storyPrice and postPrice of current user in the TokenUsers table
      *
      * @param prices - object that contains new prices
      * */
-    @PATCH("api/users/me/prices")
+    @PATCH("api/users")
     fun changePrices(@Body prices: ChangePricesRequest): Deferred<Unit>
 
     /**
@@ -57,10 +67,10 @@ interface ApiService {
      * @return object that contains all the users from table Users
      * */
     @GET("api/users")
-    fun getAdvertisers(): Deferred<Users>
+    fun getAdvertisers(): Deferred<Users>//TODO
 
     /**
-     * Takes the user from TokenUser table that has id given in params
+     * Takes the user from TokenUsers table that has id the same as given in params
      *
      * @param uid - id of the user that should be returned
      * @return user having id the same as given in params
@@ -88,29 +98,19 @@ interface ApiService {
     fun login(@Body auth: LoginRequest): Deferred<TokenUser>
 
     /**
-     * Deletes the request given by user-id from the Requests table.
-     * Now id of the advertiser is given, later it will be changed to id of the request that
-     * is going to be declined.
-     *
-     * @param requestId id of the user
-     * */
-    @DELETE("api/requests/{request-id}")
-    fun declineRequest(@Path("request-id") requestId: String): Deferred<Unit>//TODO
-
-    /**
      * Changes the ad or creates new one in Ads table.
      *
-     * @param createEditAd - an object that contains Ad and list of images that
-     * advertiser wants instagram users to see.
+     * @param createEditAd - an object that contains Ad and list of byteArrays.
+     * Each of byteArrays is an image, advertisable wants instagram user to see.
      * That list can be null.
      */
     @POST("api/ads")
-    fun createEditAd(@Body createEditAd: CreateEditAdEntity): Deferred<Unit>
+    fun createEditAd(@Body createEditAd: CreateEditAdEntity): Deferred<Unit>//TODO
 
     /**
      * Gets Ad from Ads table by it`s id.
      *
-     * @param id - id of ad
+     * @param id - id of the ad
      * @return ad
      */
     @GET("api/ads/{id}")
@@ -125,12 +125,12 @@ interface ApiService {
     fun deleteAd(@Query("id") id: String): Deferred<Unit>
 
     /**
-     * Gets ALL ads from Ads table.
+     * Gets ALL ads from Ads table except for the ads belonging to current user.
      *
      * @return object that contains list of ads
      */
-    @GET("api/ads/other-ads")
-    fun getOtherAds(): Deferred<Ads>
+    @GET("api/ads")
+    fun getOtherAds(): Deferred<Ads>//TODO
 
     /**
      * Gets all user`s ads by his token.
@@ -144,7 +144,7 @@ interface ApiService {
      * Deprecated.
      * Use createEditAd instead
      */
-    @Deprecated("Automatically creating with a when new ad is created")
+    @Deprecated("Automatically creating when a new ad is created")
     @POST("api/distribution/create")
-    fun createDistribution(@Body distribution: Distribution): Deferred<Unit>
+    fun createDistribution(@Body distribution: Distribution): Deferred<Unit> //TODO
 }
