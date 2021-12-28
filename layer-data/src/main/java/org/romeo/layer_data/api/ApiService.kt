@@ -107,8 +107,8 @@ interface ApiService {
      * Each of byteArrays is an image, advertisable wants instagram user to see.
      * That list can be null.
      */
-    @POST("api/ads")
-    fun createEditAd(@Body createEditAd: CreateEditAdEntity): Deferred<Unit>//TODO
+    @PUT("api/ads")
+    fun createEditAd(@Body createEditAd: CreateEditAdEntity): Deferred<Unit>
 
     /**
      * Gets Ad from Ads table by it`s id.
