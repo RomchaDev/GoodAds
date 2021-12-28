@@ -9,7 +9,6 @@ import org.romeo.layer_data.dto.Request
 import org.romeo.layer_domain.entity.ad_user.AdUser
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
-import org.romeo.layer_domain.entity.ad_user.AdUsers
 import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.user.Users
@@ -22,7 +21,7 @@ interface ApiService {
      * @return List of all the users that want to advertise ad of a user given by token
      * */
     @GET("api/requests")
-    fun getRequests(): Deferred<AdUsers>
+    fun getRequests(): Deferred<Users>
 
     /**
      * Should take data from Requests table
@@ -160,6 +159,7 @@ interface ApiService {
      * Deprecated.
      * Use createEditAd instead
      */
+    @Deprecated("Automatically creating with a when new ad is created")
     @POST("api/distribution/create")
     fun createDistribution(@Body distribution: Distribution): Deferred<Unit>
 }
