@@ -38,9 +38,9 @@ class RequestsFragment :
                 menu.setOnMenuItemClickListener { menuItem ->
                     if (menuItem.itemId == R.id.delete) {
                         if (item is UserAdsListItem.AdListItem && binding is ItemAdBinding)
-                            item.ad.id?.let { adId -> viewModel.declineAd(adId) }
+                            item.ad.id?.let { adId -> viewModel.declineRequest(adId) }
                         else if (item is UserAdsListItem.UserListItem && binding is LayoutUserBinding) {
-                            viewModel.declineUser(item.user.id)
+                            viewModel.declineRequest(item.user.id)
                         }
                         true
                     } else false
