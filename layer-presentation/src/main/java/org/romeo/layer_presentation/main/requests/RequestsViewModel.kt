@@ -3,6 +3,7 @@ package org.romeo.layer_presentation.main.requests
 import android.os.Bundle
 import org.romeo.layer_domain.entity.list.items.UserAdsListItem
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
+import org.romeo.layer_domain.repository_bounderies.RequestsRepository
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_presentation.core.app_state.AppState
 import org.romeo.layer_presentation.core.main.BaseViewModel
@@ -14,8 +15,7 @@ import org.romeo.layer_presentation.core.navigation.commands.interfaces.Requests
 
 class RequestsViewModel(
     override val navigator: AppNavigator,
-    private val adsRepository: AdsRepository,
-    private val userRepository: UserRepository,
+    private val requestsRepository: RequestsRepository,
     private val adRequestCommand: RequestsToAdRequestCommand,
     private val userRequestCommand: RequestsToUserRequestCommand
 ) : BaseViewModel<RequestsViewState>() {
@@ -30,8 +30,8 @@ class RequestsViewModel(
         runAsync {
             val list: MutableList<UserAdsListItem> = mutableListOf()
 
-            adsRepository.getAdRequests().adsList.forEach {
-                list.add(UserAdsListItem.AdListItem(it))
+            requestsRepository.getRequests().adUsers.forEach {
+                list.add(UserAdsListItem.AdListItem(it.ad))
             }
 
             updateList(list)
@@ -44,8 +44,8 @@ class RequestsViewModel(
         runAsync {
             val list: MutableList<UserAdsListItem> = mutableListOf()
 
-            userRepository.getUserRequests().users.forEach {
-                list.add(UserAdsListItem.UserListItem(it))
+            requestsRepository.getRequests().adUsers.forEach {
+                list.add(UserAdsListItem.UserListItem(it.user))
             }
 
             updateList(list)
@@ -67,21 +67,11 @@ class RequestsViewModel(
         )
     }
 
-    fun declineUser(userId: String) {
+    fun declineRequest(userId: String) {
         runAsync {
-            userRepository.declineUserRequest(userId)
+            requestsRepository.declineRequest(userId)
             val itemsNew = items.toMutableList()
             itemsNew.removeIf { (it as UserAdsListItem.UserListItem).user.id == userId }
-            updateList(itemsNew)
-            items = itemsNew
-        }
-    }
-
-    fun declineAd(adId: String) {
-        runAsync {
-            adsRepository.declineAd(adId)
-            val itemsNew = items.toMutableList()
-            itemsNew.removeIf { (it as UserAdsListItem.AdListItem).ad.id == adId }
             updateList(itemsNew)
             items = itemsNew
         }
