@@ -14,6 +14,7 @@ import org.romeo.layer_data.dto.Request
 import org.romeo.layer_domain.entity.ad_user.AdUser
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
+import org.romeo.layer_domain.entity.ad_user.AdUsers
 import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.Users
 
@@ -138,14 +139,8 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun getAdRequests(): Deferred<Ads> = runBlocking {
-        async {
-            Ads(ads)
-        }
-    }
-
-    override fun getRequests(): Deferred<Users> = runBlocking {
-        async { Users(listOf(user, user2)) }
+    override fun getRequests(): Deferred<AdUsers> = runBlocking {
+        async { AdUsers(listOf(AdUser(ads[1], user), AdUser(ads[2], user2))) }
     }
 
     override fun createDistribution(distribution: Distribution) = runBlocking {
@@ -153,6 +148,7 @@ class FakeApiDataSource : ApiDataSource {
             //Creating a distribution
         }
     }
+
     override fun getRequest(userId: String) = runBlocking {
         async { AdUser(ads[0], getUserById(userId).await()) }
     }
@@ -162,6 +158,7 @@ class FakeApiDataSource : ApiDataSource {
             //Declining an ad
         }
     }
+
     override fun declineUserRequest(userId: String) = runBlocking {
         async {
             //Declining a user

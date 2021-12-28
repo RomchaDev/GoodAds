@@ -7,6 +7,7 @@ import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.Request
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
+import org.romeo.layer_domain.entity.ad_user.AdUsers
 import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.Users
 
@@ -39,11 +40,9 @@ class ApiDataSourceImpl(
 
     override fun getOtherAds(): Deferred<Ads> = service.getOtherAds()
 
-    override fun getAdRequests(): Deferred<Ads> = service.getAdRequests()
-
     override fun getRequest(userId: String) = service.getRequest(userId)
 
-    override fun getRequests(): Deferred<Users> = service.getRequests()
+    override fun getRequests(): Deferred<AdUsers> = service.getRequests()
 
     override fun createDistribution(distribution: Distribution) = service.createDistribution(distribution)
 
