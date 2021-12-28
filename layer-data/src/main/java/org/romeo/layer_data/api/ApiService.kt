@@ -5,8 +5,8 @@ import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.TokenUser
-import org.romeo.layer_data.dto.AdRequest
-import org.romeo.layer_domain.entity.AdUser
+import org.romeo.layer_data.dto.Request
+import org.romeo.layer_domain.entity.ad_user.AdUser
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.distribution.Distribution
@@ -17,29 +17,29 @@ import retrofit2.http.*
 interface ApiService {
 
     /**
-     * should take data from UserRequests table
+     * should take data from Requests table
      * @return List of all the users that want to advertise ad of a user given by token
      * */
-    @GET("api/users/user-requests")
-    fun getUserRequests(): Deferred<Users>
+    @GET("api/requests")
+    fun getRequests(): Deferred<Users>
 
     /**
-     * Should take data from UserRequests table
+     * Should take data from Requests table
      *
      * @param userId - id of the advertiser that wants to advertise current user's ad
      * @return AdUser where Ad is the ad of the current user that is going to be advertised
      * and User is the user that wants to advertise the ad
      * */
-    @GET("api/users/user-requests/{userId}")
-    fun getUserRequest(@Path("userId") userId: String): Deferred<AdUser>
+    @GET("api/requests/{userId}")
+    fun getRequest(@Path("userId") userId: String): Deferred<AdUser>
 
     /**
-     * Creates new AdRequest in AdRequests table
+     * Creates new Request in Requests table
      *
      * @param request - ad request
      * */
-    @POST("api/ad-requests")
-    fun createAdRequest(@Body request: AdRequest): Deferred<Unit>
+    @POST("api/requests")
+    fun createRequest(@Body request: Request): Deferred<Unit>
 
     /**
      * Should change storyPrice and postPrice of current user in the TokenUsers table

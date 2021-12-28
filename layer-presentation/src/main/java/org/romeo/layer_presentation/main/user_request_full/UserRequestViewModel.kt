@@ -1,6 +1,6 @@
 package org.romeo.layer_presentation.main.user_request_full
 
-import org.romeo.layer_domain.entity.AdUser
+import org.romeo.layer_domain.entity.ad_user.AdUser
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_presentation.core.app_state.AppState

@@ -7,7 +7,7 @@
 
         <variable
             name="ad_user"
-            type="org.romeo.layer_domain.entity.AdUser" />
+            type="org.romeo.layer_domain.entity.ad_user.AdUser" />
     </data>
 
     <LinearLayout

@@ -2,7 +2,7 @@ package org.romeo.layer_presentation.main.user_request_full
 
 import android.os.Bundle
 import android.view.View
-import org.romeo.layer_domain.entity.AdUser
+import org.romeo.layer_domain.entity.ad_user.AdUser
 import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.main.BaseFragment
 import org.koin.android.viewmodel.ext.android.viewModel

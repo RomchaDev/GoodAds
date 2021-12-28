@@ -2,11 +2,8 @@ package org.romeo.layer_presentation.core.main
 
 import android.os.Bundle
 import android.view.View
-import org.koin.android.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
-import org.romeo.layer_domain.entity.AdUser
+import org.romeo.layer_domain.entity.ad_user.AdUser
 import org.romeo.layer_presentation.R
-import org.romeo.layer_presentation.core.navigation.AD_FULL_KEY
 import org.romeo.layer_presentation.databinding.FragmentAdBinding
 import org.romeo.layer_presentation.main.ad_screen.AdViewPagerAdapter
 
