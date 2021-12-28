@@ -6,7 +6,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_data.dto.LoginRequest
-import org.romeo.layer_data.dto.LoginResponse
+import org.romeo.layer_data.dto.TokenUser
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
@@ -87,7 +87,7 @@ class FakeApiDataSource : ApiDataSource {
 
     override fun login(auth: LoginRequest) = runBlocking {
         async {
-            LoginResponse(token, user)
+            TokenUser(token, user)
         }
     }
 

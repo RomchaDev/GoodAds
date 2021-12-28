@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 import org.romeo.layer_domain.entity.user.User
 
 @Parcelize
-data class LoginResponse(
+data class TokenUser(
     val token: String,
     val user: User
 ): Parcelable

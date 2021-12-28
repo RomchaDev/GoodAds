@@ -4,7 +4,7 @@ import kotlinx.coroutines.Deferred
 import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
-import org.romeo.layer_data.dto.LoginResponse
+import org.romeo.layer_data.dto.TokenUser
 import org.romeo.layer_data.dto.AdRequest
 import org.romeo.layer_domain.entity.AdUser
 import org.romeo.layer_domain.entity.ad.Ad
@@ -42,25 +42,24 @@ interface ApiService {
     fun createAdRequest(@Body request: AdRequest): Deferred<Unit>
 
     /**
-     * Should change storyPrice and postPrice of current user in the table Users
+     * Should change storyPrice and postPrice of current user in the TokenUsers table
      *
      * @param prices - object that contains new prices
      * */
-    @PATCH("api/users/my-user/prices")
+    @PATCH("api/users/me/prices")
     fun changePrices(@Body prices: ChangePricesRequest): Deferred<Unit>
 
     /**
-     * Now user cannot choose whether he is interested in advertising or he just wants to be
-     * advertised, so this method should return ALL users from table Users. Later pagination
+     * Should return ALL the users from TokenUsers table. Later pagination
      * will be added.
      *
      * @return object that contains all the users from table Users
      * */
-    @GET("api/users/advertisers")
+    @GET("api/users")
     fun getAdvertisers(): Deferred<Users>
 
     /**
-     * Takes the user from table Users that has id given in params
+     * Takes the user from TokenUser table that has id given in params
      *
      * @param uid - id of the user that should be returned
      * @return user having id the same as given in params
@@ -69,33 +68,33 @@ interface ApiService {
     fun getUserById(@Path("id") uid: String): Deferred<User>
 
     /**
-     * Takes user from table user that has token the same as given in header
+     * Takes user from TokenUser table that has token the same as given in header
      *
      * @return current user
      * */
-    @GET("api/users/my-user")
+    @GET("api/users/me")
     fun myUser(): Deferred<User>
 
     /**
-     * Ads new user to Users table and generates him a new token
-     * back-end should use instagram sdk to get the instagram user.
+     * Ads new user to Users table and generates him a new token.
+     * Back-end should use instagram sdk to get the instagram user.
      * Now an example user could be returned
      *
      * @param auth - an object containing user's instagram login and password
      * @return user and it's generated token
      * */
-    @POST("api/users/login")
-    fun login(@Body auth: LoginRequest): Deferred<LoginResponse>
+    @POST("api/users")
+    fun login(@Body auth: LoginRequest): Deferred<TokenUser>
 
     /**
-     * Deletes the user given by id from the UserRequests table.
+     * Deletes the user given by user-id from the UserRequests table.
      * Now id of the advertiser is given, later it will be changed to id of the request that
      * is going to be declined.
      *
      * @param userId - id of the user
      * */
-    @DELETE("api/users/decline/{id}")
-    fun declineUserRequest(@Path("id") userId: String): Deferred<Unit>
+    @DELETE("api/user-requests/{user-id}")
+    fun declineUserRequest(@Path("user-id") userId: String): Deferred<Unit>
 
     /**
      * Deletes the ad given by id from the AdRequests table.

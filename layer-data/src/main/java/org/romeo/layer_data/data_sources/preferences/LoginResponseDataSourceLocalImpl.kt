@@ -2,22 +2,22 @@ package org.romeo.layer_data.data_sources.preferences
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import org.romeo.layer_data.dto.LoginResponse
+import org.romeo.layer_data.dto.TokenUser
 
 class LoginResponseDataSourceLocalImpl(
     private val preferences: SharedPreferences
 ) : LoginResponseDataSourceLocal {
-    override fun save(data: LoginResponse) {
+    override fun save(data: TokenUser) {
         val dataStr = Gson().toJson(data)
 
         preferences.edit().putString(KEY, dataStr).apply()
     }
 
-    override fun get(): LoginResponse? {
+    override fun get(): TokenUser? {
         val dataStr = preferences.getString(KEY, null)
 
         return dataStr?.let {
-            Gson().fromJson(it, LoginResponse::class.java)
+            Gson().fromJson(it, TokenUser::class.java)
         }
     }
 
