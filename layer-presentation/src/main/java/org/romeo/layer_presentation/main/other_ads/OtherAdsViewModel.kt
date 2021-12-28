@@ -17,7 +17,7 @@ class OtherAdsViewModel(
 
     override fun onViewInit() {
         runAsync {
-            mSharedFlow.emit(AppState.Success(adsRepository.getOtherAds()))
+            mSharedFlow.emit(AppState.Success(adsRepository.getAds(0, 9)))
         }
     }
 

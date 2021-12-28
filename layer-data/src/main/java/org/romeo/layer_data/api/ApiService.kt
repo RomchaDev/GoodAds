@@ -125,20 +125,32 @@ interface ApiService {
     fun deleteAd(@Query("id") id: String): Deferred<Unit>
 
     /**
-     * Gets ALL ads from Ads table except for the ads belonging to current user.
+     * Gets number of ads that belong to particular user.
      *
+     * @param start index from which method must return data
+     * @param end index to which method must return data
+     * @param userId id of particular user
      * @return object that contains list of ads
      */
     @GET("api/ads")
-    fun getOtherAds(): Deferred<Ads>//TODO
+    fun getAdsByUserId(
+        @Path("id") userId: String,
+        @Query("start") start: Int,
+        @Query("end") end: Int
+    ): Deferred<Ads>
 
     /**
-     * Gets all user`s ads by his token.
+     * Gets number of ads that belong to particular user.
      *
+     * @param start index from which method must return data
+     * @param end index to which method must return data
      * @return object that contains list of ads
      */
-    @GET("api/ads/my-ads")
-    fun getMyAds(): Deferred<Ads>
+    @GET("api/ads")
+    fun getAds(
+        @Query("start") start: Int,
+        @Query("end") end: Int
+    ): Deferred<Ads>
 
     /**
      * Deprecated.

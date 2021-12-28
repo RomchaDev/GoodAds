@@ -74,13 +74,14 @@ class FakeApiDataSource : ApiDataSource {
 
     private val token = "SOME_REALLY_LONG_TOKEN"
 
-    override fun getMyAds(): Deferred<Ads> = runBlocking {
-        async {
-            Ads(ads)
+    override fun getAdsByUserId(userId: String, start: Int, end: Int): Deferred<Ads> =
+        runBlocking {
+            async {
+                Ads(ads)
+            }
         }
-    }
 
-    override fun getOtherAds(): Deferred<Ads> = runBlocking {
+    override fun getAds(start: Int, end: Int): Deferred<Ads> = runBlocking {
         async {
             Ads(ads)
         }

@@ -13,8 +13,6 @@ class ApiDataSourceImpl(
     private val service: ApiService
 ) : ApiDataSource {
 
-    override fun getMyAds() = service.getMyAds()
-
     override fun login(auth: LoginRequest) = service.login(auth)
 
     override fun myUser() = service.myUser()
@@ -35,14 +33,18 @@ class ApiDataSourceImpl(
 
     override fun createEditAd(createEditAd: CreateEditAdEntity) = service.createEditAd(createEditAd)
 
-    override fun getOtherAds(): Deferred<Ads> = service.getOtherAds()
+    override fun getAdsByUserId(userId: String, start: Int, end: Int): Deferred<Ads> =
+        service.getAdsByUserId(userId, start, end)
+
+    override fun getAds(start: Int, end: Int): Deferred<Ads> = service.getAds(start, end)
 
     override fun getRequest(requestId: String) = service.getRequest(requestId)
 
     override fun getRequests() = service.getRequests()
 
-    override fun declineRequest(requestId: String)  = service.declineRequest(requestId)
+    override fun declineRequest(requestId: String) = service.declineRequest(requestId)
 
-    override fun createDistribution(distribution: Distribution) = service.createDistribution(distribution)
+    override fun createDistribution(distribution: Distribution) =
+        service.createDistribution(distribution)
 
 }
