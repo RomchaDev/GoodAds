@@ -38,7 +38,7 @@ interface ApiService {
      *
      * @param request - ad request
      * */
-    @POST("api/ad-request")
+    @POST("api/ad-requests")
     fun createAdRequest(@Body request: AdRequest): Deferred<Unit>
 
     /**
