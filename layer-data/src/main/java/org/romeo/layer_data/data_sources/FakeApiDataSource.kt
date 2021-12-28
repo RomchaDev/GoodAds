@@ -11,10 +11,10 @@ import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.Request
-import org.romeo.layer_domain.entity.ad_user.AdUser
+import org.romeo.layer_domain.entity.request_full.RequestFull
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
-import org.romeo.layer_domain.entity.ad_user.AdUsers
+import org.romeo.layer_domain.entity.request_full.RequestsFull
 import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.Users
 
@@ -135,8 +135,15 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun getRequests(): Deferred<AdUsers> = runBlocking {
-        async { AdUsers(listOf(AdUser(ads[1], user), AdUser(ads[2], user2))) }
+    override fun getRequests(): Deferred<RequestsFull> = runBlocking {
+        async {
+            RequestsFull(
+                listOf(
+                    RequestFull("ID_0", ads[1], user),
+                    RequestFull("ID_0", ads[2], user2)
+                )
+            )
+        }
     }
 
     override fun createDistribution(distribution: Distribution) = runBlocking {
@@ -146,7 +153,7 @@ class FakeApiDataSource : ApiDataSource {
     }
 
     override fun getRequest(userId: String) = runBlocking {
-        async { AdUser(ads[0], getUserById(userId).await()) }
+        async { RequestFull("ID_0", ads[0], getUserById(userId).await()) }
     }
 
     override fun declineRequest(userId: String) = runBlocking {

@@ -7,9 +7,7 @@ import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.Request
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
-import org.romeo.layer_domain.entity.ad_user.AdUsers
 import org.romeo.layer_domain.entity.distribution.Distribution
-import org.romeo.layer_domain.entity.user.Users
 
 class ApiDataSourceImpl(
     private val service: ApiService

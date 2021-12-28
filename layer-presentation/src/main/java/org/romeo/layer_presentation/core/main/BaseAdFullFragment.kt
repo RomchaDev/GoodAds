@@ -2,7 +2,8 @@ package org.romeo.layer_presentation.core.main
 
 import android.os.Bundle
 import android.view.View
-import org.romeo.layer_domain.entity.ad_user.AdUser
+import org.romeo.layer_domain.entity.AdUser
+import org.romeo.layer_domain.entity.request_full.RequestFull
 import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.databinding.FragmentAdBinding
 import org.romeo.layer_presentation.main.ad_screen.AdViewPagerAdapter

@@ -1,6 +1,5 @@
 package org.romeo.layer_domain.repository_bounderies
 
-import org.romeo.layer_domain.entity.ad_user.AdUser
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity

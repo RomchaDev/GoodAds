@@ -6,10 +6,10 @@ import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.TokenUser
 import org.romeo.layer_data.dto.Request
-import org.romeo.layer_domain.entity.ad_user.AdUser
+import org.romeo.layer_domain.entity.request_full.RequestFull
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
-import org.romeo.layer_domain.entity.ad_user.AdUsers
+import org.romeo.layer_domain.entity.request_full.RequestsFull
 import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.user.Users
@@ -22,7 +22,7 @@ interface ApiService {
      * @return List of all the users that want to advertise ad of a user given by token
      * */
     @GET("api/requests")
-    fun getRequests(): Deferred<AdUsers>
+    fun getRequests(): Deferred<RequestsFull>
 
     /**
      * Should take data from Requests table
@@ -32,7 +32,7 @@ interface ApiService {
      * and User is the user that wants to advertise the ad
      * */
     @GET("api/requests/{userId}")
-    fun getRequest(@Path("userId") userId: String): Deferred<AdUser>
+    fun getRequest(@Path("userId") userId: String): Deferred<RequestFull>
 
     /**
      * Creates new Request in Requests table
