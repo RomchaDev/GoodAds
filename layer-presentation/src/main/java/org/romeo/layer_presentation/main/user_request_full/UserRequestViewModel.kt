@@ -9,12 +9,12 @@ import org.romeo.layer_presentation.core.navigation.AppNavigator
 class UserRequestViewModel(
     override val navigator: AppNavigator,
     private val requestsRepository: RequestsRepository,
-    private val userId: String
+    private val requestId: String
 ) : BaseViewModel<RequestFull>() {
 
     override fun onViewInit() {
         runAsync {
-            mSharedFlow.emit(AppState.Success(requestsRepository.getRequest(userId)))
+            mSharedFlow.emit(AppState.Success(requestsRepository.getRequest(requestId)))
         }
     }
 
@@ -24,7 +24,7 @@ class UserRequestViewModel(
 
     fun onDeclinePressed() {
         runAsync {
-            requestsRepository.declineRequest(userId)
+            requestsRepository.declineRequest(requestId)
         }
 
         navigator.back()

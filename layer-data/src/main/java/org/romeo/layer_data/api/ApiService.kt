@@ -27,12 +27,12 @@ interface ApiService {
     /**
      * Should take data from Requests table
      *
-     * @param userId - id of the advertiser that wants to advertise current user's ad
+     * @param requestId - id of the advertiser that wants to advertise current user's ad
      * @return AdUser where Ad is the ad of the current user that is going to be advertised
      * and User is the user that wants to advertise the ad
      * */
-    @GET("api/requests/{userId}")
-    fun getRequest(@Path("userId") userId: String): Deferred<RequestFull>
+    @GET("api/requests/{requestId}")
+    fun getRequest(@Path("requestId") requestId: String): Deferred<RequestFull>//TODO
 
     /**
      * Creates new Request in Requests table
@@ -92,10 +92,10 @@ interface ApiService {
      * Now id of the advertiser is given, later it will be changed to id of the request that
      * is going to be declined.
      *
-     * @param userId id of the user
+     * @param requestId id of the user
      * */
-    @DELETE("api/requests/{user-id}")
-    fun declineRequest(@Path("user-id") userId: String): Deferred<Unit>
+    @DELETE("api/requests/{request-id}")
+    fun declineRequest(@Path("request-id") requestId: String): Deferred<Unit>//TODO
 
     /**
      * Changes the ad or creates new one in Ads table.

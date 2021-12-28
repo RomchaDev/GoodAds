@@ -152,11 +152,11 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun getRequest(userId: String) = runBlocking {
-        async { RequestFull("ID_0", ads[0], getUserById(userId).await()) }
+    override fun getRequest(requestId: String) = runBlocking {
+        async { RequestFull("ID_0", ads[0], getUserById(requestId).await()) }
     }
 
-    override fun declineRequest(userId: String) = runBlocking {
+    override fun declineRequest(requestId: String) = runBlocking {
         async {
             //Declining a user
         }

@@ -3,6 +3,7 @@ package org.romeo.layer_presentation.main.requests
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.main.BaseFragment
@@ -19,7 +20,7 @@ class RequestsFragment :
     ListenerState {
 
     override val viewModel: RequestsViewModel by viewModel()
-    private lateinit var listAdapter: MainListAdapter<UserAdsListItem>
+    private lateinit var listAdapter: MainListAdapter<RequestListItem>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,41 +32,22 @@ class RequestsFragment :
             )
         ) { binding, item ->
 
-            binding.root.setOnLongClickListener { view ->
-                val menu = PopupMenu(requireContext(), view)
-                menu.inflate(R.menu.decline_menu)
+            initItemMenu(binding, item)
 
-                menu.setOnMenuItemClickListener { menuItem ->
-                    if (menuItem.itemId == R.id.delete) {
-                        if (item is UserAdsListItem.AdListItem && binding is ItemAdBinding)
-                            item.ad.id?.let { adId -> viewModel.declineRequest(adId) }
-                        else if (item is UserAdsListItem.UserListItem && binding is LayoutUserBinding) {
-                            viewModel.declineRequest(item.user.id)
-                        }
-                        true
-                    } else false
-                }
-
-                menu.show()
-                true
-            }
-
-            if (item is UserAdsListItem.AdListItem && binding is ItemAdBinding) {
+            if (item is RequestListItem.AdRequestListItem && binding is ItemAdBinding) {
                 binding.data = item.ad
 
                 binding.root.setOnClickListener {
-                    item.ad.id?.let { id ->
-                        viewModel.onAdClicked(id)
-                    }
+                    viewModel.onAdClicked(item.requestId)
                 }
 
-            } else if (item is UserAdsListItem.UserListItem && binding is LayoutUserBinding) {
+            } else if (item is RequestListItem.UserRequestListItem && binding is LayoutUserBinding) {
                 binding.data = UserAdsListItem.UserListItem(item.user)
                 binding.etPostPrice.isFocusable = false
                 binding.etStoryPrice.isFocusable = false
 
                 binding.root.setOnClickListener {
-                    viewModel.onUserClicked(item.user.id)
+                    viewModel.onUserClicked(item.requestId)
                 }
             }
         }
@@ -74,6 +56,30 @@ class RequestsFragment :
         binding.adsRecycler.adapter = listAdapter
 
         binding.activeInactiveButton.listenerState = this
+    }
+
+    private fun initItemMenu(
+        binding: ViewDataBinding,
+        item: RequestListItem
+    ) {
+        binding.root.setOnLongClickListener { view ->
+            val menu = PopupMenu(requireContext(), view)
+            menu.inflate(R.menu.decline_menu)
+
+            menu.setOnMenuItemClickListener { menuItem ->
+                if (menuItem.itemId == R.id.delete) {
+                    if (item is RequestListItem.AdRequestListItem && binding is ItemAdBinding)
+                        item.ad.id?.let { adId -> viewModel.declineRequest(adId) }
+                    else if (item is RequestListItem.UserRequestListItem && binding is LayoutUserBinding) {
+                        viewModel.declineRequest(item.user.id)
+                    }
+                    true
+                } else false
+            }
+
+            menu.show()
+            true
+        }
     }
 
     override fun renderSuccess(data: RequestsViewState) {

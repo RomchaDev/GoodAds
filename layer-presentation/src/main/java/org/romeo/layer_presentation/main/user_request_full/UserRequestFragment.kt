@@ -8,14 +8,14 @@ import org.romeo.layer_presentation.core.main.BaseFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import org.romeo.layer_domain.entity.list.items.UserAdsListItem
-import org.romeo.layer_presentation.core.navigation.USER_FULL_KEY
+import org.romeo.layer_presentation.core.navigation.USER_REQUEST_FULL_KEY
 import org.romeo.layer_presentation.databinding.FragmentRequestUserBinding
 
 class UserRequestFragment :
     BaseFragment<FragmentRequestUserBinding, RequestFull, UserRequestViewModel>(R.layout.fragment_request_user) {
 
     override val viewModel: UserRequestViewModel by viewModel {
-        parametersOf(arguments?.getString(USER_FULL_KEY))
+        parametersOf(arguments?.getString(USER_REQUEST_FULL_KEY))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

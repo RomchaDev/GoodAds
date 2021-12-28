@@ -37,11 +37,11 @@ class ApiDataSourceImpl(
 
     override fun getOtherAds(): Deferred<Ads> = service.getOtherAds()
 
-    override fun getRequest(userId: String) = service.getRequest(userId)
+    override fun getRequest(requestId: String) = service.getRequest(requestId)
 
     override fun getRequests() = service.getRequests()
 
-    override fun declineRequest(userId: String)  = service.declineRequest(userId)
+    override fun declineRequest(requestId: String)  = service.declineRequest(requestId)
 
     override fun createDistribution(distribution: Distribution) = service.createDistribution(distribution)
 

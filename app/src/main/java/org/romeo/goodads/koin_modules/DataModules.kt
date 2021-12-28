@@ -15,9 +15,11 @@ import org.romeo.layer_data.data_sources.preferences.LoginResponseDataSourceLoca
 import org.romeo.layer_data.data_sources.preferences.LoginResponseDataSourceLocalImpl
 import org.romeo.layer_data.repository.AdsRepositoryImpl
 import org.romeo.layer_data.repository.DistributionRepositoryImpl
+import org.romeo.layer_data.repository.RequestsRepositoryImpl
 import org.romeo.layer_data.repository.UserRepositoryImpl
 import org.romeo.layer_domain.repository_bounderies.AdsRepository
 import org.romeo.layer_domain.repository_bounderies.DistributionRepository
+import org.romeo.layer_domain.repository_bounderies.RequestsRepository
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -41,6 +43,7 @@ val repositoryModule = module {
     single<AdsRepository> { AdsRepositoryImpl(get()) }
     single<UserRepository> { UserRepositoryImpl(get(), get()) }
     single<DistributionRepository> { DistributionRepositoryImpl(get()) }
+    single<RequestsRepository> { RequestsRepositoryImpl(get()) }
 }
 
 val retrofitModule = module {

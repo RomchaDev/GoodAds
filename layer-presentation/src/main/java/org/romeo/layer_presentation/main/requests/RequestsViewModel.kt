@@ -2,14 +2,12 @@ package org.romeo.layer_presentation.main.requests
 
 import android.os.Bundle
 import org.romeo.layer_domain.entity.list.items.UserAdsListItem
-import org.romeo.layer_domain.repository_bounderies.AdsRepository
 import org.romeo.layer_domain.repository_bounderies.RequestsRepository
-import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_presentation.core.app_state.AppState
 import org.romeo.layer_presentation.core.main.BaseViewModel
 import org.romeo.layer_presentation.core.navigation.AD_FULL_KEY
 import org.romeo.layer_presentation.core.navigation.AppNavigator
-import org.romeo.layer_presentation.core.navigation.USER_FULL_KEY
+import org.romeo.layer_presentation.core.navigation.USER_REQUEST_FULL_KEY
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.RequestsToAdRequestCommand
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.RequestsToUserRequestCommand
 
@@ -20,7 +18,7 @@ class RequestsViewModel(
     private val userRequestCommand: RequestsToUserRequestCommand
 ) : BaseViewModel<RequestsViewState>() {
 
-    var items = mutableListOf<UserAdsListItem>()
+    var items = mutableListOf<RequestListItem>()
 
     override fun onViewInit() {
         getAdRequests()
@@ -28,10 +26,10 @@ class RequestsViewModel(
 
     fun getAdRequests() {
         runAsync {
-            val list: MutableList<UserAdsListItem> = mutableListOf()
+            val list: MutableList<RequestListItem> = mutableListOf()
 
-            requestsRepository.getRequests().adUsers.forEach {
-                list.add(UserAdsListItem.AdListItem(it.ad))
+            requestsRepository.getRequestsFull().adUsers.forEach {
+                list.add(RequestListItem.AdRequestListItem(it.requestId, it.ad))
             }
 
             updateList(list)
@@ -42,10 +40,10 @@ class RequestsViewModel(
 
     fun getUserRequests() {
         runAsync {
-            val list: MutableList<UserAdsListItem> = mutableListOf()
+            val list: MutableList<RequestListItem> = mutableListOf()
 
-            requestsRepository.getRequests().adUsers.forEach {
-                list.add(UserAdsListItem.UserListItem(it.user))
+            requestsRepository.getRequestsFull().adUsers.forEach {
+                list.add(RequestListItem.UserRequestListItem(it.requestId, it.user))
             }
 
             updateList(list)
@@ -54,33 +52,36 @@ class RequestsViewModel(
         }
     }
 
-    private fun updateList(list: MutableList<UserAdsListItem>) {
+    private fun updateList(list: MutableList<RequestListItem>) {
         runAsync {
             mSharedFlow.emit(AppState.Success(RequestsViewState(list)))
         }
     }
 
-    fun onAdClicked(id: String) {
+    fun onAdClicked(requestId: String) {
+        val adListItem = items.find { it.requestId == requestId }
+                as RequestListItem.AdRequestListItem
+
         navigator.navigate(
             adRequestCommand,
-            Bundle().apply { putString(AD_FULL_KEY, id) }
+            Bundle().apply { putString(AD_FULL_KEY, adListItem.ad.id) }
         )
-    }
-
-    fun declineRequest(userId: String) {
-        runAsync {
-            requestsRepository.declineRequest(userId)
-            val itemsNew = items.toMutableList()
-            itemsNew.removeIf { (it as UserAdsListItem.UserListItem).user.id == userId }
-            updateList(itemsNew)
-            items = itemsNew
-        }
     }
 
     fun onUserClicked(id: String) {
         navigator.navigate(
             userRequestCommand,
-            Bundle().apply { putString(USER_FULL_KEY, id) }
+            Bundle().apply { putString(USER_REQUEST_FULL_KEY, id) }
         )
+    }
+
+    fun declineRequest(requestId: String) {
+        runAsync {
+            requestsRepository.declineRequest(requestId)
+            val itemsNew = items.toMutableList()
+            itemsNew.removeIf { it.requestId == requestId }
+            updateList(itemsNew)
+            items = itemsNew
+        }
     }
 }

@@ -36,12 +36,12 @@ val viewModelModule = module {
     viewModel { AdvertisersViewModel(get(), get(), get(), get()) }
     viewModel { ChooseAdViewModel(get(), get()) }
     viewModel { (adId: String) -> MyAdFullViewModel(get(), get(), get(), adId) }
-    viewModel { RequestsViewModel(get(), get(), get(), get(), get()) }
+    viewModel { RequestsViewModel(get(), get(), get(), get()) }
     viewModel { (adId: String) -> AdRequestViewModel(get(), get(), adId) }
-    viewModel { (userId: String) -> UserRequestViewModel(get(), get(), get(), userId) }
+    viewModel { (userId: String) -> UserRequestViewModel(get(), get(), userId) }
     viewModel { OtherAdsViewModel(get(), get(), get()) }
     viewModel { (ad: Ad) -> CreateEditAdViewModel(get(), ad) }
-    viewModel { (adId: String) -> AdListItemFullViewModel(get(), get(), get(), adId) }
+    viewModel { (adId: String) -> AdListItemFullViewModel(get(), get(), get(), get(), adId) }
     viewModel { CreateDistributionViewModel(get(), get()) }
 }
 
