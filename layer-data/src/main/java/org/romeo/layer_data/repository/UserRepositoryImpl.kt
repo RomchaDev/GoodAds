@@ -35,8 +35,4 @@ class UserRepositoryImpl(
     override suspend fun getToken() =
         loginResponseDataSource.get()?.token
 
-    override suspend fun getUserRequests() = apiDataSource.getRequests().await()
-
-    override suspend fun declineUserRequest(userId: String) =
-        apiDataSource.declineUserRequest(userId).await()
 }

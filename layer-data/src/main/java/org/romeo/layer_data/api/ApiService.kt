@@ -9,6 +9,7 @@ import org.romeo.layer_data.dto.Request
 import org.romeo.layer_domain.entity.ad_user.AdUser
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
+import org.romeo.layer_domain.entity.ad_user.AdUsers
 import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.user.Users
@@ -21,7 +22,7 @@ interface ApiService {
      * @return List of all the users that want to advertise ad of a user given by token
      * */
     @GET("api/requests")
-    fun getRequests(): Deferred<Users>
+    fun getRequests(): Deferred<AdUsers>
 
     /**
      * Should take data from Requests table
@@ -87,22 +88,14 @@ interface ApiService {
     fun login(@Body auth: LoginRequest): Deferred<TokenUser>
 
     /**
-     * Deletes the user given by user-id from the UserRequests table.
+     * Deletes the request given by user-id from the Requests table.
      * Now id of the advertiser is given, later it will be changed to id of the request that
      * is going to be declined.
      *
-     * @param userId - id of the user
+     * @param userId id of the user
      * */
-    @DELETE("api/user-requests/{user-id}")
-    fun declineUserRequest(@Path("user-id") userId: String): Deferred<Unit>
-
-    /**
-     * Deletes the ad given by id from the AdRequests table.
-     *
-     * @param adId - id of the ad that must be declined
-     */
-    @DELETE("api/ads/decline/{id}")
-    fun declineAd(@Path("id") adId: String): Deferred<Unit>
+    @DELETE("api/requests/{user-id}")
+    fun declineRequest(@Path("user-id") userId: String): Deferred<Unit>
 
     /**
      * Changes the ad or creates new one in Ads table.
@@ -122,14 +115,6 @@ interface ApiService {
      */
     @GET("api/ads/{id}")
     fun getAd(@Path("id") id: String): Deferred<Ad>
-
-    /**
-     * Creates a user request into UserRequests table.
-     *
-     * @param adId - id of ad that user wants to advertise
-     */
-    @POST("api/ads/advertise-other-ad/{ad-id}")
-    fun advertiseOtherAd(@Path("ad-id") adId: String): Deferred<Unit>
 
     /**
      * Deletes an ad from Ads table.

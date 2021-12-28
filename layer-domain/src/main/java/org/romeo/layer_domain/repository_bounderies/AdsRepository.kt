@@ -12,8 +12,4 @@ interface AdsRepository {
     suspend fun deleteAd(id: String)
     suspend fun createEditAd(createEditAdEntity: CreateEditAdEntity)
     suspend fun getAd(id: String): Ad
-    suspend fun advertiseMyAd(userId: String, adId: String)
-    suspend fun advertiseOtherAd(adId: String)
-    suspend fun getUserRequest(userId: String): AdUser
-    suspend fun declineAd(adId: String)
 }
