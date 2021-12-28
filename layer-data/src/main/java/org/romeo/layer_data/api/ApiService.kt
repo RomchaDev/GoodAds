@@ -5,7 +5,7 @@ import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.LoginResponse
-import org.romeo.layer_data.dto.ApplyAdRequest
+import org.romeo.layer_data.dto.AdRequest
 import org.romeo.layer_domain.entity.AdUser
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
@@ -13,7 +13,6 @@ import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.user.Users
 import retrofit2.http.*
-import java.lang.StringBuilder
 
 interface ApiService {
 
@@ -35,14 +34,12 @@ interface ApiService {
     fun getUserRequest(@Path("userId") userId: String): Deferred<AdUser>
 
     /**
-     * The payment system has not been ready yet, so on back-end simple TODO
-     * can be left
+     * Creates new AdRequest in AdRequests table
      *
-     * @param request - object that contains all the data that is necessary for the ad to
-     * be advertised
+     * @param request - ad request
      * */
-    @POST("api/users/send-my-ad")
-    fun advertiseMyAd(@Body request: ApplyAdRequest): Deferred<Unit>
+    @POST("api/ad-request")
+    fun createAdRequest(@Body request: AdRequest): Deferred<Unit>
 
     /**
      * Should change storyPrice and postPrice of current user in the table Users

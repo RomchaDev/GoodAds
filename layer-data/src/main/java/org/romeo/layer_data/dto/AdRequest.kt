@@ -1,6 +1,6 @@
 package org.romeo.layer_data.dto
 
-data class ApplyAdRequest(
-    val userId: String,
+data class AdRequest(
+    val advertiserId: String,
     val adId: String
 )
