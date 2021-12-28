@@ -115,10 +115,6 @@ class FakeApiDataSource : ApiDataSource {
         async { Unit }
     }
 
-    override fun advertiseOtherAd(adId: String): Deferred<Unit> = runBlocking {
-        async { Unit }
-    }
-
     override fun getAd(id: String) = runBlocking {
         async {
             ads.find { ad -> ad.id == id }!!
@@ -153,13 +149,7 @@ class FakeApiDataSource : ApiDataSource {
         async { AdUser(ads[0], getUserById(userId).await()) }
     }
 
-    override fun declineAd(adId: String) = runBlocking {
-        async {
-            //Declining an ad
-        }
-    }
-
-    override fun declineUserRequest(userId: String) = runBlocking {
+    override fun declineRequest(userId: String) = runBlocking {
         async {
             //Declining a user
         }

@@ -14,6 +14,7 @@ import org.romeo.layer_domain.entity.user.Users
 class ApiDataSourceImpl(
     private val service: ApiService
 ) : ApiDataSource {
+
     override fun getMyAds() = service.getMyAds()
 
     override fun login(auth: LoginRequest) = service.login(auth)
@@ -34,8 +35,6 @@ class ApiDataSourceImpl(
     override fun createRequest(request: Request): Deferred<Unit> =
         service.createRequest(request)
 
-    override fun advertiseOtherAd(adId: String): Deferred<Unit> = service.advertiseOtherAd(adId)
-
     override fun createEditAd(createEditAd: CreateEditAdEntity) = service.createEditAd(createEditAd)
 
     override fun getOtherAds(): Deferred<Ads> = service.getOtherAds()
@@ -44,9 +43,8 @@ class ApiDataSourceImpl(
 
     override fun getRequests() = service.getRequests()
 
+    override fun declineRequest(userId: String)  = service.declineRequest(userId)
+
     override fun createDistribution(distribution: Distribution) = service.createDistribution(distribution)
 
-    override fun declineAd(adId: String) = service.declineAd(adId)
-
-    override fun declineUserRequest(userId: String)  = service.declineUserRequest(userId)
 }
