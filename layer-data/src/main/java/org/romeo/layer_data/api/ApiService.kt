@@ -18,10 +18,10 @@ import retrofit2.http.*
 interface ApiService {
 
     /**
-     * should take data from Requests table
+     * Should take data from Requests table
      *
      * @return List of all the full requests where Request.advertiser id equals to id of current user
-     * or Request.adId is id of an ad which has Ad.userId equal to current user
+     * or Request.adId is id of an ad which has Ad.userId equal to current user id
      * */
     @GET("api/requests")
     fun getRequests(): Deferred<RequestsFull>
@@ -39,7 +39,7 @@ interface ApiService {
     /**
      * Creates a new Request in Requests table
      *
-     * @param request - ad request
+     * @param request ad request
      * */
     @POST("api/requests")
     fun createRequest(@Body request: Request): Deferred<Unit>
@@ -61,8 +61,10 @@ interface ApiService {
     fun changePrices(@Body prices: ChangePricesRequest): Deferred<Unit>
 
     /**
-     * Should return ALL the users from TokenUsers table. Later pagination
-     * will be added.
+     * Should return users from TokenUsers table, located between start and end numbers
+     *
+     * @param start index from which method must return data
+     * @param end index until which method must return data
      *
      * @return object that contains all the users from table Users
      * */
@@ -75,7 +77,7 @@ interface ApiService {
     /**
      * Takes the user from TokenUsers table that has id the same as given in params
      *
-     * @param uid - id of the user that should be returned
+     * @param uid id of the user that should be returned
      * @return user having id the same as given in params
      * */
     @GET("api/users/{id}")
@@ -94,7 +96,7 @@ interface ApiService {
      * Back-end should use instagram sdk to get the instagram user.
      * Now an example user could be returned
      *
-     * @param auth - an object containing user's instagram login and password
+     * @param auth an object containing user's instagram login and password
      * @return user and it's generated token
      * */
     @POST("api/users")
@@ -113,7 +115,7 @@ interface ApiService {
     /**
      * Gets Ad from Ads table by it`s id.
      *
-     * @param id - id of the ad
+     * @param id id of the ad
      * @return ad
      */
     @GET("api/ads/{id}")
@@ -122,7 +124,7 @@ interface ApiService {
     /**
      * Deletes an ad from Ads table.
      *
-     * @param id - id of ad that must be deleted
+     * @param id id of ad that must be deleted
      */
     @DELETE("api/ads/{id}")
     fun deleteAd(@Query("id") id: String): Deferred<Unit>
@@ -131,7 +133,7 @@ interface ApiService {
      * Gets number of ads that belong to particular user.
      *
      * @param start index from which method must return data
-     * @param end index to which method must return data
+     * @param end index until which method must return data
      * @param userId id of particular user
      * @return object that contains list of ads
      */

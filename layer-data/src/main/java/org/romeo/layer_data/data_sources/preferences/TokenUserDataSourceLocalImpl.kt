@@ -4,9 +4,9 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import org.romeo.layer_data.dto.TokenUser
 
-class LoginResponseDataSourceLocalImpl(
+class TokenUserDataSourceLocalImpl(
     private val preferences: SharedPreferences
-) : LoginResponseDataSourceLocal {
+) : TokenUserDataSourceLocal {
     override fun save(data: TokenUser) {
         val dataStr = Gson().toJson(data)
 

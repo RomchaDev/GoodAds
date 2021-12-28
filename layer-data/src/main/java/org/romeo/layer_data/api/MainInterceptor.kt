@@ -4,10 +4,10 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import org.romeo.layer_data.exceptions.NoAuthException
 import org.romeo.model.exceptions.UserAlreadyExistsException
-import org.romeo.layer_data.data_sources.preferences.LoginResponseDataSourceLocal
+import org.romeo.layer_data.data_sources.preferences.TokenUserDataSourceLocal
 
 class MainInterceptor(
-    private val responseDataSource: LoginResponseDataSourceLocal
+    private val responseDataSource: TokenUserDataSourceLocal
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
