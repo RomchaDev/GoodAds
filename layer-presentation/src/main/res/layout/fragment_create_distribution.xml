@@ -48,7 +48,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
-                android:hint="@string/price_for_one_ad"
+                android:hint="@string/at_all_you_pay"
                 app:layout_constraintEnd_toEndOf="@+id/logo_text"
                 app:layout_constraintStart_toStartOf="@+id/logo_text"
                 app:layout_constraintTop_toBottomOf="@+id/username_text">

@@ -42,7 +42,7 @@ val viewModelModule = module {
     viewModel { OtherAdsViewModel(get(), get(), get()) }
     viewModel { (ad: Ad) -> CreateEditAdViewModel(get(), ad) }
     viewModel { (adId: String) -> AdListItemFullViewModel(get(), get(), get(), get(), adId) }
-    viewModel { CreateDistributionViewModel(get(), get()) }
+    viewModel { (adId: String) -> CreateDistributionViewModel(get(), get(), adId) }
 }
 
 val navigationModule = module {

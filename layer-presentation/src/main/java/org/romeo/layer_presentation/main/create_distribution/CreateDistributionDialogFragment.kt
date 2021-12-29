@@ -11,14 +11,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import org.romeo.layer_presentation.R
+import org.romeo.layer_presentation.core.navigation.AD_FULL_KEY
+import org.romeo.layer_presentation.core.navigation.DISTRIBUTION_IN_KEY
 import org.romeo.layer_presentation.core.utils.toPx
 import org.romeo.layer_presentation.core.view.launchWhenStarted
 import org.romeo.layer_presentation.databinding.FragmentCreateDistributionBinding
 import java.lang.NumberFormatException
 
 class CreateDistributionDialogFragment : DialogFragment() {
-    private val viewModel: CreateDistributionViewModel by viewModel()
+    private val viewModel: CreateDistributionViewModel by viewModel {
+        parametersOf(arguments?.getString(DISTRIBUTION_IN_KEY))
+    }
     private var bindingNullable: FragmentCreateDistributionBinding? = null
     private val binding get() = bindingNullable!!
 

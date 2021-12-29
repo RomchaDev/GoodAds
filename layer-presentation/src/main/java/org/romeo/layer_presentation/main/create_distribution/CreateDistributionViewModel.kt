@@ -8,13 +8,14 @@ import org.romeo.layer_presentation.core.navigation.AppNavigator
 
 class CreateDistributionViewModel(
     override val navigator: AppNavigator,
-    private val distributionRepository: DistributionRepository
+    private val distributionRepository: DistributionRepository,
+    private val adId: String
 ) : BaseViewModel<DismissAppStateEntity>() {
 
     fun onCreatePressed(priceForOneAd: Int, advertisersNumber: Int) {
         runAsync {
             distributionRepository.createDistribution(
-                Distribution(priceForOneAd, advertisersNumber)
+                Distribution(adId, priceForOneAd, advertisersNumber)
             )
         }.invokeOnCompletion {
             dismiss()
