@@ -24,18 +24,17 @@ Ad {
     imageUrls: String[],
     userId: String,
     price: String,
-    freePlaces: Int
+    places: Int,
+    occupiedPlaces: Int
 }
 
-// Deprecated
 Distribution {
-    userId: Int
+    adId: Int,
     oneAdPrice: Int,
     advertisersAmount: Int
 }
 
 AdUser {
-     id: String // nullable
      ad: Ad,
      user: User
 }
@@ -50,7 +49,7 @@ LoginRequest {
     val password: String
 }
 
-Request {
+AdvertisingRequest {
     advertiserId: String, // id of the user that is going to advertise the ad
     adId: String // id of the ad that is going to be advertised
 }

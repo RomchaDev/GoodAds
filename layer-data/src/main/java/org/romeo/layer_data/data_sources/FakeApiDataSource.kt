@@ -10,11 +10,11 @@ import org.romeo.layer_data.dto.TokenUser
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.AdType
 import org.romeo.layer_domain.entity.ad.Ads
-import org.romeo.layer_data.dto.Request
-import org.romeo.layer_domain.entity.request_full.RequestFull
+import org.romeo.layer_data.dto.AdvertisingRequest
+import org.romeo.layer_domain.entity.request_full.AdvertisingRequestFull
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
-import org.romeo.layer_domain.entity.request_full.RequestsFull
+import org.romeo.layer_domain.entity.request_full.AdvertisingRequestsFull
 import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.Users
 
@@ -116,7 +116,7 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun createRequest(request: Request): Deferred<Unit> = runBlocking {
+    override fun createAdvertisingRequest(advertisingRequest: AdvertisingRequest): Deferred<Unit> = runBlocking {
         async { Unit }
     }
 
@@ -140,12 +140,12 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun getRequests(): Deferred<RequestsFull> = runBlocking {
+    override fun getAdvertisingRequests(): Deferred<AdvertisingRequestsFull> = runBlocking {
         async {
-            RequestsFull(
+            AdvertisingRequestsFull(
                 listOf(
-                    RequestFull("ID_0", ads[1], user),
-                    RequestFull("ID_0", ads[2], user2)
+                    AdvertisingRequestFull("ID_0", ads[1], user),
+                    AdvertisingRequestFull("ID_0", ads[2], user2)
                 )
             )
         }
@@ -157,11 +157,11 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
-    override fun getRequest(requestId: String) = runBlocking {
-        async { RequestFull("ID_0", ads[0], getUserById(requestId).await()) }
+    override fun getAdvertisingRequest(requestId: String) = runBlocking {
+        async { AdvertisingRequestFull("ID_0", ads[0], getUserById(requestId).await()) }
     }
 
-    override fun declineRequest(requestId: String) = runBlocking {
+    override fun declineAdvertisingRequest(requestId: String) = runBlocking {
         async {
             //Declining a user
         }

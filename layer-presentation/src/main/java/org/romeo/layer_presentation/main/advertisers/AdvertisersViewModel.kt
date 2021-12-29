@@ -2,8 +2,7 @@ package org.romeo.layer_presentation.main.advertisers
 
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.user.Users
-import org.romeo.layer_domain.repository_bounderies.AdsRepository
-import org.romeo.layer_domain.repository_bounderies.RequestsRepository
+import org.romeo.layer_domain.repository_bounderies.AdvertisingRequestsRepository
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_presentation.core.app_state.AppState
 
@@ -17,7 +16,7 @@ import org.romeo.layer_presentation.core.view.REQUEST_SUCCESSFULLY_SENT_MESSAGE
 class AdvertisersViewModel(
     override val navigator: AppNavigator,
     private val userRepository: UserRepository,
-    private val requestsRepository: RequestsRepository,
+    private val advertisingRequestsRepository: AdvertisingRequestsRepository,
     private val usersToChoseAdCommand: AnyToChoseAdCommand
 ) : BaseViewModel<Users>() {
 
@@ -39,7 +38,7 @@ class AdvertisersViewModel(
                 result?.id?.let { adId ->
                     userIdChosen?.let { uid ->
                         runAsync {
-                            requestsRepository.createRequest(uid, adId)
+                            advertisingRequestsRepository.createAdvertisingRequest(uid, adId)
                         }
                     }
                 }

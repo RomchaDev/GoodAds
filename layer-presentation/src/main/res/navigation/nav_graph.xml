@@ -56,7 +56,7 @@
         android:label="CreateEditAdFragment" /><action android:id="@+id/action_global_createEditAdFragment" app:destination="@id/createEditAdFragment"/>
     <fragment
         android:id="@+id/fragment_requests"
-        android:name="org.romeo.layer_presentation.main.requests.RequestsFragment"
+        android:name="org.romeo.layer_presentation.main.requests.AdvertisingRequestsFragment"
         android:label="RequestsFragment">
         <action
             android:id="@+id/action_fragment_requests_to_adRequestFragment"

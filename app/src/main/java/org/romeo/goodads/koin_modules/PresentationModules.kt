@@ -22,7 +22,7 @@ import org.romeo.layer_presentation.core.navigation.commands.interfaces.Requests
 import org.romeo.layer_presentation.main.ad_request_full.AdRequestViewModel
 import org.romeo.layer_presentation.main.ad_screen.MyAdFullViewModel
 import org.romeo.layer_presentation.main.other_ads.OtherAdsViewModel
-import org.romeo.layer_presentation.main.requests.RequestsViewModel
+import org.romeo.layer_presentation.main.requests.AdvertisingRequestsViewModel
 import org.romeo.layer_presentation.main.choose_ad_screen.ChooseAdViewModel
 import org.romeo.layer_presentation.main.create_distribution.CreateDistributionViewModel
 import org.romeo.layer_presentation.main.create_edit_ad.CreateEditAdViewModel
@@ -36,7 +36,7 @@ val viewModelModule = module {
     viewModel { AdvertisersViewModel(get(), get(), get(), get()) }
     viewModel { ChooseAdViewModel(get(), get()) }
     viewModel { (adId: String) -> MyAdFullViewModel(get(), get(), get(), adId) }
-    viewModel { RequestsViewModel(get(), get(), get(), get()) }
+    viewModel { AdvertisingRequestsViewModel(get(), get(), get(), get()) }
     viewModel { (adId: String) -> AdRequestViewModel(get(), get(), adId) }
     viewModel { (userId: String) -> UserRequestViewModel(get(), get(), userId) }
     viewModel { OtherAdsViewModel(get(), get(), get()) }

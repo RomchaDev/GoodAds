@@ -7,20 +7,20 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.main.BaseFragment
-import org.romeo.layer_presentation.databinding.FragmentRequestsBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.romeo.layer_domain.entity.list.items.UserAdsListItem
 import org.romeo.layer_presentation.core.list.MainListAdapter
 import org.romeo.layer_presentation.core.view.active_inactive_view.ListenerState
+import org.romeo.layer_presentation.databinding.FragmentAdvertisingRequestsBinding
 import org.romeo.layer_presentation.databinding.ItemAdBinding
 import org.romeo.layer_presentation.databinding.LayoutUserBinding
 
-class RequestsFragment :
-    BaseFragment<FragmentRequestsBinding, RequestsViewState, RequestsViewModel>(R.layout.fragment_requests),
+class AdvertisingRequestsFragment :
+    BaseFragment<FragmentAdvertisingRequestsBinding, AdvertisingRequestsViewState, AdvertisingRequestsViewModel>(R.layout.fragment_advertising_requests),
     ListenerState {
 
-    override val viewModel: RequestsViewModel by viewModel()
-    private lateinit var listAdapter: MainListAdapter<RequestListItem>
+    override val viewModel: AdvertisingRequestsViewModel by viewModel()
+    private lateinit var listAdapter: MainListAdapter<AdvertisingRequestListItem>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,14 +34,14 @@ class RequestsFragment :
 
             initItemMenu(binding, item)
 
-            if (item is RequestListItem.AdRequestListItem && binding is ItemAdBinding) {
+            if (item is AdvertisingRequestListItem.AdRequestListItem && binding is ItemAdBinding) {
                 binding.data = item.ad
 
                 binding.root.setOnClickListener {
                     viewModel.onAdClicked(item.requestId)
                 }
 
-            } else if (item is RequestListItem.UserRequestListItem && binding is LayoutUserBinding) {
+            } else if (item is AdvertisingRequestListItem.UserRequestListItem && binding is LayoutUserBinding) {
                 binding.data = UserAdsListItem.UserListItem(item.user)
                 binding.etPostPrice.isFocusable = false
                 binding.etStoryPrice.isFocusable = false
@@ -60,7 +60,7 @@ class RequestsFragment :
 
     private fun initItemMenu(
         binding: ViewDataBinding,
-        item: RequestListItem
+        item: AdvertisingRequestListItem
     ) {
         binding.root.setOnLongClickListener { view ->
             val menu = PopupMenu(requireContext(), view)
@@ -68,9 +68,9 @@ class RequestsFragment :
 
             menu.setOnMenuItemClickListener { menuItem ->
                 if (menuItem.itemId == R.id.delete) {
-                    if (item is RequestListItem.AdRequestListItem && binding is ItemAdBinding)
+                    if (item is AdvertisingRequestListItem.AdRequestListItem && binding is ItemAdBinding)
                         item.ad.id?.let { adId -> viewModel.declineRequest(adId) }
-                    else if (item is RequestListItem.UserRequestListItem && binding is LayoutUserBinding) {
+                    else if (item is AdvertisingRequestListItem.UserRequestListItem && binding is LayoutUserBinding) {
                         viewModel.declineRequest(item.user.id)
                     }
                     true
@@ -82,7 +82,7 @@ class RequestsFragment :
         }
     }
 
-    override fun renderSuccess(data: RequestsViewState) {
+    override fun renderSuccess(data: AdvertisingRequestsViewState) {
         listAdapter.submitList(data.stateList)
         super.renderSuccess(data)
     }

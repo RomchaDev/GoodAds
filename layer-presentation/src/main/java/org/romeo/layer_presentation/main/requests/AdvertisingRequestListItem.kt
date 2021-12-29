@@ -4,20 +4,20 @@ import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.list.ListItem
 import org.romeo.layer_domain.entity.user.User
 
-sealed class RequestListItem : ListItem<RequestListItem> {
+sealed class AdvertisingRequestListItem : ListItem<AdvertisingRequestListItem> {
     abstract val requestId: String
 
     data class UserRequestListItem(
         override val requestId: String,
         val user: User
-    ) : RequestListItem() {
+    ) : AdvertisingRequestListItem() {
         override fun getViewType() = USER_VIEW_TYPE
     }
 
     data class AdRequestListItem(
         override val requestId: String,
         val ad: Ad
-    ) : RequestListItem() {
+    ) : AdvertisingRequestListItem() {
         override fun getViewType() = AD_VIEW_TYPE
     }
 

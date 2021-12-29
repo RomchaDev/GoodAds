@@ -5,7 +5,7 @@ import org.romeo.layer_data.api.ApiService
 import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_domain.entity.ad.Ads
-import org.romeo.layer_data.dto.Request
+import org.romeo.layer_data.dto.AdvertisingRequest
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.distribution.Distribution
 
@@ -31,8 +31,8 @@ class ApiDataSourceImpl(
 
     override fun getAd(id: String) = service.getAd(id)
 
-    override fun createRequest(request: Request): Deferred<Unit> =
-        service.createRequest(request)
+    override fun createAdvertisingRequest(advertisingRequest: AdvertisingRequest): Deferred<Unit> =
+        service.createAdvertisingRequest(advertisingRequest)
 
     override fun createEditAd(createEditAd: CreateEditAdEntity) = service.createEditAd(createEditAd)
 
@@ -41,11 +41,11 @@ class ApiDataSourceImpl(
 
     override fun getAds(start: Int, end: Int): Deferred<Ads> = service.getAds(start, end)
 
-    override fun getRequest(requestId: String) = service.getRequest(requestId)
+    override fun getAdvertisingRequest(requestId: String) = service.getAdvertisingRequest(requestId)
 
-    override fun getRequests() = service.getRequests()
+    override fun getAdvertisingRequests() = service.getAdvertisingRequests()
 
-    override fun declineRequest(requestId: String) = service.declineRequest(requestId)
+    override fun declineAdvertisingRequest(requestId: String) = service.declineAdvertisingRequest(requestId)
 
     override fun createDistribution(distribution: Distribution) =
         service.createDistribution(distribution)

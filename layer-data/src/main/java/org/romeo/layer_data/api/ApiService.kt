@@ -5,11 +5,11 @@ import org.romeo.layer_data.dto.ChangePricesRequest
 import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.TokenUser
-import org.romeo.layer_data.dto.Request
-import org.romeo.layer_domain.entity.request_full.RequestFull
+import org.romeo.layer_data.dto.AdvertisingRequest
+import org.romeo.layer_domain.entity.request_full.AdvertisingRequestFull
 import org.romeo.layer_domain.entity.ad.Ad
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
-import org.romeo.layer_domain.entity.request_full.RequestsFull
+import org.romeo.layer_domain.entity.request_full.AdvertisingRequestsFull
 import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.user.Users
@@ -18,39 +18,39 @@ import retrofit2.http.*
 interface ApiService {
 
     /**
-     * Should take data from Requests table
+     * Should take data from AdvertisingRequests table
      *
      * @return List of all the full requests where Request.advertiser id equals to id of current user
-     * or Request.adId is id of an ad which has Ad.userId equal to current user id
+     * or AdvertisingRequest.adId is id of an ad which has Ad.userId equal to current user id
      * */
-    @GET("api/requests")
-    fun getRequests(): Deferred<RequestsFull>
+    @GET("api/advertising-requests")
+    fun getAdvertisingRequests(): Deferred<AdvertisingRequestsFull>
 
     /**
-     * Should take data from Requests table
+     * Should take data from AdvertisingRequests table
      *
-     * @param requestId - id of the request that should be returned
+     * @param requestId id of the AdvertisingRequest that should be returned
      *
      * @return RequestFull, which has id the same as given in params
      * */
-    @GET("api/requests/{requestId}")
-    fun getRequest(@Path("requestId") requestId: String): Deferred<RequestFull>
+    @GET("api/advertising-requests/{requestId}")
+    fun getAdvertisingRequest(@Path("requestId") requestId: String): Deferred<AdvertisingRequestFull>
 
     /**
-     * Creates a new Request in Requests table
+     * Creates a new AdvertisingRequests in AdvertisingRequests table
      *
-     * @param request ad request
+     * @param advertisingRequest AdvertisingRequests
      * */
-    @POST("api/requests")
-    fun createRequest(@Body request: Request): Deferred<Unit>
+    @POST("api/advertising-requests")
+    fun createAdvertisingRequest(@Body advertisingRequest: AdvertisingRequest): Deferred<Unit>
 
     /**
-     * Deletes the request having id the same as given in params from Requests table
+     * Deletes the AdvertisingRequest having id the same as given in params from AdvertisingRequests table
      *
      * @param requestId id of the user
      * */
-    @DELETE("api/requests/{request-id}")
-    fun declineRequest(@Path("request-id") requestId: String): Deferred<Unit>
+    @DELETE("api/advertising-requests/{request-id}")
+    fun declineAdvertisingRequest(@Path("request-id") requestId: String): Deferred<Unit>
 
     /**
      * Should change storyPrice and postPrice of current user in the TokenUsers table
