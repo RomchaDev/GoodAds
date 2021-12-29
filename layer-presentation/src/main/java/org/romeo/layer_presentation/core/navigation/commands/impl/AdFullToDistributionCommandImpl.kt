@@ -9,6 +9,9 @@ class AdFullToDistributionCommandImpl : AdFullToDistributionCommand {
     override var args: Bundle? = null
 
     override fun execute(navController: NavController) {
-        navController.navigate(R.id.action_adFullFragment_to_createDistributionDialogFragment)
+        navController.navigate(
+            R.id.action_adFullFragment_to_createDistributionDialogFragment,
+            args
+        )
     }
 }

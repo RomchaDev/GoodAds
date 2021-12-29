@@ -40,7 +40,8 @@ class FakeApiDataSource : ApiDataSource {
 
                     ), "UID_$i",
                     "300$",
-                    11
+                    11,
+                    7
                 )
             )
         }

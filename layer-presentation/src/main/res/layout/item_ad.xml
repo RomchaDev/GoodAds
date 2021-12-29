@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="data"
             type="org.romeo.layer_domain.entity.ad.Ad" />
@@ -90,14 +92,14 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/people_image"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:layout_marginStart="4dp"
-                app:layout_constraintTop_toTopOf="@id/type_text"
-                app:layout_constraintStart_toEndOf="@id/type_text"
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:layout_marginStart="8dp"
+                android:visibility="@{data.places - data.occupiedPlaces > 0 ? View.VISIBLE : View.GONE}"
                 app:layout_constraintBottom_toBottomOf="@id/type_text"
-                app:srcCompat="@drawable/ic_human"
-                android:visibility="invisible"/>
+                app:layout_constraintStart_toEndOf="@id/type_text"
+                app:layout_constraintTop_toTopOf="@id/type_text"
+                app:srcCompat="@drawable/ic_human" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/people_text"
@@ -105,12 +107,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="@{String.valueOf(data.freePlaces)}"
+                android:text='@{data.places - data.occupiedPlaces > 0 ? String.valueOf(data.occupiedPlaces) + "/" + String.valueOf(data.places) : ""}'
+                android:visibility="@{data.places - data.occupiedPlaces > 0 ? View.VISIBLE : View.GONE}"
                 app:layout_constraintBottom_toBottomOf="@+id/people_image"
                 app:layout_constraintStart_toEndOf="@+id/people_image"
                 app:layout_constraintTop_toTopOf="@+id/people_image"
-                tools:text="11"
-                android:visibility="invisible"/>
+                tools:text="7 / 11" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/price_text"
@@ -121,10 +123,10 @@
                 android:layout_marginEnd="4dp"
                 android:text="@{data.price}"
                 android:textSize="16sp"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:text="300$"
-                android:visibility="invisible"/>
+                tools:text="300$" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

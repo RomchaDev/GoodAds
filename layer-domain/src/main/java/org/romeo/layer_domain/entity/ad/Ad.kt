@@ -17,7 +17,8 @@ data class Ad(
     @Content val imageUrls: List<String>,
     val userId: String?,
     val price: String,
-    val freePlaces: Int
+    val places: Int,
+    val occupiedPlaces: Int
 ) : ListItem<Ad>, AppStateEntity, Parcelable {
 
     @IgnoredOnParcel
@@ -38,6 +39,7 @@ data class Ad(
             listOf(),
             null,
             "0",
+            0,
             0
         )
     }

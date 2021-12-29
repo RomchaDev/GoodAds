@@ -24,6 +24,7 @@ class CreateDistributionDialogFragment : DialogFragment() {
     private val viewModel: CreateDistributionViewModel by viewModel {
         parametersOf(arguments?.getString(DISTRIBUTION_IN_KEY))
     }
+
     private var bindingNullable: FragmentCreateDistributionBinding? = null
     private val binding get() = bindingNullable!!
 
