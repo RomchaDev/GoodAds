@@ -166,5 +166,5 @@ interface ApiService {
      * @param distribution distribution that should be used when reading the documentation above :)
      */
     @POST("api/distribution/create")
-    fun createDistribution(@Body distribution: Distribution): Deferred<Unit> //TODO
+    fun createDistribution(@Body distribution: Distribution): Deferred<Unit>
 }
