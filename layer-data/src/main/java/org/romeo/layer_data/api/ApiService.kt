@@ -149,6 +149,7 @@ interface ApiService {
      *
      * @param start index from which method must return data
      * @param end index to which method must return data
+     *
      * @return object that contains list of ads
      */
     @GET("api/ads")
@@ -158,10 +159,12 @@ interface ApiService {
     ): Deferred<Ads>
 
     /**
-     * Deprecated.
-     * Use createEditAd instead
+     * Ads new Distribution to Distributions table.
+     * Sets places field = Distribution.advertisersAmount in Ad that has Ad.id equal to
+     * Distribution.adId
+     *
+     * @param distribution distribution that should be used when reading the documentation above :)
      */
-    @Deprecated("Automatically creating when a new ad is created")
     @POST("api/distribution/create")
     fun createDistribution(@Body distribution: Distribution): Deferred<Unit> //TODO
 }
