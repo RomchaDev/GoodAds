@@ -38,6 +38,7 @@ interface ApiService {
 
     /**
      * Creates a new AdvertisingRequests in AdvertisingRequests table
+     * Must generate requestId for each advertisingRequest
      *
      * @param advertisingRequest AdvertisingRequests
      * */
@@ -78,6 +79,7 @@ interface ApiService {
      * Takes the user from TokenUsers table that has id the same as given in params
      *
      * @param uid id of the user that should be returned
+     *
      * @return user having id the same as given in params
      * */
     @GET("api/users/{id}")
@@ -97,6 +99,7 @@ interface ApiService {
      * Now an example user could be returned
      *
      * @param auth an object containing user's instagram login and password
+     *
      * @return user and it's generated token
      * */
     @POST("api/users")
@@ -116,6 +119,7 @@ interface ApiService {
      * Gets Ad from Ads table by it`s id.
      *
      * @param id id of the ad
+     *
      * @return ad
      */
     @GET("api/ads/{id}")
@@ -135,6 +139,7 @@ interface ApiService {
      * @param start index from which method must return data
      * @param end index until which method must return data
      * @param userId id of particular user
+     *
      * @return object that contains list of ads
      */
     @GET("api/ads/{userId}")
