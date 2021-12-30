@@ -13,4 +13,5 @@
     <color name="black_transparent">#6F000000</color>
     <color name="gray_light">#9FFFFFFF</color>
     <color name="gray_middle">#7FFFFFFF</color>
+    <color name="button_dark">#323232</color>
 </resources>

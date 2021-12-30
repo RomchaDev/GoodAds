@@ -42,5 +42,13 @@
     <string name="expiry_date">EXPIRY DATE</string>
     <string name="cvv2">CVV2</string>
     <string name="card_holder_name">CARD HOLDER NAME</string>
+    <string name="payment">Payment</string>
+    <string name="request">request #</string>
+    <string name="add_new_card">Add New Card</string>
+    <string name="card_number">Card Number</string>
+    <string name="card_holder_name_small">Card Holder Name</string>
+    <string name="expiry_date_small">Expiry Date</string>
+    <string name="proceed">proceed</string>
+    <string name="view_details_large">VIEW DETAILS</string>
 
 </resources>
