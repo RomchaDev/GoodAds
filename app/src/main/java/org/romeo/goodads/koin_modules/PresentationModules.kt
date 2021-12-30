@@ -37,7 +37,7 @@ val viewModelModule = module {
     viewModel { ChooseAdViewModel(get(), get()) }
     viewModel { (adId: String) -> MyAdFullViewModel(get(), get(), get(), adId) }
     viewModel { AdvertisingRequestsViewModel(get(), get(), get(), get()) }
-    viewModel { (adId: String) -> AdRequestViewModel(get(), get(), adId) }
+    viewModel { (adId: String) -> AdRequestViewModel(get(), get(), get(), get(), adId) }
     viewModel { (userId: String) -> UserRequestViewModel(get(), get(), userId) }
     viewModel { OtherAdsViewModel(get(), get(), get()) }
     viewModel { (ad: Ad) -> CreateEditAdViewModel(get(), ad) }

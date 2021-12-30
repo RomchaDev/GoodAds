@@ -16,6 +16,7 @@ import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.request_full.AdvertisingRequestsFull
 import org.romeo.layer_domain.entity.distribution.Distribution
+import org.romeo.layer_domain.entity.payment.PayAdvertisingRequestEntity
 import org.romeo.layer_domain.entity.user.Users
 
 class FakeApiDataSource : ApiDataSource {
@@ -167,6 +168,12 @@ class FakeApiDataSource : ApiDataSource {
         }
     }
 
+    override fun payAdvertisingRequest(entity: PayAdvertisingRequestEntity) = runBlocking {
+        async {
+            Log.d(TAG, "payAdvertisingRequest: payment completed")
+            Unit
+        }
+    }
     companion object {
         private const val TAG = "FAKE_API_DATA_SOURCE_TAG"
     }

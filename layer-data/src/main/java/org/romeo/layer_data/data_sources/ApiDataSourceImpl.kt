@@ -8,6 +8,7 @@ import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.AdvertisingRequest
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
 import org.romeo.layer_domain.entity.distribution.Distribution
+import org.romeo.layer_domain.entity.payment.PayAdvertisingRequestEntity
 
 class ApiDataSourceImpl(
     private val service: ApiService
@@ -50,4 +51,5 @@ class ApiDataSourceImpl(
     override fun createDistribution(distribution: Distribution) =
         service.createDistribution(distribution)
 
+    override fun payAdvertisingRequest(entity: PayAdvertisingRequestEntity) = service.payAdvertisingRequest(entity)
 }
