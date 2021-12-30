@@ -2,22 +2,25 @@ package org.romeo.goodads.main
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.navigation.findNavController
+import org.koin.android.ext.android.inject
 import org.romeo.goodads.R
 import org.romeo.goodads.databinding.ActivityMainBinding
-import org.romeo.goodads.navigation.NavigationContainerActivity
+import org.romeo.goodads.navigation.AndroidNavigator
 
-class MainActivity : NavigationContainerActivity(
-    R.id.fragment_container
-) {
+class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
+    private val navigator : AndroidNavigator by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        navigator.navController = findNavController(R.id.fragment_container)
 
         initBottomNavigation()
     }
@@ -27,10 +30,9 @@ class MainActivity : NavigationContainerActivity(
         val navController =
             Navigation.findNavController(this, R.id.fragment_container)
 
-        val bottomNavigationView =
-            findViewById<BottomNavigationView>(R.id.bottom_navigation)
-
-        NavigationUI.setupWithNavController(bottomNavigationView, navController)
+        binding?.bottomNavigation?.let {
+            NavigationUI.setupWithNavController(it, navController)
+        }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.adFullFragment ||
@@ -42,10 +44,8 @@ class MainActivity : NavigationContainerActivity(
                 destination.id == R.id.createDistributionDialogFragment
             ) {
                 binding?.bottomNavigation?.visibility = View.GONE
-                bottomNavigationView.visibility = View.GONE
             } else {
                 binding?.bottomNavigation?.visibility = View.VISIBLE
-                bottomNavigationView.visibility = View.VISIBLE
             }
         }
     }
