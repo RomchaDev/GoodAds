@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/guestLoginFragment">
+    app:startDestination="@id/fragment_home">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -14,9 +14,6 @@
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
-    <action
-        android:id="@+id/action_global_loginFragment"
-        app:destination="@id/loginFragment"/>
     <fragment
         android:id="@+id/fragment_home"
         android:name="org.romeo.layer_presentation.main.home.HomeFragment"
@@ -30,10 +27,12 @@
         <action
             android:id="@+id/action_fragment_home_to_adsFragment"
             app:destination="@id/fragment_ads" />
+        <action
+            android:id="@+id/action_fragment_home_to_guestLoginFragment"
+            app:destination="@id/guestLoginFragment"
+            app:popUpTo="@id/fragment_home"
+            app:popUpToInclusive="true"/>
     </fragment>
-    <action
-        android:id="@+id/action_global_homeFragment"
-        app:destination="@id/fragment_home" />
     <fragment
         android:id="@+id/chooseAdFragment"
         android:name="org.romeo.layer_presentation.main.choose_ad_screen.ChooseAdFragment"

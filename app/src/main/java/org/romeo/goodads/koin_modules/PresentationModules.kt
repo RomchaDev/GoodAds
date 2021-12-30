@@ -32,9 +32,9 @@ import org.romeo.layer_presentation.main.advertisers.AdvertisersViewModel
 import org.romeo.layer_presentation.main.guest_login.GuestLoginViewModel
 
 val viewModelModule = module {
-    viewModel { GuestLoginViewModel(get(), get(), get(), get()) }
+    viewModel { GuestLoginViewModel(get(), get()) }
     viewModel { LoginViewModel(get(), get(), get()) }
-    viewModel { HomeViewModel(get(), get(), get(), get(), get(), get()) }
+    viewModel { HomeViewModel(get(), get(), get(), get(), get(), get(), get()) }
     viewModel { AdvertisersViewModel(get(), get(), get(), get()) }
     viewModel { ChooseAdViewModel(get(), get()) }
     viewModel { (adId: String) -> MyAdFullViewModel(get(), get(), get(), adId) }
@@ -51,8 +51,8 @@ val navigationModule = module {
     single { AndroidNavigator() }
     single<AppNavigator> { get<AndroidNavigator>() }
 
-    factory<AnyToHomeCommand> { AnyToHomeCommandImpl() }
-    factory<AnyToLoginCommand> { AnyToLoginCommandImpl() }
+    factory<HomeToGuestLoginCommand> { HomeToGuestLoginCommandImpl() }
+    factory<GuestLoginToLoginCommand> { GuestLoginToLoginCommandImpl() }
     factory<LoginToHomeCommand> { LoginToHomeCommandImpl() }
     factory<AnyToChoseAdCommand> { AnyToChoseAdCommandImpl() }
     factory<AnyToAdFullCommand> { AnyToAdFullCommandImpl() }

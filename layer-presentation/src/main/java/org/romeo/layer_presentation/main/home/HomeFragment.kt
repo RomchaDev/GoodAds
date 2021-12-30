@@ -1,5 +1,6 @@
 package org.romeo.layer_presentation.main.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
@@ -18,6 +19,12 @@ class HomeFragment :
 
     override val viewModel: HomeViewModel by viewModel()
     private lateinit var listAdapter: MainListAdapter<UserAdsListItem>
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        viewModel.homeNavigated()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

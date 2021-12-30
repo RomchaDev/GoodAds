@@ -11,6 +11,7 @@ import org.romeo.layer_presentation.core.main.BaseViewModel
 import org.romeo.layer_presentation.core.navigation.*
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToAdFullCommand
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToCreateEditAdCommand
+import org.romeo.layer_presentation.core.navigation.commands.interfaces.HomeToGuestLoginCommand
 
 class HomeViewModel(
     override val navigator: AppNavigator,
@@ -18,10 +19,18 @@ class HomeViewModel(
     private val userRepository: UserRepository,
     private val adsRepository: AdsRepository,
     private val adFullCommand: AnyToAdFullCommand,
-    private val createEditCommand: AnyToCreateEditAdCommand
+    private val createEditCommand: AnyToCreateEditAdCommand,
+    private val homeToGuestLoginCommand: HomeToGuestLoginCommand
 ) : BaseViewModel<HomeViewState>() {
 
     private var ads = mutableListOf<UserAdsListItem>()
+
+    fun homeNavigated() {
+        runAsync {
+            val token = userRepository.getToken()
+            token ?: runOnMainThread { navigator.navigate(homeToGuestLoginCommand) }
+        }
+    }
 
     override fun onViewInit() {
         runAsync {
