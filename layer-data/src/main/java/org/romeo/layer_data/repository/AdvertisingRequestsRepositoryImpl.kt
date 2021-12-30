@@ -9,8 +9,8 @@ class AdvertisingRequestsRepositoryImpl(
 ) : AdvertisingRequestsRepository {
     override suspend fun getAdvertisingRequestsFull() = apiDataSource.getAdvertisingRequests().await()
 
-    override suspend fun createAdvertisingRequest(userId: String, adId: String) =
-        apiDataSource.createAdvertisingRequest(AdvertisingRequest(userId, adId)).await()
+    override suspend fun createAdvertisingRequest(userId: String, adId: String, takeUserPrice: Boolean) =
+        apiDataSource.createAdvertisingRequest(AdvertisingRequest(userId, adId, takeUserPrice)).await()
 
     override suspend fun getAdvertisingRequest(requestId: String) =
         apiDataSource.getAdvertisingRequest(requestId).await()

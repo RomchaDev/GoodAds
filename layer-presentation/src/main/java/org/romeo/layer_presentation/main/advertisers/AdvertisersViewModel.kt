@@ -38,7 +38,7 @@ class AdvertisersViewModel(
                 result?.id?.let { adId ->
                     userIdChosen?.let { uid ->
                         runAsync {
-                            advertisingRequestsRepository.createAdvertisingRequest(uid, adId)
+                            advertisingRequestsRepository.createAdvertisingRequest(uid, adId, true)
                         }
                     }
                 }

@@ -7,5 +7,6 @@ import org.romeo.layer_domain.entity.user.User
 data class AdvertisingRequestFull(
     val requestId: String,
     val ad: Ad,
-    val user: User
+    val user: User,
+    val takeUserPrice: Boolean = false
 ): AppStateEntity
