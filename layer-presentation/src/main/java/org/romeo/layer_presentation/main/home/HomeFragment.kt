@@ -23,11 +23,12 @@ class HomeFragment :
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        viewModel.homeNavigated()
+        //viewModel.homeNavigated()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.visibility = View.GONE
 
         initRecycler()
 
@@ -98,6 +99,7 @@ class HomeFragment :
 
     override fun renderSuccess(data: HomeViewState) {
         listAdapter.submitList(data.stateList)
+        view?.visibility = View.VISIBLE
         super.renderSuccess(data)
     }
 

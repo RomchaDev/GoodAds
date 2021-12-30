@@ -34,8 +34,13 @@ class HomeViewModel(
 
     override fun onViewInit() {
         runAsync {
-            ads = getUserAdsUseCase.execute() as MutableList<UserAdsListItem>
-            mSharedFlow.emit(AppState.Success(HomeViewState(ads)))
+            //val token = userRepository.getToken()
+            val token = null
+
+            token?.let {
+                ads = getUserAdsUseCase.execute() as MutableList<UserAdsListItem>
+                mSharedFlow.emit(AppState.Success(HomeViewState(ads)))
+            } ?: runOnMainThread { navigator.navigate(homeToGuestLoginCommand) }
         }
 
         navigator.subscribeToResult(object : NavigationResultListener<CreateEditAdEntity> {
