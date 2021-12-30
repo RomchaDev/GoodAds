@@ -101,6 +101,6 @@
         <action
             android:id="@+id/action_guestLoginFragment_to_loginFragment"
             app:destination="@id/loginFragment"/>
-    </fragment>
+    </fragment><action android:id="@+id/action_global_fragment_home" app:destination="@id/fragment_home"/>
 
 </navigation>
