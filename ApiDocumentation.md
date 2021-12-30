@@ -52,7 +52,8 @@ LoginRequest {
 // Doesn`t need requestId because is used only for request creation
 AdvertisingRequest {
     advertiserId: String, // id of the user that is going to advertise the ad
-    adId: String // id of the ad that is going to be advertised
+    adId: String, // id of the ad that is going to be advertised
+    takeUserPrice: Boolean
 }
 
 ChangePricesRequest {
@@ -71,7 +72,8 @@ Ads {
 AdvertisingRequestFull {
     requestId: String,
     ad: Ad,
-    user: User
+    user: User,
+    takeUserPrice: Boolean
 }
 
 AdvertisingRequestsFull {
