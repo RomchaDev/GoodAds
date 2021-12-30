@@ -1,5 +1,6 @@
 package org.romeo.layer_presentation.main.guest_login
 
+import android.os.Bundle
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.main.BaseFragment
@@ -11,6 +12,10 @@ class GuestLoginFragment :
 
     override val viewModel: GuestLoginViewModel by viewModel()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
+        viewModel.notifyHomeNavigated()
+    }
 
 }
