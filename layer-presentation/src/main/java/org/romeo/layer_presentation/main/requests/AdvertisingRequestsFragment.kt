@@ -2,6 +2,7 @@ package org.romeo.layer_presentation.main.requests
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.PopupMenu
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,12 @@ class AdvertisingRequestsFragment :
 
     override val viewModel: AdvertisingRequestsViewModel by viewModel()
     private lateinit var listAdapter: MainListAdapter<AdvertisingRequestListItem>
+    private val callback: OnBackPressedCallback =
+        object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                //do nothing
+            }
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,6 +63,8 @@ class AdvertisingRequestsFragment :
         binding.adsRecycler.adapter = listAdapter
 
         binding.activeInactiveButton.listenerState = this
+
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     private fun initItemMenu(

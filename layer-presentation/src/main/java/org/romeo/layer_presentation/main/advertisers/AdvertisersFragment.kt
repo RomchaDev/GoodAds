@@ -2,6 +2,7 @@ package org.romeo.layer_presentation.main.advertisers
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.romeo.layer_presentation.R
@@ -20,6 +21,12 @@ class AdvertisersFragment :
 
     override val viewModel: AdvertisersViewModel by viewModel()
     private lateinit var listAdapter: MainListAdapter<User>
+    private val callback: OnBackPressedCallback =
+        object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                //do nothing
+            }
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,6 +47,8 @@ class AdvertisersFragment :
 
         binding.adsRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.adsRecycler.adapter = listAdapter
+
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     override fun renderSuccess(data: Users) {

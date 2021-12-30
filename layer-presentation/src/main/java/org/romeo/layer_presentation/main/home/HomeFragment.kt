@@ -3,6 +3,7 @@ package org.romeo.layer_presentation.main.home
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -19,12 +20,12 @@ class HomeFragment :
 
     override val viewModel: HomeViewModel by viewModel()
     private lateinit var listAdapter: MainListAdapter<UserAdsListItem>
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        //viewModel.homeNavigated()
-    }
+    private val callback: OnBackPressedCallback =
+        object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                //do nothing
+            }
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,6 +36,8 @@ class HomeFragment :
         binding.fabCreateAd.setOnClickListener {
             viewModel.onCreateAdPressed()
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     private fun initRecycler() {

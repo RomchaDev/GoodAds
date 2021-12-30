@@ -25,13 +25,6 @@ class HomeViewModel(
 
     private var ads = mutableListOf<UserAdsListItem>()
 
-    fun homeNavigated() {
-        runAsync {
-            val token = userRepository.getToken()
-            token ?: runOnMainThread { navigator.navigate(homeToGuestLoginCommand) }
-        }
-    }
-
     override fun onViewInit() {
         runAsync {
             //val token = userRepository.getToken()

@@ -2,6 +2,7 @@ package org.romeo.layer_presentation.main.other_ads
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -19,6 +20,12 @@ class OtherAdsFragment :
 
     override val viewModel: OtherAdsViewModel by viewModel()
     private lateinit var listAdapter: MainListAdapter<Ad>
+    private val callback: OnBackPressedCallback =
+        object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                //do nothing
+            }
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,6 +47,8 @@ class OtherAdsFragment :
 
         binding.adsRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.adsRecycler.adapter = listAdapter
+
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     override fun renderSuccess(data: Ads) {
