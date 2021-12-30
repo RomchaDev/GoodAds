@@ -1,16 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:elevation="8dp"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="210dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/bg_card">
+
+        <ImageView
+            android:id="@+id/upper_logo"
+            android:layout_width="60dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_mastercard" />
+
+        <TextView
+            android:id="@+id/card_number"
+            style="@style/CardContentBigText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@id/upper_logo"
+            app:layout_constraintTop_toBottomOf="@id/upper_logo"
+            tools:text="5555 **** **** 4444" />
+
+        <TextView
+            android:id="@+id/expiry_tint"
+            style="@style/CardTintText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/expiry_date"
+            app:layout_constraintStart_toStartOf="@id/card_number"
+            app:layout_constraintTop_toBottomOf="@id/card_number" />
+
+        <TextView
+            android:id="@+id/cvv2_tint"
+            style="@style/CardTintText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="@string/card_holder_name"
+            app:layout_constraintStart_toEndOf="@id/expiry_tint"
+            app:layout_constraintTop_toTopOf="@id/expiry_tint" />
+
+        <TextView
+            android:id="@+id/expiry_content"
+            style="@style/CardContentSmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@id/expiry_tint"
+            app:layout_constraintTop_toBottomOf="@id/expiry_tint"
+            tools:text="05/2022" />
+
+        <TextView
+            android:id="@+id/cvv2_content"
+            style="@style/CardContentSmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="ALEXANDER SMITH"
+            app:layout_constraintStart_toStartOf="@id/cvv2_tint"
+            app:layout_constraintTop_toTopOf="@id/expiry_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

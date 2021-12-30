@@ -79,4 +79,23 @@
 
     </style>
 
+    <style name="CardContentBigText">
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:fontFamily">@font/card</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray_light</item>
+    </style>
+
+    <style name="CardContentSmallText">
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:fontFamily">@font/card</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/gray_light</item>
+    </style>
+
+    <style name="CardTintText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/gray_middle</item>
+    </style>
+
 </resources>

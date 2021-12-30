@@ -39,5 +39,8 @@
     <string name="user_wants_to_advertise">Wants to push your advertisement</string>
     <string name="ok">OK</string>
     <string name="at_all_you_pay">At all you pay</string>
+    <string name="expiry_date">EXPIRY DATE</string>
+    <string name="cvv2">CVV2</string>
+    <string name="card_holder_name">CARD HOLDER NAME</string>
 
 </resources>

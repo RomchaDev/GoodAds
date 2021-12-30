@@ -11,4 +11,6 @@
     <color name="purple_light">#6550EE</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black_transparent">#6F000000</color>
+    <color name="gray_light">#9FFFFFFF</color>
+    <color name="gray_middle">#7FFFFFFF</color>
 </resources>
