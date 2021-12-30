@@ -39,5 +39,7 @@
     <string name="user_wants_to_advertise">Wants to push your advertisement</string>
     <string name="ok">OK</string>
     <string name="at_all_you_pay">At all you pay</string>
+    <string name="please_log_in">Log in!</string>
+    <string name="login">Log in</string>
 
 </resources>

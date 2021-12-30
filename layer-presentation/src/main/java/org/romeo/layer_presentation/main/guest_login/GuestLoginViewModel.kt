@@ -4,27 +4,26 @@ import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.repository_bounderies.UserRepository
 import org.romeo.layer_presentation.core.main.BaseViewModel
 import org.romeo.layer_presentation.core.navigation.AppNavigator
+import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToHomeCommand
+import org.romeo.layer_presentation.core.navigation.commands.interfaces.AnyToLoginCommand
 import org.romeo.layer_presentation.core.navigation.commands.interfaces.LoginToHomeCommand
 
 class GuestLoginViewModel(
     override val navigator: AppNavigator,
     private val userRepository: UserRepository,
-    private val loginToHomeCommand: LoginToHomeCommand
+    private val anyToLoginCommand: AnyToLoginCommand,
+    private val anyToHomeCommand: AnyToHomeCommand
 ) : BaseViewModel<User>() {
 
-    fun isLogined(): Boolean {
-        var result = true
-        runAsync {
-            val token = userRepository.getToken()
-
-            result = false
-            //token ?: run { result = false }
-        }
-        return result
+    fun onLoginPressed() {
+        navigator.navigate(anyToLoginCommand)
     }
 
-    fun navigateHome() {
-        navigator.navigate(loginToHomeCommand)
+    fun homeNavigated() {
+        runAsync {
+            val token = userRepository.getToken()
+            token?.let { runOnMainThread { navigator.navigate(anyToHomeCommand) } }
+        }
     }
 
 }
