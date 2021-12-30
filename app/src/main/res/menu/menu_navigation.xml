@@ -11,7 +11,7 @@
         android:title="@string/ads" />
 
     <item
-        android:id="@+id/fragment_home"
+        android:id="@+id/guestLoginFragment"
         android:icon="@drawable/ic_home"
         android:title="@string/home" />
 

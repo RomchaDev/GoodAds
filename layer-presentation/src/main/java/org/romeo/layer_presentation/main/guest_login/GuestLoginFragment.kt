@@ -6,6 +6,8 @@ import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.main.BaseFragment
 import org.romeo.layer_presentation.databinding.FragmentGuestLoginBinding
 import org.koin.android.viewmodel.ext.android.viewModel
+import org.romeo.layer_presentation.main.home.HomeFragment
+import org.romeo.layer_presentation.main.login.LoginFragment
 
 class GuestLoginFragment :
     BaseFragment<FragmentGuestLoginBinding, User, GuestLoginViewModel>(R.layout.fragment_guest_login) {
@@ -15,7 +17,14 @@ class GuestLoginFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.notifyHomeNavigated()
+        if (viewModel.isLogined()) {
+            viewModel.navigateHome()
+        } else {
+            childFragmentManager
+                .beginTransaction()
+                .replace(R.id.guest_login_fragment_container, LoginFragment())
+                .commit()
+        }
     }
 
 }

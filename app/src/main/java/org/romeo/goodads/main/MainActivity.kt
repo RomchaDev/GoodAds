@@ -33,14 +33,15 @@ class MainActivity : NavigationContainerActivity(
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.loginFragment ||
+            if (
                 destination.id == R.id.adFullFragment ||
                 destination.id == R.id.createEditAdFragment ||
                 destination.id == R.id.createEditAdFragment ||
                 destination.id == R.id.adListItemFullFragment ||
                 destination.id == R.id.adRequestFragment ||
                 destination.id == R.id.userRequestFragment ||
-                destination.id == R.id.createDistributionDialogFragment
+                destination.id == R.id.createDistributionDialogFragment ||
+                destination.id == R.id.guestLoginFragment
             ) {
                 binding?.bottomNavigation?.visibility = View.GONE
                 bottomNavigationView.visibility = View.GONE

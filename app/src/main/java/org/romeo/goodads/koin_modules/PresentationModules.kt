@@ -29,8 +29,10 @@ import org.romeo.layer_presentation.main.create_edit_ad.CreateEditAdViewModel
 import org.romeo.layer_presentation.main.login.LoginViewModel
 import org.romeo.layer_presentation.main.user_request_full.UserRequestViewModel
 import org.romeo.layer_presentation.main.advertisers.AdvertisersViewModel
+import org.romeo.layer_presentation.main.guest_login.GuestLoginViewModel
 
 val viewModelModule = module {
+    viewModel { GuestLoginViewModel(get(), get(), get()) }
     viewModel { LoginViewModel(get(), get(), get()) }
     viewModel { HomeViewModel(get(), get(), get(), get(), get(), get()) }
     viewModel { AdvertisersViewModel(get(), get(), get(), get()) }
