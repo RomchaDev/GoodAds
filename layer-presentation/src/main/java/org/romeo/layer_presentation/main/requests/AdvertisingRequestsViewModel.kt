@@ -27,7 +27,7 @@ class AdvertisingRequestsViewModel(
         runAsync {
             val list: MutableList<AdvertisingRequestListItem> = mutableListOf()
 
-            advertisingRequestsRepository.getAdvertisingRequestsFull().adUsers.forEach {
+            advertisingRequestsRepository.getAdvertisingRequestsFull().requests.forEach {
                 list.add(AdvertisingRequestListItem.AdRequestListItem(it.requestId, it.ad))
             }
 
@@ -41,7 +41,7 @@ class AdvertisingRequestsViewModel(
         runAsync {
             val list: MutableList<AdvertisingRequestListItem> = mutableListOf()
 
-            advertisingRequestsRepository.getAdvertisingRequestsFull().adUsers.forEach {
+            advertisingRequestsRepository.getAdvertisingRequestsFull().requests.forEach {
                 list.add(AdvertisingRequestListItem.UserRequestListItem(it.requestId, it.user))
             }
 
