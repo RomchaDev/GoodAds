@@ -27,8 +27,8 @@ class HomeViewModel(
 
     override fun onViewInit() {
         runAsync {
-            //val token = userRepository.getToken()
-            val token = null
+            val token = userRepository.getToken()
+            //val token = null
 
             token?.let {
                 ads = getUserAdsUseCase.execute() as MutableList<UserAdsListItem>
