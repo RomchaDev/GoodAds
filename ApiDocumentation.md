@@ -80,6 +80,18 @@ AdvertisingRequestsFull {
     requests: AdvertisingRequestFull[]
 }
 
+PayAdvertisingRequestEntity {
+    requestId: String,
+    card: BankCard
+}
+
+data class BankCard {
+    card_number: String,
+    cardHolderName: String,
+    expiry_date: String,
+    cvv2: String
+}
+
 
 
 Tables:
