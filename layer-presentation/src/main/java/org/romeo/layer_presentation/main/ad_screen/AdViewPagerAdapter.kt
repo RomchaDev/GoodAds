@@ -1,8 +1,10 @@
 package org.romeo.layer_presentation.main.ad_screen
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import org.romeo.layer_presentation.R
 import org.romeo.layer_presentation.core.view.loadImage
 import org.romeo.layer_presentation.databinding.ItemViewPagerAdBinding
 
@@ -27,6 +29,13 @@ class AdViewPagerAdapter(
     }
 
     override fun onBindViewHolder(holder: AdViewPagerViewHolder, position: Int) {
+/*        val url = images[position]
+        if (url.contains(".mp4")) {
+            holder.binding.vvAd.visibility = View.VISIBLE
+            R.drawable.bg_dialog
+        }*/
+
+        holder.binding.ivAd.visibility = View.VISIBLE
         loadImage(holder.binding.ivAd, this.images[position])
     }
 

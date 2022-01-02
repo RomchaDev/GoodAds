@@ -1,4 +1,4 @@
-Two main users of the project are advertisers (people who want to advertise get money)
+Two main users of the project are advertisers (people who want to advertise and get money)
 and advertisable (people who create ads and want their ads to be advertised by advertisers)
 
 Models:
@@ -20,7 +20,7 @@ Ad {
     id: String,
     title: String,
     description: String,
-    type: AdType,
+    type: String (POST or STORY)
     imageUrls: String[],
     userId: String,
     price: String,

@@ -1,17 +1,17 @@
 package org.romeo.layer_data.api
 
 import kotlinx.coroutines.Deferred
+import org.romeo.layer_data.dto.AdvertisingRequest
 import org.romeo.layer_data.dto.ChangePricesRequest
-import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_data.dto.LoginRequest
 import org.romeo.layer_data.dto.TokenUser
-import org.romeo.layer_data.dto.AdvertisingRequest
-import org.romeo.layer_domain.entity.request_full.AdvertisingRequestFull
 import org.romeo.layer_domain.entity.ad.Ad
+import org.romeo.layer_domain.entity.ad.Ads
 import org.romeo.layer_domain.entity.ad.CreateEditAdEntity
-import org.romeo.layer_domain.entity.request_full.AdvertisingRequestsFull
 import org.romeo.layer_domain.entity.distribution.Distribution
 import org.romeo.layer_domain.entity.payment.PayAdvertisingRequestEntity
+import org.romeo.layer_domain.entity.request_full.AdvertisingRequestFull
+import org.romeo.layer_domain.entity.request_full.AdvertisingRequestsFull
 import org.romeo.layer_domain.entity.user.User
 import org.romeo.layer_domain.entity.user.Users
 import retrofit2.http.*
@@ -178,11 +178,15 @@ interface ApiService {
      * Completes a payment from the card in PayAdvertisingRequestEntity.payment
      * to the card whose number is in User.cardNumber of the user whose id is in
      * Request.advertiserId. requestId should be taken from PayAdvertisingRequestEntity.requestId.
+     * If Request.takeUserPrice == true uses User.postPrice or User.storyPrice (type of the ad can
+     * be taken from Ad.type). Else uses Ad.price.
      *
      * Adds a payment to Payments table and add 1 to Ad.occupiedPlaces if Ad.places > 0.
      * Ad id can be taken from request, whose id is in PayAdvertisingRequestEntity.requestId.
      *
      * Deletes the request from Requests table.
+     *
+     * Posts the ad to advertiser's account using instagram api.
      *
      * Neither PaymentEntity.expiryData, nor PaymentEntity.cvv2 should be saved.
      *

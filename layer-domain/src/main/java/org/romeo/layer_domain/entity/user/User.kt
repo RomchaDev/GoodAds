@@ -16,5 +16,6 @@ data class User(
     val followers: String,
     val following: String,
     val postPrice: String,
-    val storyPrice: String
+    val storyPrice: String,
+    val cardNumber: String? = null
 ): Parcelable, ListItem<User>, AppStateEntity

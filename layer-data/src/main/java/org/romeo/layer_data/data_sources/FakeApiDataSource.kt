@@ -58,7 +58,8 @@ class FakeApiDataSource : ApiDataSource {
         "300",
         "29",
         "300",
-        "420"
+        "420",
+        "0000 0000 0000 0000"
     )
 
     private val user2 = User(
@@ -71,7 +72,8 @@ class FakeApiDataSource : ApiDataSource {
         "300",
         "420",
         "420",
-        "69"
+        "69",
+        "0000 0000 0000 0000"
     )
 
     private val token = "SOME_REALLY_LONG_TOKEN"

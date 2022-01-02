@@ -19,32 +19,25 @@
         <entry key="..\:/Users/38063/AndroidStudioProjects/GoodAds/layer-presentation/src/main/res/menu/create_edit_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/app/src/main/res/layout/activity_main.xml" value="0.12938596491228072" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/app/src/main/res/menu/menu_navigation.xml" value="0.21403508771929824" />
-        <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/drawable/bg_button_proceed.xml" value="0.22763157894736843" />
-        <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/drawable/bg_card.xml" value="0.22467532467532467" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/drawable/bg_dialog.xml" value="0.22763157894736843" />
-        <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/drawable/bg_edit_text.xml" value="0.22763157894736843" />
-        <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/drawable/ic_arrow.xml" value="0.22763157894736843" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/drawable/ic_human.xml" value="0.193859649122807" />
-        <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/drawable/ic_left_arrow.xml" value="0.22763157894736843" />
-        <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/drawable/ic_mastercard.xml" value="0.22763157894736843" />
-        <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/drawable/ic_visa.xml" value="0.22763157894736843" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_ad.xml" value="0.264" />
-        <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_card.xml" value="0.264" />
-        <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_cardd.xml" value="0.21403508771929824" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_choose_ad.xml" value="0.2477355072463768" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_create_distribution.xml" value="0.4" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_create_edit_ad.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_payment.xml" value="0.264" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_request_user.xml" value="0.16973684210526316" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/item_ad.xml" value="0.264" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/menu/delete_edit_menu.xml" value="0.16973684210526316" />
         <entry key="..\:/Users/ADMIN/StudioProjects/GoodAds/layer-presentation/src/main/res/menu/delete_menu.xml" value="0.16973684210526316" />
         <entry key="..\:/Users/world/StudioProjects/GoodAds/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/world/StudioProjects/GoodAds/app/src/main/res/menu/menu_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/world/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/ad_type_list_item.xml" value="0.21105072463768115" />
         <entry key="..\:/Users/world/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/exmpl.xml" value="0.13994565217391305" />
         <entry key="..\:/Users/world/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_ad.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/world/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_ad_requests.xml" value="0.1598731884057971" />
+        <entry key="..\:/Users/world/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_guest_login.xml" value="0.21105072463768115" />
+        <entry key="..\:/Users/world/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_home.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/world/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_request_user.xml" value="0.264" />
         <entry key="..\:/Users/world/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/fragment_requests.xml" value="0.13802083333333334" />
         <entry key="..\:/Users/world/StudioProjects/GoodAds/layer-presentation/src/main/res/layout/item_ad.xml" value="0.1598731884057971" />

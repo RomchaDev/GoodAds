@@ -3,6 +3,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <import type="org.romeo.layer_presentation.R"/>
+    </data>
+
     <ImageView
         android:id="@+id/iv_ad"
         android:layout_width="match_parent"
@@ -10,10 +14,15 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/ad_image"
         android:cropToPadding="true"
+        android:src="@{1 > 0 ? R.drawable.bg_dialog : 2 > 3 ? R.drawable.bg_dialog : R.drawable.bg_dialog}"
         android:fitsSystemWindows="true"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="gone" />
+
+    <VideoView
+        android:id="@+id/vv_ad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        />
 </layout>
